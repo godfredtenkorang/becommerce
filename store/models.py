@@ -22,7 +22,9 @@ class Product(models.Model):
     description = models.TextField()
     brand = models.CharField(default='un-branded')
     image = models.ImageField(upload_to='product/img', default='default.jpg')
-    price = models.DecimalField(max_digits=4, decimal_places=2)
+    discount = models.DecimalField(max_digits=4, decimal_places=2, default=0.0)
+    normal_price = models.DecimalField(max_digits=4, decimal_places=2, null=True)
+    final_price = models.DecimalField(max_digits=4, decimal_places=2)
     date_added = models.DateTimeField(auto_now_add=True)
     
     class Meta:

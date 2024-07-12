@@ -1,33 +1,233 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'store/styles.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Hello, world!</title>
-</head>
+  </head>
 
-<body>
+  <body>
+    <header>
+      <div class="first-header">
+        <div class="accounts">
+          <div class="login">
+            <a href="">Login</a>
+          </div>
+          <div class="sign-up">
+            <a href="">Sign Up</a>
+          </div>
+        </div>
+        <div class="first-col">
+          <div class="contact-number">
+            <a href=""> 233 554823785 </a>
+            <a href=""> 233 554823785 </a>
+          </div>
+
+          <div class="shopping-cart">
+            <!-- this cart shows on big screen-->
+
+            <a href="">
+              <span> Shopping Cart</span>
+              <i class="fa-solid fa-cart-shopping"></i>
+              <br />
+
+              <span>Gh</span>
+            </a>
+          </div>
+          <div class="menu-icon">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="second-header">
+        <div class="logo">
+          <a href=""> YourOnlineMarket</a>
+        </div>
+        <div class="search-bar">
+          <input
+            type="search"
+            name=""
+            id=""
+            placeholder="What are you looking for ?"
+          />
+          <button>Search</button>
+        </div>
+      </div>
+
+      <div class="third-header">
+        <div class="nav-links">
+          <div class="login-signup">
+           <a href="">Login</a>
+           <span>||</span>
+           <a href="">Sign Up</a>
+          </div>
+
+          <div class="close-third-header">
+          <p>  <i class="fa-solid fa-xmark"></i> </p>
+            <p>Remove</p>
+          </div>
+          <li>
+            <a href="  {% url 'index' %}" href=""><i class="fa-solid fa-house"></i> Home</a>
+          </li>
+          <li>
+            <a href="  {% url 'shop' %}"><i class="fa-solid fa-shop"></i> Shop</a>
+          
+          </li>
+          <li>
+            <a href=""><i class="fa-solid fa-handshake"></i> My orders</a>
+          </li>
+          <li>
+            <a href=""><i class="fa-regular fa-heart"></i> Wish List</a>
+          </li>
+        
+        </div>
+      </div>
+    </header>
     {% block content %}{% endblock %}
+
+
+    <!-- footer -->
+     <footer>
+      <div class="footer">
+        <div class="footer-col">
+          <div class="head">
+            <h5>
+              OnlineMarket
+            </h5>
+            <li><a href="">About us</a></li>
+            <li><a href="">Login</a></li>
+            <li><a href="">Help & Support</a></li>
+          </div>
+        </div>
+        <div class="footer-col">
+          <div class="head">
+            <h5>
+             Other Links
+            </h5>
+            <li><a href="">Home</a></li>
+            <li><a href="">Shop</a></li>
+            <li><a href="">Checkout</a></li>
+            <li><a href="">Privacy policy</a></li>
+            <li><a href="">Terms & Conditions</a></li>
+            <li><a href="">Warranty & Returns</a></li>
+          </div>
+        </div>
+        <div class="footer-col">
+          <div class="head">
+            <h5>
+              My accounts
+            </h5>
+            <li><a href="">My orders</a></li>
+            <li><a href="">My account</a></li>
+            <li><a href="">Wishlist</a></li>
+            <li><a href="">Shopping cart</a></li>
+          </div>
+        </div>
+        <div class="footer-col">
+          <div class="head">
+            <h5>
+            Newsletter
+            </h5>
+          </div>
+          <p> Get all the best deals, sales and offers from <br> the best online shopping store in Ghana. <br> Sign up now!</p>
+        </div>
+        <div class="footer-col">
+          <div class="head">
+            <h5>
+             Follow Us
+            </h5>
+            <li><a href=""><i class="fa-brands fa-facebook"></i> Facebook </a></li>
+            <li><a href=""><i class="fa-brands fa-facebook"></i> Facebook </a></li>
+            <li><a href=""><i class="fa-brands fa-facebook"></i> Facebook </a></li>
+            <li><a href=""><i class="fa-brands fa-facebook"></i> Facebook </a></li>
+          </div>
+        </div>
+
+
+
+
+      </div>
+
+      <div class="copy-right">
+        <p>Copyright © OnlineMarket.com 2016 - 2024 • All Rights Reserved • </p>
+
+        <p>Privacy policy • Terms & Conditions </p>
+      </div>
+
+     </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-</body>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script>
 
+      const menuicon = document.querySelector(".menu-icon")
+      const closethirdheader = document.querySelector('.close-third-header')
+      
+      const thirdheader = document.querySelector(".third-header")
+      menuicon.addEventListener("click", ()=>{
+        thirdheader.classList.toggle('show')
+      })
+
+     
+      closethirdheader.addEventListener("click", ()=>{
+        thirdheader.classList.toggle('show')
+      })
+
+
+
+
+      document.addEventListener('DOMContentLoaded', function(){
+        const header = document.querySelector(".second-header")
+        const sticky = header.offsetTop;
+    
+    
+    window.addEventListener('scroll', ()=>{
+      if(window.pageYOffset > sticky){
+        header.classList.add('fixed-header')
+      } else {
+        header.classList.remove('fixed-header')
+      }
+    })
+    
+    
+      })
+    </script>
+  </body>
 </html>

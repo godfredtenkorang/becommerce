@@ -35,19 +35,19 @@
             <a href="">Login</a>
           </div>
           <div class="sign-up">
-            <a href="">Sign Up</a>
+            <a href="  {% url 'register' %}">Sign Up</a>
           </div>
         </div>
         <div class="first-col">
           <div class="contact-number">
-            <a href=""> 233 554823785 </a>
-            <a href=""> 233 554823785 </a>
+            <a href=""> <i class="fa-solid fa-phone"></i> 233 554823785 </a>
+            <a href=""><i class="fa-solid fa-phone"></i>  233 554823785 </a>
           </div>
 
           <div class="shopping-cart">
             <!-- this cart shows on big screen-->
 
-            <a href="">
+            <a href="{% url 'cart' %}">
               <span> Shopping Cart</span>
               <i class="fa-solid fa-cart-shopping"></i>
               <br />
@@ -78,10 +78,16 @@
 
       <div class="third-header">
         <div class="nav-links">
-          <div class="login-signup">
-           <a href="">Login</a>
-           <span>||</span>
-           <a href="">Sign Up</a>
+          <div class="user-container">
+            <div class="user">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="login-signup">
+              <a href="">Login</a>
+              <span>||</span>
+              <a href="  {% url 'register' %}">Sign Up</a>
+            </div>
+          
           </div>
 
           <div class="close-third-header">
@@ -96,10 +102,10 @@
           
           </li>
           <li>
-            <a href=""><i class="fa-solid fa-handshake"></i> My orders</a>
+            <a href="  {% url 'myOrder' %}"><i class="fa-solid fa-handshake"></i> My orders</a>
           </li>
           <li>
-            <a href=""><i class="fa-regular fa-heart"></i> Wish List</a>
+            <a href="  {% url 'WishList' %}"><i class="fa-regular fa-heart"></i> Wish List</a>
           </li>
         
         </div>

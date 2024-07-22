@@ -1,8 +1,25 @@
 {% extends 'store/base.html' %} {% load static %} {% block content %}
 
+<header class="page-header">
+  <li> <a href="  {% url 'index' %}" href=""><i class="fa-solid fa-less-than"></i> Back</a></li>
+  <li>            <a href=><i class="fa-solid fa-shop"></i> Product Detail</a>
+  </li>
+
+</header>
+
 <div class="product-detail-container">
   <div class="product-img">
-    <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+    <div class="small-product-img">
+      <img src="{% static 'store/img/watch2.jpg' %}" alt="Slide 2" />
+      <img src="{% static 'store/img/watch.jpg' %}" alt="Slide 2" />
+      <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+    </div>
+    <div class="bigger-product-img">
+      <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+
+    </div>
+
+  
   </div>
   <div class="product-detail">
     <h4>
@@ -21,6 +38,121 @@
         <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
       </div>
   </div>
+
+  <div class="information">
+    <div class="info">
+      <div class="info-col">
+        <i class="fa-solid fa-shop"></i>
+      </div>
+      <div class="info-col">
+     
+      <a href="">Sold by Online</a>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="info">
+
+      <div class="info-col">
+        <i class="fa-solid fa-ship"></i>
+      </div>
+
+      <div class="info-col">
+      <h5>TRUSTED SHIPPING</h5> 
+      <p>We will make sure to deliver your order within 4-7 days</p>
+
+      </div>
+
+    </div>
+    <div class="info">
+
+      <div class="info-col">
+        <i class="fa-solid fa-truck"></i>
+      </div>
+
+      <div class="info-col">
+      <h5>Express delivery</h5> 
+      <p>Always in stock, ready to ship, faster delivery
+
+      </p>
+
+      </div>
+
+    </div>
+    <div class="info">
+
+      <div class="info-col">
+        <i class="fa-solid fa-right-left"></i>      </div>
+
+      <div class="info-col">
+      <h5>This item is eligible for returns
+      </h5> 
+      
+
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  </div>
+
+
 </div>
+
+
+<div class="produt-specification">
+  <h3>Product Specification</h3>
+  <p>Standing screen display size ‎14 Inches</p>
+
+  <p>Screen Resolution ‎1920 x 1080 pixels</p>
+
+  <p>Max Screen Resolution ‎1920 x 1080 Pixels</p>
+
+  <p>Processor ‎2.8 GH</p>
+  <p>Standing screen display size ‎14 Inches</p>
+
+  <p>Screen Resolution ‎1920 x 1080 pixels</p>
+
+  <p>Max Screen Resolution ‎1920 x 1080 Pixels</p>
+
+  <p>Processor ‎2.8 GH</p>
+</div>
+
+<script>
+  const smallproductimg = document.querySelectorAll('.small-product-img img')
+  const biggerProductimg = document.querySelector(".bigger-product-img img")
+
+  smallproductimg.forEach((img)=>{
+
+    img.addEventListener("click",()=>{
+     const Image = img.src
+    biggerProductimg.src = Image
+    })
+  })
+</script>
 
 {% endblock %}

@@ -8,43 +8,43 @@
     <!-- category links -->
     <div class="cat-links">
       <li>
-        <a href="{% url 'productDetail' %}"
-          ><i class="fa-solid fa-fire"></i> Hot Deals</a
+        <a href="{% url 'category' %}">
+          <i class="fa-solid fa-fire"></i> Hot Deals</a
         >
         <i class="fa-solid fa-greater-than"></i>
       </li>
       <li>
-        <a href="{% url 'productDetail' %}">
+        <a href="{% url 'category' %}">
           <i class="fa-brands fa-apple"></i> Apple Systems</a
         >
         <i class="fa-solid fa-greater-than"></i>
       </li>
       <li>
-        <a href="{% url 'productDetail' %}">
+        <a href="{% url 'category' %}">
           <i class="fa-solid fa-laptop"></i> Laptop & Tablets</a
         >
         <i class="fa-solid fa-greater-than"></i>
       </li>
       <li>
-        <a href="{% url 'productDetail' %}">
+        <a href="{% url 'category' %}">
           <i class="fa-solid fa-gamepad"></i> Gaming Laptops</a
         >
         <i class="fa-solid fa-greater-than"></i>
       </li>
       <li>
-        <a href="{% url 'productDetail' %}"
-          ><i class="fa-solid fa-computer"></i> Components Part</a
+        <a href="{% url 'category' %}">
+          <i class="fa-solid fa-computer"></i> Components Part</a
         >
         <i class="fa-solid fa-greater-than"></i>
       </li>
       <li>
-        <a href="{% url 'productDetail' %}">
+        <a href="{% url 'category' %}">
           <i class="fa-solid fa-plane"></i> Drones& wearables</a
         >
         <i class="fa-solid fa-greater-than"></i>
       </li>
       <li>
-        <a href="{% url 'productDetail' %}">
+        <a href="{% url 'category' %}">
           <i class="fa-solid fa-wand-magic-sparkles"></i> Access Time &
           Control</a
         >
@@ -59,14 +59,14 @@
         <i class="fa-solid fa-greater-than"></i>
       </li>
       <li>
-        <a href="{% url 'productDetail' %}">
+        <a href="{% url 'category' %}">
           <i class="fa-solid fa-computer"></i> Computer Accessories</a
         >
         <i class="fa-solid fa-greater-than"></i>
       </li>
 
       <li>
-        <a href="{% url 'productDetail' %}">
+        <a href="{% url 'category' %}">
           <i class="fa-solid fa-bars"></i> Others</a
         >
         <i class="fa-solid fa-greater-than"></i>
@@ -92,6 +92,9 @@
   <div class="product-container">
     <div class="heading">
       <h2>Laptops & Tablets</h2>
+      <div class="see-more">
+        <a href="{% url 'category' %}">See more</a>
+      </div>
     </div>
 
     <!-- container set the product to diplay grid -->
@@ -205,8 +208,378 @@
       </div>
     </div>
 
-    <div class="see-more">
-      <a href="{% url 'productDetail' %}">see more</a>
+   
+  </div>
+
+ <!-- container for set of product -->
+  <div class="product-container">
+    <div class="heading">
+      <h2>Laptops & Tablets</h2>
+      <div class="see-more">
+        <a href="{% url 'category' %}">See more</a>
+      </div>
+    </div>
+
+    <div class="product-dsiplay-grid">
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+
+  <!-- deal -->
+  <div class="deal-advert">
+    <div class="deal">
+      <img src="{% static 'store/img/banner.png' %}" alt="Slide 2" />
+    </div>
+    
+  </div>
+
+ <!-- container for set of product -->
+  <div class="product-container">
+    <div class="heading">
+      <h2>Laptops & Tablets</h2>
+      <div class="see-more">
+        <a href="{% url 'category' %}">See more</a>
+      </div>
+    </div>
+
+    <div class="product-dsiplay-grid">
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+  
+  </div>
+
+ <!-- container for set of product -->
+  <div class="product-container">
+    <div class="heading">
+      <h2>Laptops & Tablets</h2>
+      <div class="see-more">
+        <a href="{% url 'category' %}">See more</a>
+      </div>
+    </div>
+
+    <div class="product-dsiplay-grid">
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+   
+  </div>
+
+  <!-- deal -->
+  <div class="deal-advert">
+    <div class="deal">
+      <img src="{% static 'store/img/deal.jpg' %}" alt="Slide 2" />
+    </div>
+    <div class="deal">
+      <img src="{% static 'store/img/deal2.jpg' %}" alt="Slide 2" />
     </div>
   </div>
 
@@ -214,6 +587,9 @@
   <div class="product-container">
     <div class="heading">
       <h2>Laptops & Tablets</h2>
+      <div class="see-more">
+        <a href="{% url 'category' %}">See more</a>
+      </div>
     </div>
 
     <div class="product-dsiplay-grid">
@@ -322,9 +698,124 @@
       </div>
     </div>
 
-    <div class="see-more">
-      <a href="{% url 'productDetail' %}">see more</a>
+   
+  </div>
+
+ <!-- container for set of product -->
+  <div class="product-container">
+    <div class="heading">
+      <h2>Laptops & Tablets</h2>
+      <div class="see-more">
+        <a href="{% url 'category' %}">See more</a>
+      </div>
     </div>
+    <div class="product-dsiplay-grid">
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+   
   </div>
 
   <!-- deal -->
@@ -334,611 +825,6 @@
     </div>
     <div class="deal">
       <img src="{% static 'store/img/deal2.jpg' %}" alt="Slide 2" />
-    </div>
-  </div>
-
- <!-- container for set of product -->
-  <div class="product-container">
-    <div class="heading">
-      <h2>APPLE SYSTEMS</h2>
-    </div>
-
-    <div class="product-dsiplay-grid">
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="see-more">
-      <a href="{% url 'productDetail' %}">see more</a>
-    </div>
-  </div>
-
- <!-- container for set of product -->
-  <div class="product-container">
-    <div class="heading">
-      <h2>GAMING LAPTOPS</h2>
-    </div>
-
-    <div class="product-dsiplay-grid">
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="see-more">
-      <a href="{% url 'productDetail' %}">see more</a>
-    </div>
-  </div>
-
-  <!-- deal -->
-  <div class="deal-advert">
-    <div class="deal">
-      <img src="{% static 'store/img/deal.jpg' %}" alt="Slide 2" />
-    </div>
-    <div class="deal">
-      <img src="{% static 'store/img/deal2.jpg' %}" alt="Slide 2" />
-    </div>
-  </div>
-
- <!-- container for set of product -->
-  <div class="product-container">
-    <div class="heading">
-      <h2>COMPUTER ACCESSORIES</h2>
-    </div>
-
-    <div class="product-dsiplay-grid">
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="see-more">
-      <a href="{% url 'productDetail' %}">see more</a>
-    </div>
-  </div>
-
- <!-- container for set of product -->
-  <div class="product-container">
-    <div class="heading">
-      <h2>COMPONENTS & PARTS</h2>
-    </div>
-
-    <div class="product-dsiplay-grid">
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="see-more">
-      <a href="{% url 'productDetail' %}">see more</a>
-    </div>
-  </div>
-
-  <!-- deal -->
-  <div class="deal-advert">
-    <div class="deal">
-      <img src="{% static 'store/img/deal.jpg' %}" alt="Slide 2" />
-    </div>
-    <div class="deal">
-      <img src="{% static 'store/img/deal2.jpg' %}" alt="Slide 2" />
-    </div>
-  </div>
-
- <!-- container for set of product -->
-  <div class="product-container">
-    <div class="heading">
-      <h2>Drones & wearables</h2>
-    </div>
-
-    <div class="product-dsiplay-grid">
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-
-      <!-- product container -->
-      <div class="product">
-        <a href="{% url 'productDetail' %}">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-          <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="see-more">
-      <a href="{% url 'productDetail' %}">see more</a>
     </div>
   </div>
 
@@ -946,6 +832,9 @@
   <div class="product-container">
     <div class="heading">
       <h2>Laptops & Tablets</h2>
+      <div class="see-more">
+        <a href="{% url 'category' %}">See more</a>
+      </div>
     </div>
 
     <div class="product-dsiplay-grid">
@@ -1054,9 +943,125 @@
       </div>
     </div>
 
-    <div class="see-more">
-      <a href="{% url 'productDetail' %}">see more</a>
+   
+  </div>
+
+ <!-- container for set of product -->
+  <div class="product-container">
+    <div class="heading">
+      <h2>Laptops & Tablets</h2>
+      <div class="see-more">
+        <a href="{% url 'category' %}">See more</a>
+      </div>
     </div>
+
+    <div class="product-dsiplay-grid">
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+
+      <!-- product container -->
+      <div class="product">
+        <a href="{% url 'productDetail' %}">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+          <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart -->
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    
   </div>
 </div>
 

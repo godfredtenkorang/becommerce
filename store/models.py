@@ -2,8 +2,8 @@ from django.db import models
 from django.urls import reverse
 
 class Category(models.Model):
-    name = models.CharField(max_length=100)
-    slug = models.SlugField(unique=True)
+    name = models.CharField(max_length=100, db_index=True)
+    slug = models.SlugField(max_length=250, unique=True)
     date_added = models.DateTimeField(auto_now_add=True)
     
     class Meta:
@@ -19,13 +19,22 @@ class Category(models.Model):
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    description = models.TextField()
+    content = models.CharField(max_length=200, null=True)
+    description1 = models.CharField(max_length=250, blank=True, default="")
+    description2 = models.CharField(max_length=250, blank=True, default="")
+    description3 = models.CharField(max_length=250, blank=True, default="")
+    description4 = models.CharField(max_length=250, blank=True, default="")
+    description5 = models.CharField(max_length=250, blank=True, default="")
+    description6 = models.CharField(max_length=250, blank=True, default="")
+    description7 = models.CharField(max_length=250, blank=True, default="")
     brand = models.CharField(default='un-branded')
-    image = models.ImageField(upload_to='product/img', default='default.jpg')
-    discount = models.DecimalField(max_digits=4, decimal_places=2, default=0.0)
+    image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
+    image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
+    image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
     normal_price = models.DecimalField(max_digits=4, decimal_places=2, null=True)
     final_price = models.DecimalField(max_digits=4, decimal_places=2)
     date_added = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(max_length=250, null=True)
     
     class Meta:
         verbose_name_plural = 'products'

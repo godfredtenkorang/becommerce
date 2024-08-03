@@ -545,12 +545,11 @@ footer li{
 .order-summary-container{
     width: 100%;
     max-width: 30%;
-    height: 40vh;
     background-color: var(--white);
     padding: 10px;
     
 }
-.total, .sub-total{
+.total, .sub-total, .delivery-fee{
     display: flex;
     justify-content: space-between;
 }
@@ -558,7 +557,7 @@ footer li{
 .check-out{
     width: 100%;
 }
-.check-out button{
+.check-out .my-button{
     width: 100%;
     min-height: 7vh;
     outline: none;

@@ -1,0 +1,260 @@
+{% extends 'store/base.html' %} 
+{% load static %}
+{% load mathfilters %}
+{% block content %}
+
+
+<header class="page-header">
+    <li> <a href="  {% url 'index' %}" href=""><i class="fa-solid fa-less-than"></i> Back</a></li>
+    <li> <a href=><i class="fa-solid fa-shop"></i> Cart</a>
+    </li>
+
+</header>
+
+
+<div class="cart-main-container">
+    <div class="item-added-to-cart">
+        {% for item in cart %}
+        {% with product=item.product %}
+        <div class="cart-item-container">
+            <div class="cart">
+                <div class="cart-col img">
+                    <img src="{{ product.image1.url }}" alt="Slide 2" />
+                </div>
+                <div class="cart-col">
+                    <p>{{ product.content }}</p>
+
+                    <div class="delete">
+                        <button type="button" data-index="{{product.id}}" class="btn btn-primary btn-sm update-button">Update</button>
+                        <button type="button" data-index="{{product.id}}" class="btn btn-danger btn-sm delete-button" >Delete</button>
+                        <!-- <p><i class="fa-solid fa-trash"></i> Remove</p>
+                        <p><i class="fa-solid fa-trash"></i> Update</p> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="carts">
+                <div class="cart-col price">
+                    <p class="itemPrice">{{ product.final_price|mul:item.qty }}</p>
+
+                </div>
+                <label for="select">Quantity:</label>
+                <select id="select{{product.id}}">
+                    <option selected>
+                        {{ item.qty }}
+                    </option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+
+                </select>
+                <!-- <div class="cart-col quantity-container">
+
+                    <button class="decrease">-</button>
+                    <div class="quatity">
+                        <p class="itemQuantity">0</p>
+                    </div>
+                    <button class="increase">+</button>
+                </div> -->
+            </div>
+
+        </div>
+
+
+
+
+        {% endwith %}
+        {% endfor %}
+    </div>
+
+    <div class="order-summary-container">
+        <h3>Order Summary</h3>
+
+        <div class="sub-total">
+            <p>Sub Total:</p>
+            <p class="sub-total" id="total">GH¢{{ cart.get_total }}</p>
+
+        </div>
+
+        <div class="delivery-fee">
+            <p>Delivery Fee:</p>
+            <p class="delivery-fee">GH¢20.00</p>
+        </div>
+
+
+        <div class="total">
+            <p>Total:</p>
+            <p class="total">GH¢{{ cart.get_all_total }}</p>
+        </div>
+
+
+        <div class="check-out">
+            <a class="my-button" href="{% url 'checkout' %}">Checkout</a>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+</div>
+
+
+
+<script>
+    // const decrease = document.querySelectorAll(".decrease")
+    // const increase = document.querySelectorAll(".increase")
+    // const itemQuantity = document.querySelectorAll('.itemQuantity')
+
+    // increase.forEach((increaseBtn, index)=>{
+    //     increaseBtn.addEventListener('click',()=>{
+    //         const currentQuanity = parseInt(itemQuantity[index].textContent)
+    //         itemQuantity[index].textContent =currentQuanity+1
+
+    //     })
+    // })
+
+    // decrease.forEach((decreaseBtn, index)=>{
+    //     decreaseBtn.addEventListener('click',()=>{
+    //         const currentQuanity = parseInt(itemQuantity[index].textContent)
+    //         itemQuantity[index].textContent =currentQuanity - 1
+
+    //     })
+    // })
+
+    const decrease = document.querySelectorAll(".decrease");
+    const increase = document.querySelectorAll(".increase");
+    const itemQuantities = document.querySelectorAll('.itemQuantity');
+
+    function updateLocalstorage(index, quantity) {
+        localStorage.setItem(`itemQuantity-${index}`, quantity)
+    }
+
+    window.addEventListener("load", () => {
+        itemQuantities.forEach((item, index) => {
+            const savedQuantity = localStorage.getItem(`itemQuantity-${index}`)
+            if (savedQuantity !== null) {
+                item.textContent = savedQuantity
+            }
+            else {
+                item.textContent = '0'
+            }
+        })
+
+
+
+    })
+    increase.forEach((increaseBtn, index) => {
+        increaseBtn.addEventListener('click', () => {
+            const currentQuanity = parseInt(itemQuantities[index].textContent)
+
+            const newQuantity = currentQuanity + 1
+            itemQuantities[index].textContent = newQuantity
+
+            updateLocalstorage(index, newQuantity)
+
+
+
+        })
+    })
+    decrease.forEach((decreaseBtn, index) => {
+        decreaseBtn.addEventListener('click', () => {
+            const currentQuantity = parseInt(itemQuantities[index].textContent);
+            if (currentQuantity > 0) {
+                const newQuantity = currentQuantity - 1;
+                itemQuantities[index].textContent = newQuantity;
+                updateLocalstorage(index, newQuantity)
+            }
+        });
+    });
+</script>
+
+<script>
+    // Delete Button
+
+    $(document).on('click', '.delete-button', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '{% url "delete-cart" %}',
+                data: {
+                    product_id: $(this).data('index'),
+                    csrfmiddlewaretoken: "{{csrf_token}}",
+                    action: 'post'
+                },
+                success: function (json) {
+                    //console.log(json)
+
+                    location.reload(true)
+
+                    document.getElementById('cart-qty').textContent = json.qty
+
+                    document.getElementById('total').textContent = json.total
+                },
+                error: function (xhr, errmsg, err) {
+
+                }
+            });
+        })
+
+
+        // update button
+
+        $(document).on('click', '.update-button', function (e) {
+                e.preventDefault();
+
+                var thisproductid = $(this).data('index');
+
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "update-cart" %}',
+                    data: {
+                        product_id: $(this).data('index'),
+                        product_quantity: $('#select' + thisproductid + ' option:selected').text(),
+                        csrfmiddlewaretoken: "{{csrf_token}}",
+                        action: 'post'
+                    },
+                    success: function (json) {
+                        //console.log(json)
+
+                        location.reload(true)
+
+                        document.getElementById('cart-qty').textContent = json.qty
+
+                        document.getElementById('total').textContent = json.total
+                    },
+                    error: function (xhr, errmsg, err) {
+
+                    }
+                });
+            })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

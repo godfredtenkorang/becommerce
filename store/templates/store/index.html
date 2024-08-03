@@ -4,47 +4,47 @@
   <div class="category">
     <p><i class="fa-solid fa-bars"></i> CATEGORIES</p>
 
-
     <!-- category links -->
     <div class="cat-links">
+      {% for category in all_categories %}
       <li>
-        <a href="{% url 'category' %}">
-          <i class="fa-solid fa-fire"></i> Hot Deals</a
-        >
+        <a href="{% url 'list-category' category.slug %}">
+          <i class="fa-solid fa-circle"></i> {{category.name}} </a>
         <i class="fa-solid fa-greater-than"></i>
       </li>
+      {% endfor %}
       <li>
-        <a href="{% url 'category' %}">
+        <a href="">
           <i class="fa-brands fa-apple"></i> Apple Systems</a
         >
         <i class="fa-solid fa-greater-than"></i>
       </li>
       <li>
-        <a href="{% url 'category' %}">
+        <a href="">
           <i class="fa-solid fa-laptop"></i> Laptop & Tablets</a
         >
         <i class="fa-solid fa-greater-than"></i>
       </li>
       <li>
-        <a href="{% url 'category' %}">
+        <a href="">
           <i class="fa-solid fa-gamepad"></i> Gaming Laptops</a
         >
         <i class="fa-solid fa-greater-than"></i>
       </li>
       <li>
-        <a href="{% url 'category' %}">
+        <a href="">
           <i class="fa-solid fa-computer"></i> Components Part</a
         >
         <i class="fa-solid fa-greater-than"></i>
       </li>
       <li>
-        <a href="{% url 'category' %}">
+        <a href="">
           <i class="fa-solid fa-plane"></i> Drones& wearables</a
         >
         <i class="fa-solid fa-greater-than"></i>
       </li>
       <li>
-        <a href="{% url 'category' %}">
+        <a href="">
           <i class="fa-solid fa-wand-magic-sparkles"></i> Access Time &
           Control</a
         >
@@ -59,14 +59,14 @@
         <i class="fa-solid fa-greater-than"></i>
       </li>
       <li>
-        <a href="{% url 'category' %}">
+        <a href="">
           <i class="fa-solid fa-computer"></i> Computer Accessories</a
         >
         <i class="fa-solid fa-greater-than"></i>
       </li>
 
       <li>
-        <a href="{% url 'category' %}">
+        <a href="">
           <i class="fa-solid fa-bars"></i> Others</a
         >
         <i class="fa-solid fa-greater-than"></i>
@@ -93,7 +93,7 @@
     <div class="heading">
       <h2>Laptops & Tablets</h2>
       <div class="see-more">
-        <a href="{% url 'category' %}">See more</a>
+        <a href="">See more</a>
       </div>
     </div>
 
@@ -105,7 +105,7 @@
       <!-- product container -->
       <div class="product">
 
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -131,7 +131,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -157,7 +157,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -183,7 +183,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -216,14 +216,14 @@
     <div class="heading">
       <h2>Laptops & Tablets</h2>
       <div class="see-more">
-        <a href="{% url 'category' %}">See more</a>
+        <a href="">See more</a>
       </div>
     </div>
 
     <div class="product-dsiplay-grid">
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -249,7 +249,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -275,7 +275,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -301,7 +301,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -342,14 +342,14 @@
     <div class="heading">
       <h2>Laptops & Tablets</h2>
       <div class="see-more">
-        <a href="{% url 'category' %}">See more</a>
+        <a href="">See more</a>
       </div>
     </div>
 
     <div class="product-dsiplay-grid">
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -375,7 +375,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -401,7 +401,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -427,7 +427,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -460,14 +460,14 @@
     <div class="heading">
       <h2>Laptops & Tablets</h2>
       <div class="see-more">
-        <a href="{% url 'category' %}">See more</a>
+        <a href="">See more</a>
       </div>
     </div>
 
     <div class="product-dsiplay-grid">
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -493,7 +493,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -519,7 +519,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -545,7 +545,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -588,14 +588,14 @@
     <div class="heading">
       <h2>Laptops & Tablets</h2>
       <div class="see-more">
-        <a href="{% url 'category' %}">See more</a>
+        <a href="">See more</a>
       </div>
     </div>
 
     <div class="product-dsiplay-grid">
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -621,7 +621,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -647,7 +647,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -673,7 +673,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -706,13 +706,13 @@
     <div class="heading">
       <h2>Laptops & Tablets</h2>
       <div class="see-more">
-        <a href="{% url 'category' %}">See more</a>
+        <a href="">See more</a>
       </div>
     </div>
     <div class="product-dsiplay-grid">
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -738,7 +738,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -764,7 +764,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -790,7 +790,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -833,14 +833,14 @@
     <div class="heading">
       <h2>Laptops & Tablets</h2>
       <div class="see-more">
-        <a href="{% url 'category' %}">See more</a>
+        <a href="">See more</a>
       </div>
     </div>
 
     <div class="product-dsiplay-grid">
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -866,7 +866,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -892,7 +892,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -918,7 +918,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -951,14 +951,14 @@
     <div class="heading">
       <h2>Laptops & Tablets</h2>
       <div class="see-more">
-        <a href="{% url 'category' %}">See more</a>
+        <a href="">See more</a>
       </div>
     </div>
 
     <div class="product-dsiplay-grid">
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -984,7 +984,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -1010,7 +1010,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 
@@ -1036,7 +1036,7 @@
 
       <!-- product container -->
       <div class="product">
-        <a href="{% url 'productDetail' %}">
+        <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
 

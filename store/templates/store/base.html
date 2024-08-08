@@ -87,15 +87,12 @@
         <div class="logo">
           <a href=""> YourOnlineMarket</a>
         </div>
-        <div class="search-bar">
-          <input
-            type="search"
-            name=""
-            id=""
-            placeholder="What are you looking for ?"
-          />
-          <button>Search</button>
-        </div>
+   
+        <form class="search-bar" action="{% url 'search' %}" role="search">
+              <input type="text" name="search" id="" placeholder="What are you looking for ?"/>
+              <button type="submit">Search</button>
+        </form>
+       
       </div>
 
       <div class="third-header">

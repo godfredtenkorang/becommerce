@@ -19,10 +19,10 @@
       <div class="product">
         <a href="{{ product.get_absolute_url }}">
           <img src="{{ product.image1.url }}" alt="Slide 2" />
-          
+
         </a>
-          <div class="product-details">
-            <p>{{ product.content }}</p>
+        <div class="product-details">
+          <p>{{ product.content }}</p>
 
           <div class="price-wishlist-btn">
             <div class="price">
@@ -42,7 +42,32 @@
       </div>
       {% endfor %}
 
-      <!-- product container -->
+
+      <!-- <div class="product">
+        <a href="">
+          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
+        </a>
+
+        <div class="product-details">
+          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>2000 Gh</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div>
+      </div>
+
       <div class="product">
         <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
@@ -62,13 +87,12 @@
             </div>
           </div>
         </div>
-        <!-- add to cart -->
+
         <div class="add-to-cart-button">
           <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
         </div>
       </div>
 
-      <!-- product container -->
       <div class="product">
         <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
@@ -88,37 +112,11 @@
             </div>
           </div>
         </div>
-        <!-- add to cart -->
+
         <div class="add-to-cart-button">
           <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
         </div>
-      </div>
-
-      <!-- product container -->
-      <div class="product">
-        <a href="">
-          <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
-        </a>
-
-        <div class="product-details">
-          <p>ZedBook 2 in 1 Tablet - Intel Atom, 10.1", 32GB, 2GB RAM</p>
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>2000 Gh</p>
-            </div>
-            <div class="add-to-wishlist">
-              <a href="">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- add to cart -->
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
-      </div>
+      </div> -->
     </div>
 
 

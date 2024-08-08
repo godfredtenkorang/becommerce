@@ -1,10 +1,16 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from .models import *
+from django.db.models import Q # New
 
 # Create your views here.
 def index(request):
-    return render(request, 'store/index.html')
+    laptopshops = LaptopsAndTablet.objects.all()
+    
+    context = {
+        'laptopshops': laptopshops
+    }
+    return render(request, 'store/index.html', context)
 
 def categories(request):
     all_categories = Category.objects.all()
@@ -19,8 +25,32 @@ def productDetail(request, product_slug):
     }
     return render(request, 'store/productDetail.html', context)
 
+# def shopDetail(request, shop_slug):
+#     shop = get_object_or_404(Shop, slug=shop_slug)
+    
+#     context = {
+#         'shop': shop
+#     }
+#     return render(request, 'store/shopDetail.html', context)
+
 def shop(request):
-    return render(request, 'store/shop.html')
+    shops = Product.objects.all()
+    context = {
+        'shops': shops,
+    }
+    return render(request, 'store/shop.html', context)
+
+def search(request):
+    search_item = request.GET.get('search')
+    if search_item:
+        search = Product.objects.filter(Q(title__icontains=search_item))
+    else:
+        search = Product.objects.all()
+    context = {
+        'search': search,
+        'search_item': search_item
+    }
+    return render(request, 'store/search.html', context)
 
 
 
@@ -36,8 +66,7 @@ def list_category(request, category_slug=None):
     }
     return render(request, 'store/list-category.html', context)
 
-def checkout(request):
-    return render(request, 'store/checkout.html')
+
 
 def myOrder(request):
     return render(request, 'store/myOrder.html')
@@ -45,3 +74,14 @@ def myOrder(request):
 
 def WishList(request):
     return render(request, 'store/wishList.html')
+
+
+# All Home Details
+
+def laptopsandtablet(request, laptops_slug):
+    laptop = get_object_or_404(LaptopsAndTablet, slug=laptops_slug)
+    
+    context = {
+        'laptop': laptop
+    }
+    return render(request, 'store/laptopsDetail.html', context)

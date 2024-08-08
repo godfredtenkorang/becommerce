@@ -1,0 +1,61 @@
+{% extends 'store/base.html' %}
+{% load static %} 
+{% block content %}
+
+<header class="page-header">
+    <li> <a href="  {% url 'index' %}" href=""><i class="fa-solid fa-less-than"></i> Back</a></li>
+    <li> <a href="  {% url 'shop' %}"><i class="fa-solid fa-shop"></i> Shop</a>
+    </li>
+
+</header>
+<!-- products main container -->
+
+<!-- products main container -->
+<div class="product-main-container">
+
+    <!-- container for set of product -->
+    <div class="product-container">
+        <div class="heading">
+            <h2>Search</h2>
+        </div>
+
+        <!-- container set the product to diplay grid -->
+        <div class="product-dsiplay-grid">
+
+            {% if search_item %}
+                {% for shop in search %}
+                    <div class="product">
+
+                        <a href="{{ shop.get_absolute_url }}">
+                            <img src="{{ shop.image1.url }}" alt="Slide 2" />
+                        </a>
+
+                        <div class="product-details">
+                            <p>{{ shop.content }}</p>
+
+                            <div class="price-wishlist-btn">
+                                <div class="price">
+                                    <p>{{ shop.final_price }}</p>
+                                </div>
+                                <div class="add-to-wishlist">
+                                    <a href="">
+                                        <i class="fa-regular fa-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-to-cart-button">
+                            <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h2>No search item</h2>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+

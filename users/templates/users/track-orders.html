@@ -13,20 +13,16 @@
             </tr>
         </thead>
         <tbody>
+            {% for order in orders %}
             <tr>
-                <td>Item 1</td>
-                <td>2</td>
-                <td>2024-07-20</td>
-                <td>Shipped</td>
+                <td>{{ order.product.content }}</td>
+                <td>{{ order.quantity }}</td>
+                <td>{{ order.date_added|date:"j N o" }}</td>
+                <td>{{ order.status }}</td>
             </tr>
-            <tr>
-                <td>Item 2</td>
-                <td>1</td>
-                <td>2024-07-21</td>
-                <td>Processing</td>
-            </tr>
-            <!-- Add more rows as needed -->
+            {% endfor %}
         </tbody>
+            <!-- Add more rows as needed -->
     </table>
 </div>
 {% endblock %}

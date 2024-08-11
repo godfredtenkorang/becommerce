@@ -11,8 +11,6 @@ urlpatterns = [
     path('search/<slug:category_slug>/', views.list_category, name='list-category'),
     
     path('myOrder', views.myOrder, name='myOrder'),
-    path('WishList', views.WishList, name='WishList'),
-    
     
     # All Home Details
     

@@ -37,7 +37,11 @@
       referrerpolicy="no-referrer"
     />
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    {% if title %}
+    <title>GB Store - {{ title }}</title>
+    {% else %}
     <title>GB Store</title>
+    {% endif %}
   </head>
 
   <body>

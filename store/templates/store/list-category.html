@@ -29,16 +29,16 @@
               <p>GH¢{{ product.final_price }}</p>
             </div>
             <div class="add-to-wishlist">
-              <a href="">
+              <a href="{% url 'add-to-wishlist' product.id %}">
                 <i class="fa-regular fa-heart"></i>
               </a>
             </div>
           </div>
         </div>
         <!-- add to cart -->
-        <div class="add-to-cart-button">
+        <!-- <div class="add-to-cart-button">
           <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
+        </div> -->
       </div>
       {% endfor %}
 

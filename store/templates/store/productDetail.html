@@ -61,6 +61,11 @@
         <option value="15">15</option>
       
       </select>
+      <div class="add-to-wishlist">
+        <a href="{% url 'add-to-wishlist' product.id %}">
+          <i class="fa-regular fa-heart"></i>
+        </a>
+      </div>
       <div class="add-to-cart-button">
         <button type="button" id="add-button" value="{{product.id}}"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
       </div>
@@ -123,28 +128,6 @@
 
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
   </div>
 
 
@@ -166,6 +149,8 @@
 
   <p>{{ product.description7 }}</p>
 </div>
+
+
 
 <script>
   const smallproductimg = document.querySelectorAll('.small-product-img img')

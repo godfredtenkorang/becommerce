@@ -1,0 +1,43 @@
+{% extends 'store/base.html' %} {% load static %} {% block content %}
+<div class="row">
+    <div class="col-md-12">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+<div class="contai">
+    <h1>My Wishlist</h1>
+    <br>
+    <table class="wishlist-table">
+        <thead>
+            <tr>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Product Content</th>
+                <th>Price</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in wishlist_items %}
+            <tr>
+                <td><img class="product-image" src="{{ item.product.image1.url }}" alt="Slide 2" /></td>
+                <td>{{ item.product.title }}</td>
+                <td><a href="{% url 'product-info' item.product.slug %}">{{ item.product.content }}</a></td></td>
+                <td>GH¢{{ item.product.final_price }}</td>
+                <td>
+                    <a href="{% url 'remove-from-wishlist' item.product.id %}" type="submit"
+                        class="btn btn-remove">Remove</a>
+                </td>
+            </tr>
+            {% empty %}
+            <h1>Your wishlist is empty</h1>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+{% endblock %}

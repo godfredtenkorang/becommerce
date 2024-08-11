@@ -25,7 +25,7 @@ def register(request):
 
 
 
-@login_required(login_url='my-login')
+@login_required
 def track_orders(request):
     try:
         orders = OrderItem.objects.filter(user=request.user)

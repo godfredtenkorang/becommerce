@@ -8,6 +8,7 @@
             <tr>
                 <th>Item Name</th>
                 <th>Quantity</th>
+                <th>Price</th>
                 <th>Date of Order</th>
                 <th>Status</th>
             </tr>
@@ -17,6 +18,7 @@
             <tr>
                 <td>{{ order.product.content }}</td>
                 <td>{{ order.quantity }}</td>
+                <td>GH¢{{ order.price }}</td>
                 <td>{{ order.date_added|date:"j N o" }}</td>
                 <td>{{ order.status }}</td>
             </tr>

@@ -1,0 +1,69 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% load mathfilters %}
+{% block content %}
+
+
+
+<div class="checkout-form-containers">
+    <h3> Complete your order
+    </h3>
+    <p>Please enter in the relevant information below.
+
+    </p>
+
+    <div class="checkoutContainer">
+
+
+        <div class="total-fee">
+            <h1>GH¢{{ payment.amount }}</h1>
+            <script src="https://js.paystack.co/v1/inline.js"></script>
+
+            <button onclick="payWithPayStack()" id="django-paystack-button" type="submit">Pay
+                Now</button>
+        </div>
+
+
+    </div>
+</div>
+
+
+</div>
+
+<script>
+
+    //var total_price = "{{cart.get_all_total}}"
+
+    function payWithPayStack() {
+        let currency = "GHS";
+        let plan = "";
+        let ref = "{{ payment.ref }}";
+        let obj = {
+            key: "{{ paystack_public_key }}",
+            email: "{{ payment.email }}",
+            amount: '{{ payment.amount_value }}',
+            ref: ref,
+            callback: function (response) {
+                window.location.href = "{% url 'verify-payment' payment.ref %}";
+            },
+        }
+
+
+
+        if (Boolean(currency)) {
+            obj.currency = currency.toUpperCase()
+        }
+        if (Boolean(plan)) {
+            obj.plan = plan;
+        }
+        var handler = PaystackPop.setup(obj);
+        handler.openIframe();
+
+
+    }
+
+
+
+</script>
+
+{% endblock %}

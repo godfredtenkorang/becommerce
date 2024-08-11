@@ -72,10 +72,6 @@ def myOrder(request):
     return render(request, 'store/myOrder.html')
 
 
-def WishList(request):
-    return render(request, 'store/wishList.html')
-
-
 # All Home Details
 
 def laptopsandtablet(request, laptops_slug):

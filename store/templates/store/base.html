@@ -48,12 +48,18 @@
     <header>
       <div class="first-header">
         <div class="accounts">
+          {% if user.is_authenticated %}
           <div class="login">
-            <a href="">Login</a>
+            <a href="{% url 'user-logout' %}">Logout</a>
+          </div>
+          {% else %}
+          <div class="login">
+            <a href="{% url 'my-login' %}">Login</a>
           </div>
           <div class="sign-up">
-            <a href="  {% url 'register' %}">Sign Up</a>
+            <a href="{% url 'register' %}">Sign Up</a>
           </div>
+          {% endif %}
         </div>
         <div class="first-col">
           <div class="contact-number">
@@ -89,7 +95,7 @@
 
       <div class="second-header">
         <div class="logo">
-          <a href=""> YourOnlineMarket</a>
+          <a href=""> GB Store</a>
         </div>
    
         <form class="search-bar" action="{% url 'search' %}" role="search">

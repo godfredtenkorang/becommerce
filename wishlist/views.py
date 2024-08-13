@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from store.models import Product
 from django.contrib import messages
 
-@login_required
+@login_required(login_url='my-login')
 def add_to_wishlist(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     wishlist, created = WishList.objects.get_or_create(user=request.user, product=product)
@@ -13,7 +13,7 @@ def add_to_wishlist(request, product_id):
         
     return redirect('WishList')
 
-@login_required
+@login_required(login_url='my-login')
 def remove_from_wishlist(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     
@@ -21,7 +21,7 @@ def remove_from_wishlist(request, product_id):
     
     return redirect('WishList')
 
-@login_required
+@login_required(login_url='my-login')
 def wishlist(request):
     wishlist_items = WishList.objects.filter(user=request.user)
     context = {

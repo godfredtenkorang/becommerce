@@ -7,7 +7,6 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 
 
-
 def checkout(request: HttpRequest) -> HttpResponse:
     
     cart = Cart(request)
@@ -15,30 +14,66 @@ def checkout(request: HttpRequest) -> HttpResponse:
     total_price = cart.get_all_total()
 
     user = request.user
-
-    shipping_address = ShippingAddress.objects.get(user=request.user.id)
     
-    if request.method == 'POST':
-        full_name = request.POST['full_name']
-        email = request.POST['email']
-        address = request.POST['address']
-        phone_number = request.POST['phone_number']
-        country = request.POST['country']
-        city = request.POST['city']
-        state = request.POST['state']
-        zipcode = request.POST['zipcode']
-    
-        payment = Payment(full_name=full_name, email=email, address=address, phone_number=phone_number, country=country, city=city, state=state, zipcode=zipcode, user=user, amount=total_price)
-        payment.save()
-        
-        return render(request, 'payment/make_payment.html', {'cart': cart, 'title': 'Cart', 'payment': payment, 'paystack_public_key': settings.PAYSTACK_PUBLIC_KEY})
+    if request.user.is_authenticated:
+        try:
+            
+            shipping_address = ShippingAddress.objects.get(user=request.user.id)
+            
+            if request.method == 'POST':
+                full_name = request.POST['full_name']
+                email = request.POST['email']
+                address = request.POST['address']
+                phone_number = request.POST['phone_number']
+                country = request.POST['country']
+                city = request.POST['city']
+                state = request.POST['state']
+                zipcode = request.POST['zipcode']
+            
+                payment = Payment(full_name=full_name, email=email, address=address, phone_number=phone_number, country=country, city=city, state=state, zipcode=zipcode, user=user, amount=total_price)
+                payment.save()
+                
+                return render(request, 'payment/make_payment.html', {'cart': cart, 'title': 'Cart', 'payment': payment, 'paystack_public_key': settings.PAYSTACK_PUBLIC_KEY})
+            
+            return render(request, 'payment/checkout.html', {'shipping': shipping_address, 'cart': cart, 'title': 'Cart'})
 
-    context = {
-        'title': 'Checkout',
-        'shipping': shipping_address,
-    }
+        except:
+            if request.method == 'POST':
+                full_name = request.POST['full_name']
+                email = request.POST['email']
+                address = request.POST['address']
+                phone_number = request.POST['phone_number']
+                country = request.POST['country']
+                city = request.POST['city']
+                state = request.POST['state']
+                zipcode = request.POST['zipcode']
+            
+                payment = Payment(full_name=full_name, email=email, address=address, phone_number=phone_number, country=country, city=city, state=state, zipcode=zipcode, user=user, amount=total_price)
+                payment.save()
+                return render(request, 'payment/make_payment.html', {'cart': cart, 'title': 'Cart', 'payment': payment, 'paystack_public_key': settings.PAYSTACK_PUBLIC_KEY})
+            return render(request, 'payment/checkout.html')
+    else:
+        if request.method == 'POST':
+                full_name = request.POST['full_name']
+                email = request.POST['email']
+                address = request.POST['address']
+                phone_number = request.POST['phone_number']
+                country = request.POST['country']
+                city = request.POST['city']
+                state = request.POST['state']
+                zipcode = request.POST['zipcode']
+            
+                payment = Payment(full_name=full_name, email=email, address=address, phone_number=phone_number, country=country, city=city, state=state, zipcode=zipcode, amount=total_price)
+                payment.save()
+                
+                return render(request, 'payment/make_payment.html', {'cart': cart, 'title': 'Cart', 'payment': payment, 'paystack_public_key': settings.PAYSTACK_PUBLIC_KEY})
+            
+        context = {
+            'title': 'Checkout',
+            
+        }
 
-    return render(request, 'payment/checkout.html', context)
+        return render(request, 'payment/checkout.html', context)
     
 def verify_payment(request: HttpRequest, ref: str) -> HttpResponse:
     payment = get_object_or_404(Payment, ref=ref)

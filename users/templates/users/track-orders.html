@@ -16,15 +16,32 @@
         <tbody>
             {% for order in orders %}
             <tr>
-                <td>{{ order.product.content }}</td>
+                <td>{{ order.product.content }} - Order #{{order.id}}</td>
                 <td>{{ order.quantity }}</td>
                 <td>GH¢{{ order.price }}</td>
                 <td>{{ order.date_added|date:"j N o" }}</td>
-                <td>{{ order.status }}</td>
+                <td id="order-status">{{ order.status }}</td>
             </tr>
             {% endfor %}
         </tbody>
             <!-- Add more rows as needed -->
     </table>
 </div>
+
+<script>
+    const statusElement = document.getElementById('order-status');
+    const statusText = statusElement.textContent;
+
+    if (statusText === "Delivered") {
+        statusElement.style.color = "green";
+    } else if (statusText === "Canceled") {
+        statusElement.style.color = "red";
+    } else if (statusText === "Shipped") {
+        statusElement.style.color = "red";
+    } else if (statusText === "Order Placed") {
+        statusElement.style.color = "red";
+    } else if (statusText === "Waiting to be Shipped") {
+        statusElement.style.color = "red";
+    }
+</script>
 {% endblock %}

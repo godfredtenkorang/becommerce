@@ -67,11 +67,6 @@ def list_category(request, category_slug=None):
     return render(request, 'store/list-category.html', context)
 
 
-
-def myOrder(request):
-    return render(request, 'store/myOrder.html')
-
-
 # All Home Details
 
 def laptopsandtablet(request, laptops_slug):

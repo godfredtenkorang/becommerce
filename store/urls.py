@@ -10,7 +10,6 @@ urlpatterns = [
     
     path('search/<slug:category_slug>/', views.list_category, name='list-category'),
     
-    path('myOrder', views.myOrder, name='myOrder'),
     
     # All Home Details
     

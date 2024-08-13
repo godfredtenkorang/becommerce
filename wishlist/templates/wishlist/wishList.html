@@ -15,9 +15,9 @@
         <thead>
             <tr>
                 <th>Product Image</th>
-                <th>Product Name</th>
                 <th>Product Content</th>
                 <th>Price</th>
+                <th>Buy Now</th>
                 <th>Remove</th>
             </tr>
         </thead>
@@ -25,9 +25,9 @@
             {% for item in wishlist_items %}
             <tr>
                 <td><img class="product-image" src="{{ item.product.image1.url }}" alt="Slide 2" /></td>
-                <td>{{ item.product.title }}</td>
-                <td><a href="{% url 'product-info' item.product.slug %}">{{ item.product.content }}</a></td></td>
+                <td>{{ item.product.content }} - Order #{{item.id}}</td>
                 <td>GH¢{{ item.product.final_price }}</td>
+                <td><a href="{% url 'product-info' item.product.slug %}" class="btn btn-cart">Buy Now</a></td>
                 <td>
                     <a href="{% url 'remove-from-wishlist' item.product.id %}" type="submit"
                         class="btn btn-remove">Remove</a>

@@ -28,7 +28,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = []
 
-# SITE_ID = 2
+SITE_ID = 2
 # Application definition
 
 INSTALLED_APPS = [
@@ -160,8 +160,7 @@ PAYSTACK_PUBLIC_KEY = config("PAYSTACK_PUBLIC_KEY")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_BACKEND = 'users.backend.email_backend.EmailBackend'
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
@@ -169,5 +168,3 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 EMAIL_TIMEOUT = 60
-
-

@@ -29,19 +29,21 @@
 </div>
 
 <script>
-    const statusElement = document.getElementById('order-status');
-    const statusText = statusElement.textContent;
+   document.querySelectorAll('#order-status').forEach(statusElement => {
+    const statusText = statusElement.textContent.trim();
 
     if (statusText === "Delivered") {
         statusElement.style.color = "green";
     } else if (statusText === "Canceled") {
         statusElement.style.color = "red";
     } else if (statusText === "Shipped") {
-        statusElement.style.color = "red";
+        statusElement.style.color = "blue";
     } else if (statusText === "Order Placed") {
         statusElement.style.color = "red";
     } else if (statusText === "Waiting to be Shipped") {
-        statusElement.style.color = "red";
+        statusElement.style.color = "orange";
     }
+});
+
 </script>
 {% endblock %}

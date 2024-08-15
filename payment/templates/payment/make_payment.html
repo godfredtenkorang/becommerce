@@ -3,19 +3,88 @@
 {% load mathfilters %}
 {% block content %}
 
+<style>
+    .border-shadow{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 5% 10%;
+   background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url( "{% static 'store/img/background.jpg' %}" );
+ 
+   min-height: 70vh;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center center;
+}
+@media (max-width:900px) {
+    .border-shadow{
+    margin: 0;
+   }
+}
 
+</style>
 
-<div class="checkout-form-containers">
-    <h3> Complete your order
-    </h3>
-    <p>Please enter in the relevant information below.
+<div class="checkout-form-containers border-shadow">
+    <div class="head-1">
+        <h3> Please click on pay now button <br> to make payment for chosen items
+        </h3>
+       
+    </div>
 
-    </p>
+   
 
     <div class="checkoutContainer">
 
-
         <div class="total-fee">
+         
+
+            {% for item in cart %}
+            {% with product=item.product %}
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between ">
+                    <div>
+                        <h6 class="my-0">{{ product.title }}</h6>
+                        <!-- <small class="text-muted">{{ product.description }}</small> -->
+                    </div>
+                    <span class="text-muted">GH¢{{ product.final_price|mul:item.qty }}</span>
+                </li>
+            </ul>
+            {% endwith %}
+            {% endfor %}
+
+          <div class="inside">
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Subtotal</span>
+                    <span class="text-muted">GH¢{{ cart.get_total }}</span>
+                </li>
+            </ul>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Shipping Fee</span>
+                    <span class="text-muted">GH¢20.00</span>
+                </li>
+            </ul>
+
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total</span>
+                    <strong>GH¢{{ cart.get_all_total }}</strong>
+                </li>
+            </ul>
+
+
+          </div>
+
+          
+
+            
+        </div>
+
+
+
+        <div class="total-fees">
             <h1>GH¢{{ payment.amount }}</h1>
             <script src="https://js.paystack.co/v1/inline.js"></script>
 

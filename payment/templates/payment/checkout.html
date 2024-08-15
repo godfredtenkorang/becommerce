@@ -3,12 +3,28 @@
 {% load mathfilters %}
 {% block content %}
 
+<style>
+    .checkout-form-containers{
+       
+      
+   background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url( "{% static 'store/img/background.jpg' %}" );
+ 
+   min-height: 70vh;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center center;
+color: #fff;
+
+}
+</style>
 
 
 <div class="checkout-form-containers">
-    <h3> Complete your order
+    <div class="head-1">
+        <h3> Complete your order
     </h3>
     <p>Please enter in the relevant information below.
+    </div>
 
     </p>
 
@@ -19,14 +35,15 @@
             <div class="input-container">
                 <div class="input">
                     <label for="">Full Name</label> <br>
-                    <input type="text" id="full_name" name="full_name" value="{{ shipping.full_name }}" required>
+                    <input type="text" id="full_name" name="full_name" value="{{ shipping.full_name }}" placeholder="Full Name" required>
                 </div>
                 <div class="input">
                     <label for="">Email</label> <br>
-                    <input type="email" id="email" name="email" value="{{ shipping.email }}" required>
+                    <input type="email" id="email" name="email" value="{{ shipping.email }}" placeholder="Email" required>
                 </div>
 
             </div>
+           <div class="input-container">
             <div class="input">
                 <label for="">Address </label> <br>
                 <input type="text" placeholder="1234 Main street" id="address" name="address"
@@ -38,24 +55,28 @@
                 <input type="text" placeholder="+233 558156844" id="phone_number" name="phone_number"
                     value="{{ shipping.phone_number }}" required>
             </div>
-            <div class="input">
-                <label for="">Country</label> <br>
-                <input type="text" placeholder="Ghana" id="country" name="country" value="{{ shipping.country }}"
-                    required>
-            </div>
-
+           </div>
             <div class="input-container">
+                <div class="input">
+                    <label for="">Country</label> <br>
+                    <input type="text" placeholder="Ghana" id="country" name="country" value="{{ shipping.country }}"
+                        required>
+                </div>
                 <div class="input">
                     <label for="">City</label> <br>
                     <input type="text" placeholder="Accra" id="city" name="city" value="{{ shipping.city }}" required>
                 </div>
+            </div>
+
+            <div class="input-container">
+                
                 <div class="input">
                     <label for="">state (optional) </label> <br>
-                    <input type="text" name="state" id="state" value="{{ shipping.state }}">
+                    <input type="text" name="state" id="state" value="{{ shipping.state }}" placeholder="State">
                 </div>
                 <div class="input">
                     <label for="">Zip (optional)</label>
-                    <input type="text" name="zipcode" id="zipcode" value="{{ shipping.zipcode }}">
+                    <input type="text" name="zipcode" id="zipcode" value="{{ shipping.zipcode }}" placeholder="Zip">
                 </div>
 
 
@@ -63,47 +84,6 @@
             <button type="submit">Pay
                 Now</button>
         </form>
-
-        <div class="total-fee">
-            <p>Your cart</p>
-
-            {% for item in cart %}
-            {% with product=item.product %}
-            <ul class="list-group mb-3">
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">{{ product.title }}</h6>
-                        <!-- <small class="text-muted">{{ product.description }}</small> -->
-                    </div>
-                    <span class="text-muted">GH¢{{ product.final_price|mul:item.qty }}</span>
-                </li>
-            </ul>
-            {% endwith %}
-            {% endfor %}
-
-            <ul class="list-group mb-3">
-                <li class="list-group-item d-flex justify-content-between">
-                    <span>Subtotal</span>
-                    <span class="text-muted">GH¢{{ cart.get_total }}</span>
-                </li>
-            </ul>
-            <ul class="list-group mb-3">
-                <li class="list-group-item d-flex justify-content-between">
-                    <span>Shipping Fee</span>
-                    <span class="text-muted">GH¢20.00</span>
-                </li>
-            </ul>
-
-            <ul class="list-group mb-3">
-                <li class="list-group-item d-flex justify-content-between">
-                    <span>Total</span>
-                    <strong>GH¢{{ cart.get_all_total }}</strong>
-                </li>
-            </ul>
-
-            
-        </div>
-
 
     </div>
 </div>

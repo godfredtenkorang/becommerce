@@ -33,11 +33,12 @@
 
         <a href="{{ shop.get_absolute_url }}">
           <img src="{{ shop.image1.url }}" alt="Slide 2" />
+          <p>{{ shop.content }}</p>
+
         </a>
 
         <div class="product-details">
-          <p>{{ shop.content }}</p>
-
+       
           <div class="price-wishlist-btn">
             <div class="price">
               <p>{{ shop.final_price }}</p>

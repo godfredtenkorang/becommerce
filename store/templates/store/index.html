@@ -2,7 +2,12 @@
 
 <div class="categories-banner-promo-container">
   <div class="category">
+   <div class="cat-head">
     <p><i class="fa-solid fa-bars"></i> CATEGORIES</p>
+  <div class="remove-cats btns">
+    <i class="fa-solid fa-xmark"></i>
+  </div>
+   </div>
 
     <!-- category links -->
     <div class="cat-links">
@@ -77,10 +82,20 @@
 
   <!-- slide show -->
   <div class="slide-show">
-    <div class="slide">
-      <img src="{% static 'store/img/5164881.jpg' %}" alt="Slide 2" />
+    <div class="slides-container">
+      <div class="slide">
+        <img src="{% static 'store/img/5164881.jpg' %}" alt="Slide 1" />
+      </div>
+      <div class="slide">
+        <img src="{% static 'store/img/slide.jpg' %}" alt="Slide 2" />
+      </div>
+      <div class="slide">
+        <img src="{% static 'store/img/5164881.jpg' %}" alt="Slide 3" />
+      </div>
     </div>
   </div>
+  
+  
 </div>
 
 <!-- products main container -->
@@ -123,10 +138,10 @@
             </div>
           </div>
         </div>
-        <!-- add to cart -->
+        <!-- add to cart
         <div class="add-to-cart-button">
           <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div>
+        </div> -->
       </div>
       {% endfor %}
 
@@ -1065,4 +1080,32 @@
   </div>
 </div>
 
+
+
+
+
+
+
+
+<script>
+const slidesContainer = document.querySelector('.slides-container');
+const slides = document.querySelectorAll('.slide');
+let currentIndex = 0;
+
+function showSlide(index) {
+  slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+}
+
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % slides.length;
+  showSlide(currentIndex);
+}
+
+setInterval(nextSlide, 7000); // Change slide every 3 seconds
+
+// Initialize the first slide
+showSlide(currentIndex);
+
+
+</script>
 {% endblock %}

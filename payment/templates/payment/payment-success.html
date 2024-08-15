@@ -1,7 +1,41 @@
 {% extends 'store/base.html' %} {% load static %} {% block content %}
 
+<style>
 
+.payment{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    height: 50vh;
+    background-color: var(--white);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+            0 6px 20px 0 rgba(0, 0, 0, 0.19);
+border-radius: 10px;
+margin: 5% 10%;
+   background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url( "{% static 'store/img/background.jpg' %}" );
+ 
 
-<h1>Payment Success</h1>
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center center;
+
+}
+
+</style>
+
+<div class="payment-success-container">
+   <div class="payment">
+   <h1>Thank You</h1>
+   <p>You have sucessfuly made payment</p>
+
+   <div class="success-i">
+    <i class="fa-solid fa-check"></i>
+   </div>
+   </div>
+</div>
 
 {% endblock %}

@@ -63,8 +63,8 @@
         </div>
         <div class="first-col">
           <div class="contact-number">
-            <a href=""> <i class="fa-solid fa-phone"></i> 233 554823785 </a>
-            <a href=""><i class="fa-solid fa-phone"></i>  233 554823785 </a>
+            <a href="https://wa.link/fvzhs7"> <i class="fa-solid fa-phone"></i> 233 554823785 </a>
+            <a href="https://wa.link/fvzhs7"><i class="fa-solid fa-phone"></i>  233 554823785 </a>
           </div>
 
           <div class="shopping-cart">
@@ -84,7 +84,7 @@
               </div>
               <br />
 
-              <span>Gh</span>
+             
             </a>
           </div>
           <div class="menu-icon">
@@ -95,13 +95,19 @@
 
       <div class="second-header">
         <div class="logo">
-          <a href=""> GB Store</a>
+          <a href="  {% url 'index' %}"> GB Store</a>
+          
         </div>
    
-        <form class="search-bar" action="{% url 'search' %}" role="search">
-              <input type="text" name="search" id="" placeholder="What are you looking for ?"/>
-              <button type="submit">Search</button>
-        </form>
+     <div class="search-cat">
+      <button class="cat-btn btns">All category <i class="fa-solid fa-caret-down"></i></button>
+      <form class="search-bar" action="{% url 'search' %}" role="search">
+        <input type="text" name="search" id="" placeholder="What are you looking for ?"/>
+        <button type="submit">Search</button>
+  </form>
+
+
+     </div>  
        
       </div>
 
@@ -140,6 +146,87 @@
         </div>
       </div>
     </header>
+
+    <div class="basecategories-banner-promo-container">
+      <div class="category base-cat">
+        <div class="cat-head">
+         <p><i class="fa-solid fa-bars"></i> CATEGORIES</p>
+       <div class="remove-cats btns">
+         <i class="fa-solid fa-xmark"></i>
+       </div>
+        </div>
+     
+         <!-- category links -->
+         <div class="cat-links">
+           {% for category in all_categories %}
+           <li>
+             <a href="{% url 'list-category' category.slug %}">
+               <i class="fa-solid fa-circle"></i> {{category.name}} </a>
+             <i class="fa-solid fa-greater-than"></i>
+           </li>
+           {% endfor %}
+           <!-- <li>
+             <a href="">
+               <i class="fa-brands fa-apple"></i> Apple Systems</a
+             >
+             <i class="fa-solid fa-greater-than"></i>
+           </li>
+           <li>
+             <a href="">
+               <i class="fa-solid fa-laptop"></i> Laptop & Tablets</a
+             >
+             <i class="fa-solid fa-greater-than"></i>
+           </li>
+           <li>
+             <a href="">
+               <i class="fa-solid fa-gamepad"></i> Gaming Laptops</a
+             >
+             <i class="fa-solid fa-greater-than"></i>
+           </li>
+           <li>
+             <a href="">
+               <i class="fa-solid fa-computer"></i> Components Part</a
+             >
+             <i class="fa-solid fa-greater-than"></i>
+           </li>
+           <li>
+             <a href="">
+               <i class="fa-solid fa-plane"></i> Drones& wearables</a
+             >
+             <i class="fa-solid fa-greater-than"></i>
+           </li>
+           <li>
+             <a href="">
+               <i class="fa-solid fa-wand-magic-sparkles"></i> Access Time &
+               Control</a
+             >
+             <i class="fa-solid fa-greater-than"></i>
+           </li>
+           <li>
+             <a href=""
+               ><i class="fa-solid fa-wand-magic-sparkles"></i> Surveillance
+               Systems</a
+             >
+     
+             <i class="fa-solid fa-greater-than"></i>
+           </li>
+           <li>
+             <a href="">
+               <i class="fa-solid fa-computer"></i> Computer Accessories</a
+             >
+             <i class="fa-solid fa-greater-than"></i>
+           </li>
+     
+           <li>
+             <a href="">
+               <i class="fa-solid fa-bars"></i> Others</a
+             >
+             <i class="fa-solid fa-greater-than"></i>
+           </li> -->
+         </div>
+       </div>
+    </div>
+   
     {% block content %}{% endblock %}
 
 
@@ -186,7 +273,12 @@
             Newsletter
             </h5>
           </div>
-          <p> Get all the best deals, sales and offers from <br> the best online shopping store in Ghana. <br> Sign up now!</p>
+          <p> Get all the best deals, sales and offers from <br> the best online shopping store in Ghana. </p>
+          <!-- form -->
+           <form action="" class="news-letter">
+            <input type="text" placeholder="subscribe">
+            <button>subscribe</button>
+           </form>
         </div>
         <div class="footer-col">
           <div class="head">
@@ -250,6 +342,20 @@
     
     
       })
+
+
+      const catbtn = document.querySelectorAll(".btns")
+      const category = document.querySelector(".category")
+      const faxmark = document.querySelector(".fa-xmark")
+
+     
+    catbtn.forEach((btn)=>{
+
+      btn.addEventListener("click", ()=>{
+        category.classList.toggle("showCat")
+      })
+    })
+
     </script>
   </body>
 </html>

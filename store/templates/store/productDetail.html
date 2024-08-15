@@ -41,34 +41,44 @@
         </div>
         <button class="increase">+</button>
       </div> -->
-      <label for="select">Quantity:</label>
-      <select id="select">
-      
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-      
-      </select>
-      <div class="add-to-wishlist">
-        <a href="{% url 'add-to-wishlist' product.id %}">
-          <i class="fa-regular fa-heart"></i>
-        </a>
+      <div class="d-flex">
+        <div class="d-flex-col">
+          <label for="select">Quantity:</label>
+        <select id="select">
+        
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+        
+        </select>
+        </div>
+        <div class="add-to-wishlist">
+          <a href="{% url 'add-to-wishlist' product.id %}">
+            <i class="fa-regular fa-heart"></i>
+          </a>
+        </div>
       </div>
       <div class="add-to-cart-button">
-        <button type="button" id="add-button" value="{{product.id}}"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        <button type="button" onclick="add()" id="add-button" value="{{product.id}}"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+      
       </div>
+       
+      <a href="https://wa.link/fvzhs7" class="whatsapp">
+
+        <button><i class="fa-brands fa-square-whatsapp"></i> Whatsapp support</button>
+      </a>
   </div>
 
   <div class="information">
@@ -151,8 +161,18 @@
 </div>
 
 
+<div class="item-addedsucess">
+  <i class="fa-solid fa-cart-shopping"></i>
+  <p>Item added to cart sucessfully</p>
+
+</div>
 
 <script>
+
+ 
+
+
+
   const smallproductimg = document.querySelectorAll('.small-product-img img')
   const biggerProductimg = document.querySelector(".bigger-product-img img")
 
@@ -186,51 +206,51 @@
   //     })
   // })
 
-  const decrease = document.querySelectorAll(".decrease");
-  const increase = document.querySelectorAll(".increase");
-  const itemQuantities = document.querySelectorAll('.itemQuantity');
+  // const decrease = document.querySelectorAll(".decrease");
+  // const increase = document.querySelectorAll(".increase");
+  // const itemQuantities = document.querySelectorAll('.itemQuantity');
 
-  function updateLocalstorage(index, quantity) {
-    localStorage.setItem(`itemQuantity-${index}`, quantity)
-  }
+  // function updateLocalstorage(index, quantity) {
+  //   localStorage.setItem(`itemQuantity-${index}`, quantity)
+  // }
 
-  window.addEventListener("load", () => {
-    itemQuantities.forEach((item, index) => {
-      const savedQuantity = localStorage.getItem(`itemQuantity-${index}`)
-      if (savedQuantity !== null) {
-        item.textContent = savedQuantity
-      }
-      else {
-        item.textContent = '0'
-      }
-    })
-
-
-
-  })
-  increase.forEach((increaseBtn, index) => {
-    increaseBtn.addEventListener('click', () => {
-      const currentQuanity = parseInt(itemQuantities[index].textContent)
-
-      const newQuantity = currentQuanity + 1
-      itemQuantities[index].textContent = newQuantity
-
-      updateLocalstorage(index, newQuantity)
+  // window.addEventListener("load", () => {
+  //   itemQuantities.forEach((item, index) => {
+  //     const savedQuantity = localStorage.getItem(`itemQuantity-${index}`)
+  //     if (savedQuantity !== null) {
+  //       item.textContent = savedQuantity
+  //     }
+  //     else {
+  //       item.textContent = '0'
+  //     }
+  //   })
 
 
 
-    })
-  })
-  decrease.forEach((decreaseBtn, index) => {
-    decreaseBtn.addEventListener('click', () => {
-      const currentQuantity = parseInt(itemQuantities[index].textContent);
-      if (currentQuantity > 0) {
-        const newQuantity = currentQuantity - 1;
-        itemQuantities[index].textContent = newQuantity;
-        updateLocalstorage(index, newQuantity)
-      }
-    });
-  });
+  // })
+  // increase.forEach((increaseBtn, index) => {
+  //   increaseBtn.addEventListener('click', () => {
+  //     const currentQuanity = parseInt(itemQuantities[index].textContent)
+
+  //     const newQuantity = currentQuanity + 1
+  //     itemQuantities[index].textContent = newQuantity
+
+  //     updateLocalstorage(index, newQuantity)
+
+
+
+  //   })
+  // })
+  // decrease.forEach((decreaseBtn, index) => {
+  //   decreaseBtn.addEventListener('click', () => {
+  //     const currentQuantity = parseInt(itemQuantities[index].textContent);
+  //     if (currentQuantity > 0) {
+  //       const newQuantity = currentQuantity - 1;
+  //       itemQuantities[index].textContent = newQuantity;
+  //       updateLocalstorage(index, newQuantity)
+  //     }
+  //   });
+  // });
 </script>
 
 
@@ -256,6 +276,14 @@
       }
     });
   })
+
+  function add(){
+    const itemaddedsucess = document.querySelector('.item-addedsucess')
+    itemaddedsucess.style.display="flex"
+    setTimeout(() => {
+      itemaddedsucess.style.display="none"
+    }, 5000);
+  }
 </script>
 
 {% endblock %}

@@ -31,8 +31,8 @@ class Product(models.Model):
     image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
     image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
     image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
-    normal_price = models.DecimalField(max_digits=4, decimal_places=2, null=True)
-    final_price = models.DecimalField(max_digits=4, decimal_places=2)
+    normal_price = models.PositiveBigIntegerField(null=True)
+    final_price = models.PositiveBigIntegerField()
     date_added = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=250, null=True)
     
@@ -46,8 +46,8 @@ class Product(models.Model):
     def __str__(self):
         return self.title
     
-class Shop(models.Model):
-    category = models.ForeignKey(Category, related_name='shop', on_delete=models.CASCADE)
+class AppleSystem(models.Model):
+    category = models.ForeignKey(Category, related_name='apple', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     content = models.CharField(max_length=200, null=True)
     description1 = models.CharField(max_length=250, blank=True, default="")
@@ -61,17 +61,17 @@ class Shop(models.Model):
     image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
     image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
     image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
-    normal_price = models.DecimalField(max_digits=4, decimal_places=2, null=True)
-    final_price = models.DecimalField(max_digits=4, decimal_places=2)
+    normal_price = models.PositiveBigIntegerField(null=True)
+    final_price = models.PositiveBigIntegerField()
     date_added = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=250, null=True)
     
     class Meta:
-        verbose_name_plural = 'shops'
+        verbose_name_plural = 'Apple systems'
         ordering = ['date_added',]
         
     def get_absolute_url(self):
-        return reverse('shop-info', args=[self.slug])
+        return reverse('apple-info', args=[self.slug])
         
     def __str__(self):
         return self.title
@@ -93,8 +93,8 @@ class LaptopsAndTablet(models.Model):
     image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
     image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
     image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
-    normal_price = models.DecimalField(max_digits=4, decimal_places=2, null=True)
-    final_price = models.DecimalField(max_digits=4, decimal_places=2)
+    normal_price = models.PositiveBigIntegerField(null=True)
+    final_price = models.PositiveBigIntegerField()
     date_added = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=250, null=True)
     
@@ -107,3 +107,196 @@ class LaptopsAndTablet(models.Model):
         
     def __str__(self):
         return self.title
+    
+class GamingLaptops(models.Model):
+    category = models.ForeignKey(Category, related_name='gaming', on_delete=models.CASCADE, null=True)
+    title = models.CharField(max_length=200)
+    content = models.CharField(max_length=200, null=True)
+    description1 = models.CharField(max_length=250, blank=True, default="")
+    description2 = models.CharField(max_length=250, blank=True, default="")
+    description3 = models.CharField(max_length=250, blank=True, default="")
+    description4 = models.CharField(max_length=250, blank=True, default="")
+    description5 = models.CharField(max_length=250, blank=True, default="")
+    description6 = models.CharField(max_length=250, blank=True, default="")
+    description7 = models.CharField(max_length=250, blank=True, default="")
+    brand = models.CharField(default='un-branded')
+    image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
+    image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
+    image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
+    normal_price = models.PositiveBigIntegerField(null=True)
+    final_price = models.PositiveBigIntegerField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(max_length=250, null=True)
+    
+    class Meta:
+        verbose_name_plural = 'Gaming Laptops'
+        ordering = ['date_added',]
+        
+    def get_absolute_url(self):
+        return reverse('gaming-info', args=[self.slug])
+        
+    def __str__(self):
+        return self.title
+    
+class ComputerAccessories(models.Model):
+    category = models.ForeignKey(Category, related_name='accessory', on_delete=models.CASCADE, null=True)
+    title = models.CharField(max_length=200)
+    content = models.CharField(max_length=200, null=True)
+    description1 = models.CharField(max_length=250, blank=True, default="")
+    description2 = models.CharField(max_length=250, blank=True, default="")
+    description3 = models.CharField(max_length=250, blank=True, default="")
+    description4 = models.CharField(max_length=250, blank=True, default="")
+    description5 = models.CharField(max_length=250, blank=True, default="")
+    description6 = models.CharField(max_length=250, blank=True, default="")
+    description7 = models.CharField(max_length=250, blank=True, default="")
+    brand = models.CharField(default='un-branded')
+    image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
+    image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
+    image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
+    normal_price = models.PositiveBigIntegerField(null=True)
+    final_price = models.PositiveBigIntegerField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(max_length=250, null=True)
+    
+    class Meta:
+        verbose_name_plural = 'Computer Accessories'
+        ordering = ['date_added',]
+        
+    def get_absolute_url(self):
+        return reverse('accessory-info', args=[self.slug])
+        
+    def __str__(self):
+        return self.title
+    
+
+class ComponentsAndParts(models.Model):
+    category = models.ForeignKey(Category, related_name='component', on_delete=models.CASCADE, null=True)
+    title = models.CharField(max_length=200)
+    content = models.CharField(max_length=200, null=True)
+    description1 = models.CharField(max_length=250, blank=True, default="")
+    description2 = models.CharField(max_length=250, blank=True, default="")
+    description3 = models.CharField(max_length=250, blank=True, default="")
+    description4 = models.CharField(max_length=250, blank=True, default="")
+    description5 = models.CharField(max_length=250, blank=True, default="")
+    description6 = models.CharField(max_length=250, blank=True, default="")
+    description7 = models.CharField(max_length=250, blank=True, default="")
+    brand = models.CharField(default='un-branded')
+    image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
+    image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
+    image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
+    normal_price = models.PositiveBigIntegerField(null=True)
+    final_price = models.PositiveBigIntegerField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(max_length=250, null=True)
+    
+    class Meta:
+        verbose_name_plural = 'Components & Parts'
+        ordering = ['date_added',]
+        
+    def get_absolute_url(self):
+        return reverse('component-info', args=[self.slug])
+        
+    def __str__(self):
+        return self.title
+    
+
+class SurveillanceSystems(models.Model):
+    category = models.ForeignKey(Category, related_name='surveillance', on_delete=models.CASCADE, null=True)
+    title = models.CharField(max_length=200)
+    content = models.CharField(max_length=200, null=True)
+    description1 = models.CharField(max_length=250, blank=True, default="")
+    description2 = models.CharField(max_length=250, blank=True, default="")
+    description3 = models.CharField(max_length=250, blank=True, default="")
+    description4 = models.CharField(max_length=250, blank=True, default="")
+    description5 = models.CharField(max_length=250, blank=True, default="")
+    description6 = models.CharField(max_length=250, blank=True, default="")
+    description7 = models.CharField(max_length=250, blank=True, default="")
+    brand = models.CharField(default='un-branded')
+    image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
+    image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
+    image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
+    normal_price = models.PositiveBigIntegerField(null=True)
+    final_price = models.PositiveBigIntegerField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(max_length=250, null=True)
+    
+    class Meta:
+        verbose_name_plural = 'Surveillance Systems'
+        ordering = ['date_added',]
+        
+    def get_absolute_url(self):
+        return reverse('surveillance-info', args=[self.slug])
+        
+    def __str__(self):
+        return self.title
+    
+    
+class HeelsAndSlippers(models.Model):
+    category = models.ForeignKey(Category, related_name='heels', on_delete=models.CASCADE, null=True)
+    title = models.CharField(max_length=200)
+    content = models.CharField(max_length=200, null=True)
+    description1 = models.CharField(max_length=250, blank=True, default="")
+    description2 = models.CharField(max_length=250, blank=True, default="")
+    description3 = models.CharField(max_length=250, blank=True, default="")
+    description4 = models.CharField(max_length=250, blank=True, default="")
+    description5 = models.CharField(max_length=250, blank=True, default="")
+    description6 = models.CharField(max_length=250, blank=True, default="")
+    description7 = models.CharField(max_length=250, blank=True, default="")
+    brand = models.CharField(default='un-branded')
+    image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
+    image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
+    image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
+    normal_price = models.PositiveBigIntegerField(null=True)
+    final_price = models.PositiveBigIntegerField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(max_length=250, null=True)
+    
+    class Meta:
+        verbose_name_plural = 'Heels and Slippers'
+        ordering = ['date_added',]
+        
+    def get_absolute_url(self):
+        return reverse('heels-info', args=[self.slug])
+        
+    def __str__(self):
+        return self.title
+    
+class ShoesAndSlippers(models.Model):
+    category = models.ForeignKey(Category, related_name='shoe', on_delete=models.CASCADE, null=True)
+    title = models.CharField(max_length=200)
+    content = models.CharField(max_length=200, null=True)
+    description1 = models.CharField(max_length=250, blank=True, default="")
+    description2 = models.CharField(max_length=250, blank=True, default="")
+    description3 = models.CharField(max_length=250, blank=True, default="")
+    description4 = models.CharField(max_length=250, blank=True, default="")
+    description5 = models.CharField(max_length=250, blank=True, default="")
+    description6 = models.CharField(max_length=250, blank=True, default="")
+    description7 = models.CharField(max_length=250, blank=True, default="")
+    brand = models.CharField(default='un-branded')
+    image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
+    image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
+    image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
+    normal_price = models.PositiveBigIntegerField(null=True)
+    final_price = models.PositiveBigIntegerField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(max_length=250, null=True)
+    
+    class Meta:
+        verbose_name_plural = 'Shoes and Slippers'
+        ordering = ['date_added',]
+        
+    def get_absolute_url(self):
+        return reverse('shoes-info', args=[self.slug])
+        
+    def __str__(self):
+        return self.title
+    
+    
+class Newsletter(models.Model):
+    email = models.EmailField()
+    
+    class Meta:
+        verbose_name_plural = 'Newsletters'
+        
+    def __str__(self):
+        return self.email

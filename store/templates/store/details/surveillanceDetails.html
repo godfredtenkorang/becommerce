@@ -1,0 +1,278 @@
+{% extends 'store/base.html' %} {% load static %} {% block content %}
+
+<header class="page-header">
+    <li> <a href="  {% url 'index' %}" href=""><i class="fa-solid fa-less-than"></i> Back</a></li>
+    <li> <a href=><i class="fa-solid fa-shop"></i> Product Detail</a>
+    </li>
+
+</header>
+
+<div class="product-detail-container">
+    <div class="product-img">
+        <div class="small-product-img">
+            <img src="{{ surviellence.image1.url }}" alt="Slide 2" />
+            <img src="{{ surviellence.image2.url }}" alt="Slide 2" />
+            <img src="{{ surviellence.image3.url }}" alt="Slide 2" />
+        </div>
+        <div class="bigger-product-img">
+            <img src="{{ surviellence.image1.url }}" alt="Slide 2" />
+
+        </div>
+
+
+    </div>
+    <div class="product-detail">
+        <h4>{{ surviellence.content }}</h4>
+        <p>{{ surviellence.description1 }}</p>
+
+        <p>{{ surviellence.description2 }}</p>
+
+        <p>{{ surviellence.description3 }}</p>
+
+        <p>{{ surviellence.description4 }}</p>
+
+
+        <p>GH¢{{ surviellence.final_price }}</p>
+        <!-- <div class="cart-col quantity-container">
+      
+        <button class="decrease">-</button>
+        <div class="quatity" id="select">
+          <p class="itemQuantity">0</p>
+        </div>
+        <button class="increase">+</button>
+      </div> -->
+        <label for="select">Quantity:</label>
+        <select id="select">
+
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+
+        </select>
+        <div class="add-to-cart-button">
+            <button type="button" id="add-button" value="{{surviellence.id}}"><i class="fa-solid fa-cart-shopping"></i> Add
+                to cart</button>
+        </div>
+    </div>
+
+    <div class="information">
+        <div class="info">
+            <div class="info-col">
+                <i class="fa-solid fa-shop"></i>
+            </div>
+            <div class="info-col">
+
+                <a href="">Sold by Online</a>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="info">
+
+            <div class="info-col">
+                <i class="fa-solid fa-ship"></i>
+            </div>
+
+            <div class="info-col">
+                <h5>TRUSTED SHIPPING</h5>
+                <p>We will make sure to deliver your order within 4-7 days</p>
+
+            </div>
+
+        </div>
+        <div class="info">
+
+            <div class="info-col">
+                <i class="fa-solid fa-truck"></i>
+            </div>
+
+            <div class="info-col">
+                <h5>Express delivery</h5>
+                <p>Always in stock, ready to ship, faster delivery
+
+                </p>
+
+            </div>
+
+        </div>
+        <div class="info">
+
+            <div class="info-col">
+                <i class="fa-solid fa-right-left"></i>
+            </div>
+
+            <div class="info-col">
+                <h5>This item is eligible for returns
+                </h5>
+
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+</div>
+
+
+<div class="produt-specification">
+    <h3>Product Specification</h3>
+    <p>{{ surviellence.description1 }}</p>
+
+    <p>{{ surviellence.description2 }}</p>
+
+    <p>{{ surviellence.description3 }}</p>
+
+    <p>{{ surviellence.description4 }}</p>
+    <p>{{ surviellence.description5 }}</p>
+
+    <p>{{ surviellence.description6 }}</p>
+
+    <p>{{ surviellence.description7 }}</p>
+</div>
+
+<script>
+    const smallproductimg = document.querySelectorAll('.small-product-img img')
+    const biggerProductimg = document.querySelector(".bigger-product-img img")
+
+    smallproductimg.forEach((img) => {
+
+        img.addEventListener("click", () => {
+            const Image = img.src
+            biggerProductimg.src = Image
+        })
+    })
+</script>
+
+<script>
+    // const decrease = document.querySelectorAll(".decrease")
+    // const increase = document.querySelectorAll(".increase")
+    // const itemQuantity = document.querySelectorAll('.itemQuantity')
+
+    // increase.forEach((increaseBtn, index)=>{
+    //     increaseBtn.addEventListener('click',()=>{
+    //         const currentQuanity = parseInt(itemQuantity[index].textContent)
+    //         itemQuantity[index].textContent =currentQuanity+1
+
+    //     })
+    // })
+
+    // decrease.forEach((decreaseBtn, index)=>{
+    //     decreaseBtn.addEventListener('click',()=>{
+    //         const currentQuanity = parseInt(itemQuantity[index].textContent)
+    //         itemQuantity[index].textContent =currentQuanity - 1
+
+    //     })
+    // })
+
+    const decrease = document.querySelectorAll(".decrease");
+    const increase = document.querySelectorAll(".increase");
+    const itemQuantities = document.querySelectorAll('.itemQuantity');
+
+    function updateLocalstorage(index, quantity) {
+        localStorage.setItem(`itemQuantity-${index}`, quantity)
+    }
+
+    window.addEventListener("load", () => {
+        itemQuantities.forEach((item, index) => {
+            const savedQuantity = localStorage.getItem(`itemQuantity-${index}`)
+            if (savedQuantity !== null) {
+                item.textContent = savedQuantity
+            }
+            else {
+                item.textContent = '0'
+            }
+        })
+
+
+
+    })
+    increase.forEach((increaseBtn, index) => {
+        increaseBtn.addEventListener('click', () => {
+            const currentQuanity = parseInt(itemQuantities[index].textContent)
+
+            const newQuantity = currentQuanity + 1
+            itemQuantities[index].textContent = newQuantity
+
+            updateLocalstorage(index, newQuantity)
+
+
+
+        })
+    })
+    decrease.forEach((decreaseBtn, index) => {
+        decreaseBtn.addEventListener('click', () => {
+            const currentQuantity = parseInt(itemQuantities[index].textContent);
+            if (currentQuantity > 0) {
+                const newQuantity = currentQuantity - 1;
+                itemQuantities[index].textContent = newQuantity;
+                updateLocalstorage(index, newQuantity)
+            }
+        });
+    });
+</script>
+
+
+<script>
+    $(document).on('click', '#add-button', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: '{% url "add-cart" %}',
+            data: {
+                product_id: $('#add-button').val(),
+                product_quantity: $('#select option:selected').text(),
+                csrfmiddlewaretoken: "{{csrf_token}}",
+                action: 'post'
+            },
+            success: function (json) {
+                <!-- console.log(json) -->
+                document.getElementById('cart-qty').textContent = json.qty
+            },
+            error: function (xhr, errmsg, err) {
+
+            }
+        });
+    })
+</script>
+
+{% endblock %}

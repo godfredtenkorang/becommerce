@@ -78,6 +78,63 @@ def checkout(request: HttpRequest) -> HttpResponse:
 def verify_payment(request: HttpRequest, ref: str) -> HttpResponse:
     payment = get_object_or_404(Payment, ref=ref)
     verified = payment.verify_payment()
+    
+    cart = Cart(request)
+        
+        # Get the total price of items
+        
+    total_cost = cart.get_all_total()
+        
+    '''
+        Order variations
+        
+        1) Create order -> Account users WITH + WITHOUT shipping information
+        
+        2) Create order -> Guest users without an account
+        
+    '''
+    # 1) Create order -> Account users WITH + WITHOUT shipping information
+    
+    order = Order.objects.create(
+    amount_paid=total_cost, user=request.user
+    )
+    
+    order_id = order.pk
+    
+    for item in cart:
+        OrderItem.objects.create(order_id=order_id, product=item['product'], quantity=item['qty'], 
+                                    price=item['final_price'], user=request.user)
+
+
+# 2) Create order -> Guest users without an account
+
+    order = Order.objects.create(
+    amount_paid=total_cost)
+            
+    order_id = order.pk
+            
+    product_list = []
+    for item in cart:
+        OrderItem.objects.create(order_id=order_id, product=item['product'], quantity=item['qty'], price=item['final_price'])
+        product_list.append(item['product'])
+        
+    all_products = product_list
+        
+    # Email order
+    
+    send_mail('Order received', 'Hi! ' + '\n\n' + 'Thank you for picking your order' + '\n\n' +
+                'Please see your order below:' + '\n\n' + str(all_products) + '\n\n' + 'Total paid: $' + 
+                str(cart.get_all_total()), settings.EMAIL_HOST_USER, [payment.email], fail_silently=False,)
+
+    send_mail(
+        f"New Order from {payment.full_name}",
+        'Please see order below:' + '\n\n' + str(all_products) + '\n\n' + 'Total paid: $' + 
+            str(cart.get_all_total()),
+            payment.email,  # From email
+            [settings.EMAIL_HOST_USER],  # To email
+            fail_silently=False,
+    ),
+    
     if verified:
         return redirect('payment-success')
     else:
@@ -150,13 +207,13 @@ def complete_order(request):
             send_mail('Order received', 'Hi! ' + '\n\n' + 'Thank you for picking your order' + '\n\n' +
                       'Please see your order below:' + '\n\n' + str(all_products) + '\n\n' + 'Total paid: $' + 
                       str(cart.get_all_total()), settings.EMAIL_HOST_USER, [email], fail_silently=False,)
-        #     send_mail(
-        #     f"New Order from {full_name}",
-        #     f'{all_products} \n \n {total_cost} \n \n {email} \n end',
-        #         email,  # From email
-        #         [settings.EMAIL_HOST_USER],  # To email
-        #         fail_silently=False,
-        # ),
+            send_mail(
+                f"New Order from {full_name}",
+                f' end',
+                    email,  # From email
+                    [settings.EMAIL_HOST_USER],  # To email
+                    fail_silently=False,
+    ),
         order_success = True
         response = JsonResponse({'success':order_success})
         return response

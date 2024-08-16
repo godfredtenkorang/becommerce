@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import WishList
 from django.contrib.auth.decorators import login_required
-from store.models import Product
+from store.models import Product, Newsletter
 from django.contrib import messages
 
 @login_required(login_url='my-login')
@@ -21,9 +21,16 @@ def remove_from_wishlist(request, product_id):
     
     return redirect('WishList')
 
-@login_required(login_url='my-login')
+@login_required()
 def wishlist(request):
     wishlist_items = WishList.objects.filter(user=request.user)
+    
+    if request.method == 'POST':
+        email = request.POST['email']
+        
+        newletter = Newsletter(email=email)
+        newletter.save()
+        return redirect('index')
     context = {
         'wishlist_items': wishlist_items,
         'title': 'Wishlist'

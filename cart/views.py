@@ -1,13 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .cart import Cart
-from store.models import Product
+from store.models import Product, Newsletter
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
+
 
 
 # Create your views here.
 def cart(request):
     cart = Cart(request)
+    if request.method == 'POST':
+        email = request.POST['email']
+        
+        newletter = Newsletter(email=email)
+        newletter.save()
+        return redirect('index')
+    
     return render(request, 'cart/cart.html', {'cart': cart})
 
 def add_cart(request):

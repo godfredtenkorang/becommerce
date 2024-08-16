@@ -87,6 +87,15 @@
              
             </a>
           </div>
+          {% if request.user.is_authenticated %}
+          {% if request.user.first_name %}
+          <p>Welcome, {{ request.user.first_name|slice:":1" }}</p>
+          {% else %}
+          <p>Welcome, {{ request.user.username|slice:":1" }}</p>
+          {% endif %}
+          {% else %}
+          <p>Welcome, Guest!</p>
+          {% endif %}
           <div class="menu-icon">
             <i class="fa-solid fa-bars"></i>
           </div>
@@ -275,8 +284,9 @@
           </div>
           <p> Get all the best deals, sales and offers from <br> the best online shopping store in Ghana. </p>
           <!-- form -->
-           <form action="" class="news-letter">
-            <input type="text" placeholder="subscribe">
+           <form method="POST" class="news-letter">
+            {% csrf_token %}
+            <input type="email" name="email" placeholder="subscribe">
             <button>subscribe</button>
            </form>
         </div>

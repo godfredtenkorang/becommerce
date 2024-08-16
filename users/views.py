@@ -13,6 +13,7 @@ from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login, logout
 
 from django.contrib import messages
+from store.models import Newsletter
 
 
 # Create your views here.
@@ -24,25 +25,29 @@ def register(request):
         form = CreateUserForm(request.POST)
         
         if form.is_valid():
-            user = form.save()
-            user.is_active = False
-            user.save()
+            form.save()
             
             # Email verification setup (template)
             
-            current_site = get_current_site(request)
-            subject = 'Account verification email'
-            message = render_to_string('users/registration/email-verification.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': user_tokenizer_generate.make_token(user),
-            })
+            # current_site = get_current_site(request)
+            # subject = 'Account verification email'
+            # message = render_to_string('users/registration/email-verification.html', {
+            #     'user': user,
+            #     'domain': current_site.domain,
+            #     'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            #     'token': user_tokenizer_generate.make_token(user),
+            # })
             
-            user.email_user(subject=subject, message=message)
+            # user.email_user(subject=subject, message=message)
             
-            return redirect('email-verification-sent')
+            return redirect('my-login')
+    if request.method == 'POST':
+        email = request.POST['email']
         
+        newletter = Newsletter(email=email)
+        newletter.save()
+        return redirect('index')
+    
     context = {
         'form': form,
         
@@ -55,6 +60,12 @@ def register(request):
 
 @login_required(login_url='my-login')
 def track_orders(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        
+        newletter = Newsletter(email=email)
+        newletter.save()
+        return redirect('index')
     try:
         orders = OrderItem.objects.filter(user=request.user)
         context = {'orders':orders, 'title':'Track orders'}
@@ -62,6 +73,7 @@ def track_orders(request):
     
     except:
         return render(request, 'users/track-orders.html')
+    
     
 def email_verification(request, uidb64, token):
     # uniqueid

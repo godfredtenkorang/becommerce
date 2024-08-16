@@ -2,12 +2,12 @@
 
 <div class="categories-banner-promo-container">
   <div class="category">
-   <div class="cat-head">
-    <p><i class="fa-solid fa-bars"></i> CATEGORIES</p>
-  <div class="remove-cats btns">
-    <i class="fa-solid fa-xmark"></i>
-  </div>
-   </div>
+    <div class="cat-head">
+      <p><i class="fa-solid fa-bars"></i> CATEGORIES</p>
+      <div class="remove-cats btns">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+    </div>
 
     <!-- category links -->
     <div class="cat-links">
@@ -94,8 +94,8 @@
       </div>
     </div>
   </div>
-  
-  
+
+
 </div>
 
 <!-- products main container -->
@@ -129,7 +129,7 @@
 
           <div class="price-wishlist-btn">
             <div class="price">
-              <p>{{ laptopshop.final_price }}</p>
+              <p>GH¢{{ laptopshop.final_price }}</p>
             </div>
             <div class="add-to-wishlist">
               <a href="{% url 'add-to-wishlist' laptopshop.id %}">
@@ -145,7 +145,7 @@
       </div>
       {% endfor %}
 
-     
+
       <!-- <div class="product">
         <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
@@ -237,7 +237,35 @@
     </div>
 
     <div class="product-dsiplay-grid">
-     
+      {% for gaminglaptop in gaminglaptops %}
+      <!-- product container -->
+      <div class="product">
+
+        <a href="{{ gaminglaptop.get_absolute_url }}">
+          <img src="{{ gaminglaptop.image1.url }}" alt="Slide 2" />
+        </a>
+
+        <div class="product-details">
+          <p>{{ gaminglaptop.content }}</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>GH¢{{ gaminglaptop.final_price }}</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="{% url 'add-to-wishlist' gaminglaptop.id %}">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart
+                    <div class="add-to-cart-button">
+                      <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                    </div> -->
+      </div>
+      {% endfor %}
+
       <!-- <div class="product">
         <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
@@ -363,7 +391,36 @@
     </div>
 
     <div class="product-dsiplay-grid">
-      
+
+      {% for applesystem in applesytems %}
+      <!-- product container -->
+      <div class="product">
+
+        <a href="{{ applesystem.get_absolute_url }}">
+          <img src="{{ applesystem.image1.url }}" alt="Slide 2" />
+        </a>
+
+        <div class="product-details">
+          <p>{{ applesystem.content }}</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>GH¢{{ applesystem.final_price }}</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="{% url 'add-to-wishlist' applesystem.id %}">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart
+              <div class="add-to-cart-button">
+                <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+              </div> -->
+      </div>
+      {% endfor %}
+
       <!-- <div class="product">
         <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
@@ -481,7 +538,34 @@
     </div>
 
     <div class="product-dsiplay-grid">
-      
+      {% for accessory in accessories %}
+      <!-- product container -->
+      <div class="product">
+
+        <a href="{{ accessory.get_absolute_url }}">
+          <img src="{{ accessory.image1.url }}" alt="Slide 2" />
+        </a>
+
+        <div class="product-details">
+          <p>{{ accessory.content }}</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>GH¢{{ accessory.final_price }}</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="{% url 'add-to-wishlist' accessory.id %}">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart
+                    <div class="add-to-cart-button">
+                      <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                    </div> -->
+      </div>
+      {% endfor %}
       <!-- <div class="product">
         <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
@@ -609,7 +693,34 @@
     </div>
 
     <div class="product-dsiplay-grid">
-      
+      {% for component in components %}
+      <!-- product container -->
+      <div class="product">
+
+        <a href="{{ component.get_absolute_url }}">
+          <img src="{{ component.image1.url }}" alt="Slide 2" />
+        </a>
+
+        <div class="product-details">
+          <p>{{ component.content }}</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>GH¢{{ component.final_price }}</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="{% url 'add-to-wishlist' component.id %}">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart
+                    <div class="add-to-cart-button">
+                      <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                    </div> -->
+      </div>
+      {% endfor %}
       <!-- <div class="product">
         <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
@@ -720,13 +831,40 @@
   <!-- container for set of product -->
   <div class="product-container">
     <div class="heading">
-      <h2>Laptops & Tablets</h2>
+      <h2>Shoes And Slippers</h2>
       <div class="see-more">
         <a href="">See more</a>
       </div>
     </div>
     <div class="product-dsiplay-grid">
+      {% for shoe in shoes %}
+      <!-- product container -->
+      <div class="product">
       
+        <a href="{{ shoe.get_absolute_url }}">
+          <img src="{{ shoe.image1.url }}" alt="Slide 2" />
+        </a>
+      
+        <div class="product-details">
+          <p>{{ shoe.content }}</p>
+      
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>GH¢{{ shoe.final_price }}</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="{% url 'add-to-wishlist' shoe.id %}">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart
+                          <div class="add-to-cart-button">
+                            <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                          </div> -->
+      </div>
+      {% endfor %}
       <!-- <div class="product">
         <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
@@ -854,7 +992,36 @@
     </div>
 
     <div class="product-dsiplay-grid">
-    <!--  <div class="product">
+
+      {% for surviellence in surviellences %}
+      <!-- product container -->
+      <div class="product">
+
+        <a href="{{ surviellence.get_absolute_url }}">
+          <img src="{{ surviellence.image1.url }}" alt="Slide 2" />
+        </a>
+
+        <div class="product-details">
+          <p>{{ surviellence.content }}</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>GH¢{{ surviellence.final_price }}</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="{% url 'add-to-wishlist' surviellence.id %}">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart
+                          <div class="add-to-cart-button">
+                            <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                          </div> -->
+      </div>
+      {% endfor %}
+      <!--  <div class="product">
         <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
         </a>
@@ -964,14 +1131,41 @@
   <!-- container for set of product -->
   <div class="product-container">
     <div class="heading">
-      <h2>Access & Time Control</h2>
+      <h2>Heels And Slippers</h2>
       <div class="see-more">
         <a href="">See more</a>
       </div>
     </div>
 
     <div class="product-dsiplay-grid">
+      {% for heel in heels %}
+      <!-- product container -->
+      <div class="product">
 
+        <a href="{{ heel.get_absolute_url }}">
+          <img src="{{ heel.image1.url }}" alt="Slide 2" />
+        </a>
+
+        <div class="product-details">
+          <p>{{ heel.content }}</p>
+
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>GH¢{{ heel.final_price }}</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="{% url 'add-to-wishlist' heel.id %}">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- add to cart
+                                <div class="add-to-cart-button">
+                                  <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                                </div> -->
+      </div>
+      {% endfor %}
       <!-- <div class="product">
         <a href="">
           <img src="{% static 'store/img/laptop.jpg' %}" alt="Slide 2" />
@@ -1088,23 +1282,23 @@
 
 
 <script>
-const slidesContainer = document.querySelector('.slides-container');
-const slides = document.querySelectorAll('.slide');
-let currentIndex = 0;
+  const slidesContainer = document.querySelector('.slides-container');
+  const slides = document.querySelectorAll('.slide');
+  let currentIndex = 0;
 
-function showSlide(index) {
-  slidesContainer.style.transform = `translateX(-${index * 100}%)`;
-}
+  function showSlide(index) {
+    slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+  }
 
-function nextSlide() {
-  currentIndex = (currentIndex + 1) % slides.length;
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  }
+
+  setInterval(nextSlide, 7000); // Change slide every 3 seconds
+
+  // Initialize the first slide
   showSlide(currentIndex);
-}
-
-setInterval(nextSlide, 7000); // Change slide every 3 seconds
-
-// Initialize the first slide
-showSlide(currentIndex);
 
 
 </script>

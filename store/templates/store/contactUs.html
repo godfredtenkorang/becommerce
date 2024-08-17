@@ -1,0 +1,101 @@
+{% extends 'store/base.html' %} {% load static %} {% block content %}
+
+
+<style>
+
+    .contact-us-container{
+             
+   background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url( "{% static 'store/img/background.jpg' %}" );
+ 
+ min-height: 70vh;
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-position: center center;
+color: #fff;
+
+    }
+
+
+
+</style>
+<header class="page-header">
+    <li> <a href="  {% url 'contactUs' %}"><i class="fa-solid fa-shop"></i> Contact Us</a>
+    </li>
+  
+  </header>
+
+  <div class="contact-us-container">
+    <div class="contact-us-form">
+        <form action="">
+
+          
+
+
+            <div class="input-container">
+                <div class="input">
+                    <label for="">First Name</label> <br>
+                    <input type="text" name="" id="">
+                </div>
+                <div class="input">
+                    <label for="">Last Name</label> <br>
+                    <input type="text" name="" id="">
+                </div>
+            </div>
+            <div class="input-container">
+                <div class="input">
+                    <label for="">First Name</label> <br>
+                    <input type="text" name="" id="">
+                </div>
+                <div class="input">
+                    <label for="">Last Name</label> <br>
+                    <input type="text" name="" id="">
+                </div>
+            </div>
+
+
+           
+            <div class="input">
+                <label for="">Phone Number</label> <br>
+                <textarea name="" id=""></textarea>
+            </div>
+
+
+
+
+
+
+            <button>Submit</button>
+
+        </form>
+    </div>
+
+    <div class="contact-us-number">
+
+        <div class="cont">
+            <p><i class="fa-brands fa-whatsapp"></i>  0558156944</p>
+        </div>
+        <div class="cont">
+            <p><i class="fa-brands fa-whatsapp"></i> 0558156944</p>
+        </div>
+        <div class="cont">
+            <p><i class="fa-solid fa-envelope"></i> gbmarketplace@gmail.com</p>
+        </div>
+        <div class="cont">
+            <p>             
+
+                <i class="fa-brands fa-facebook"></i>
+
+                <i class="fa-brands fa-instagram"></i>
+
+                <i class="fa-brands fa-tiktok"></i>
+                GB Store Gh.com
+
+
+            </p>
+        </div>
+
+    </div>
+  </div>
+
+
+{% endblock %}

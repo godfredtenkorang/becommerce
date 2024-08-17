@@ -47,6 +47,10 @@
   <body>
     <header>
       <div class="first-header">
+       <!-- logo to show smaller screen -->
+        <div class="logo-to-show">
+          <a href="">Logo</a>
+        </div>
         <div class="accounts">
           {% if user.is_authenticated %}
           <div class="login">
@@ -89,12 +93,12 @@
           </div>
           {% if request.user.is_authenticated %}
           {% if request.user.first_name %}
-          <p>Welcome, {{ request.user.first_name|slice:":1" }}</p>
+          <p class="welcome"> {{ request.user.first_name|slice:":1" }}</p>
           {% else %}
-          <p>Welcome, {{ request.user.username|slice:":1" }}</p>
+          <p class="welcome"> {{ request.user.username|slice:":1" }}</p>
           {% endif %}
           {% else %}
-          <p>Welcome, Guest!</p>
+        
           {% endif %}
           <div class="menu-icon">
             <i class="fa-solid fa-bars"></i>
@@ -109,7 +113,7 @@
         </div>
    
      <div class="search-cat">
-      <button class="cat-btn btns">All category <i class="fa-solid fa-caret-down"></i></button>
+      <button class="cat-btn btns"><i class="fa-solid fa-caret-down"></i></button>
       <form class="search-bar" action="{% url 'search' %}" role="search">
         <input type="text" name="search" id="" placeholder="What are you looking for ?"/>
         <button type="submit">Search</button>

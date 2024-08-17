@@ -4,6 +4,7 @@
 {% block content %}
 
 
+
 <header class="page-header">
     <li> <a href="  {% url 'index' %}" href=""><i class="fa-solid fa-less-than"></i> Back</a></li>
     <li> <a href=><i class="fa-solid fa-shop"></i> Cart</a>
@@ -12,12 +13,16 @@
 </header>
 
 
+<div class="banner-container">
+    <img src="{% static 'store/img/banner.jpg' %}" alt="Slide 2" />
+
+</div>
 <div class="cart-main-container">
     <div class="item-added-to-cart">
         {% for item in cart %}
         {% with product=item.product %}
         <div class="cart-item-container">
-            <div class="cart">
+            <div class="carts">
                 <div class="cart-col img">
                     <img src="{{ product.image1.url }}" alt="Slide 2" />
                 </div>

@@ -1,0 +1,79 @@
+{% extends 'store/base.html' %} {% load static %} {% block content %}
+
+
+
+<header class="page-header">
+    <li> <a href="  {% url 'contactUs' %}"><i class="fa-solid fa-question"></i> Freequently Asked Question</a>
+    </li>
+  
+  </header>
+
+
+  <div class="banner-container">
+    <img src="{% static 'store/img/banner.jpg' %}" alt="Slide 2" />
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="faq-main">
+    
+  <div class="faq-container element">
+    <div class="question">
+        <span>Question 1</span>
+        <span class="show-answer">+</span>
+    </div>
+    <div class="answer">
+        <p>Answer to Question 1</p>
+    </div>
+</div>
+<div class="faq-container element">
+    <div class="question">
+        <span>Question 2</span>
+        <span class="show-answer">+</span>
+    </div>
+    <div class="answer">
+        <p>Answer to Question 2</p>
+    </div>
+</div>
+</div>
+
+ 
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const faqContainers = document.querySelectorAll('.faq-container');
+
+    faqContainers.forEach(container => {
+        const answer = container.querySelector('.answer');
+        const showAnswerBtn = container.querySelector('.show-answer');
+
+        // Set initial height of the answer
+        answer.style.height = '0px';
+
+        showAnswerBtn.addEventListener('click', () => {
+            if (answer.style.height === '0px') {
+                // Open the answer
+                answer.style.height = answer.scrollHeight + 'px';
+                showAnswerBtn.textContent = '-'; // Change button text
+            } else {
+                // Close the answer
+                answer.style.height = '0px';
+                showAnswerBtn.textContent = '+'; // Change button text back
+            }
+        });
+    });
+});
+
+
+  </script>
+
+{% endblock %}

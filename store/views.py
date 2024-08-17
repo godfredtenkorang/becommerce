@@ -247,3 +247,13 @@ def shoesandslippers(request, shoe_slug):
         'shoe': shoe,
     }
     return render(request, 'store/details/shoesDetails.html', context)
+
+
+def contactUs(request):
+    return render(request, 'store/contactUs.html')
+
+def faQ(request):
+    return render(request, 'store/faq.html')
+
+def terms(request):
+    return render(request, 'store/termscondi.html')

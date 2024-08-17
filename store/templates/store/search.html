@@ -27,7 +27,7 @@
     <!-- container for set of product -->
     <div class="product-container">
         <div class="heading">
-            <h2>Search</h2>
+            <h2>{{ search_item }}</h2>
         </div>
 
         <!-- container set the product to diplay grid -->
@@ -46,7 +46,8 @@
 
                             <div class="price-wishlist-btn">
                                 <div class="price">
-                                    <p>{{ shop.final_price }}</p>
+                                    <p>GH¢{{ shop.final_price }}</p>
+                                    <p class="price-cancel">GH¢{{ shop.normal_price }}</p>
                                 </div>
                                 <div class="add-to-wishlist">
                                     <a href="">

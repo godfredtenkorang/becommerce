@@ -16,6 +16,11 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse('list-category', args=[self.slug])
     
+PRODUCT_AVAILABILITY = (
+    ('in store', 'in stock'),
+    ('out of stock', 'out of store')
+)
+    
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -28,6 +33,7 @@ class Product(models.Model):
     description6 = models.CharField(max_length=250, blank=True, default="")
     description7 = models.CharField(max_length=250, blank=True, default="")
     brand = models.CharField(default='un-branded')
+    product_availability = models.CharField(max_length=20, choices=PRODUCT_AVAILABILITY, default='in stock')
     image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
     image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
     image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
@@ -46,6 +52,12 @@ class Product(models.Model):
     def __str__(self):
         return self.title
     
+
+PRODUCT_AVAILABILITY = (
+    ('in store', 'in stock'),
+    ('out of stock', 'out of store')
+)
+
 class AppleSystem(models.Model):
     category = models.ForeignKey(Category, related_name='apple', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -58,6 +70,7 @@ class AppleSystem(models.Model):
     description6 = models.CharField(max_length=250, blank=True, default="")
     description7 = models.CharField(max_length=250, blank=True, default="")
     brand = models.CharField(default='un-branded')
+    product_availability = models.CharField(max_length=20, choices=PRODUCT_AVAILABILITY, default='in stock')
     image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
     image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
     image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
@@ -77,6 +90,10 @@ class AppleSystem(models.Model):
         return self.title
     
     
+PRODUCT_AVAILABILITY = (
+    ('in store', 'in stock'),
+    ('out of stock', 'out of store')
+)
 
 class LaptopsAndTablet(models.Model):
     category = models.ForeignKey(Category, related_name='laptop', on_delete=models.CASCADE, null=True)
@@ -90,6 +107,7 @@ class LaptopsAndTablet(models.Model):
     description6 = models.CharField(max_length=250, blank=True, default="")
     description7 = models.CharField(max_length=250, blank=True, default="")
     brand = models.CharField(default='un-branded')
+    product_availability = models.CharField(max_length=20, choices=PRODUCT_AVAILABILITY, default='in stock')
     image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
     image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
     image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
@@ -108,6 +126,12 @@ class LaptopsAndTablet(models.Model):
     def __str__(self):
         return self.title
     
+    
+PRODUCT_AVAILABILITY = (
+    ('in store', 'in stock'),
+    ('out of stock', 'out of store')
+)
+
 class GamingLaptops(models.Model):
     category = models.ForeignKey(Category, related_name='gaming', on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=200)
@@ -120,6 +144,7 @@ class GamingLaptops(models.Model):
     description6 = models.CharField(max_length=250, blank=True, default="")
     description7 = models.CharField(max_length=250, blank=True, default="")
     brand = models.CharField(default='un-branded')
+    product_availability = models.CharField(max_length=20, choices=PRODUCT_AVAILABILITY, default='in stock')
     image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
     image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
     image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
@@ -138,6 +163,12 @@ class GamingLaptops(models.Model):
     def __str__(self):
         return self.title
     
+    
+PRODUCT_AVAILABILITY = (
+    ('in store', 'in stock'),
+    ('out of stock', 'out of store')
+)
+
 class ComputerAccessories(models.Model):
     category = models.ForeignKey(Category, related_name='accessory', on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=200)
@@ -150,6 +181,7 @@ class ComputerAccessories(models.Model):
     description6 = models.CharField(max_length=250, blank=True, default="")
     description7 = models.CharField(max_length=250, blank=True, default="")
     brand = models.CharField(default='un-branded')
+    product_availability = models.CharField(max_length=20, choices=PRODUCT_AVAILABILITY, default='in stock')
     image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
     image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
     image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
@@ -169,6 +201,12 @@ class ComputerAccessories(models.Model):
         return self.title
     
 
+
+PRODUCT_AVAILABILITY = (
+    ('in store', 'in stock'),
+    ('out of stock', 'out of store')
+)
+
 class ComponentsAndParts(models.Model):
     category = models.ForeignKey(Category, related_name='component', on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=200)
@@ -181,6 +219,7 @@ class ComponentsAndParts(models.Model):
     description6 = models.CharField(max_length=250, blank=True, default="")
     description7 = models.CharField(max_length=250, blank=True, default="")
     brand = models.CharField(default='un-branded')
+    product_availability = models.CharField(max_length=20, choices=PRODUCT_AVAILABILITY, default='in stock')
     image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
     image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
     image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
@@ -200,6 +239,11 @@ class ComponentsAndParts(models.Model):
         return self.title
     
 
+PRODUCT_AVAILABILITY = (
+    ('in store', 'in stock'),
+    ('out of stock', 'out of store')
+)
+
 class SurveillanceSystems(models.Model):
     category = models.ForeignKey(Category, related_name='surveillance', on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=200)
@@ -212,6 +256,7 @@ class SurveillanceSystems(models.Model):
     description6 = models.CharField(max_length=250, blank=True, default="")
     description7 = models.CharField(max_length=250, blank=True, default="")
     brand = models.CharField(default='un-branded')
+    product_availability = models.CharField(max_length=20, choices=PRODUCT_AVAILABILITY, default='in stock')
     image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
     image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
     image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
@@ -230,7 +275,12 @@ class SurveillanceSystems(models.Model):
     def __str__(self):
         return self.title
     
-    
+
+PRODUCT_AVAILABILITY = (
+    ('in store', 'in stock'),
+    ('out of stock', 'out of store')
+)
+
 class HeelsAndSlippers(models.Model):
     category = models.ForeignKey(Category, related_name='heels', on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=200)
@@ -243,6 +293,7 @@ class HeelsAndSlippers(models.Model):
     description6 = models.CharField(max_length=250, blank=True, default="")
     description7 = models.CharField(max_length=250, blank=True, default="")
     brand = models.CharField(default='un-branded')
+    product_availability = models.CharField(max_length=20, choices=PRODUCT_AVAILABILITY, default='in stock')
     image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
     image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
     image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
@@ -261,6 +312,12 @@ class HeelsAndSlippers(models.Model):
     def __str__(self):
         return self.title
     
+    
+PRODUCT_AVAILABILITY = (
+    ('in store', 'in stock'),
+    ('out of stock', 'out of store')
+)
+
 class ShoesAndSlippers(models.Model):
     category = models.ForeignKey(Category, related_name='shoe', on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=200)
@@ -273,6 +330,7 @@ class ShoesAndSlippers(models.Model):
     description6 = models.CharField(max_length=250, blank=True, default="")
     description7 = models.CharField(max_length=250, blank=True, default="")
     brand = models.CharField(default='un-branded')
+    product_availability = models.CharField(max_length=20, choices=PRODUCT_AVAILABILITY, default='in stock')
     image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
     image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
     image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
@@ -300,3 +358,28 @@ class Newsletter(models.Model):
         
     def __str__(self):
         return self.email
+    
+    
+class Contact(models.Model):
+    name = models.CharField(max_length=250)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    subject = models.CharField(max_length=300)
+    message = models.TextField()
+    
+    class Meta:
+        verbose_name_plural = 'Contacts'
+        
+    def __str__(self):
+        return self.name
+    
+    
+class Banner(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='banner-img')
+    
+    class Meta:
+        verbose_name_plural = 'Banners'
+        
+    def __str__(self):
+        return self.name

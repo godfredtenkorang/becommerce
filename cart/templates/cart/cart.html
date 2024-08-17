@@ -3,7 +3,52 @@
 {% load mathfilters %}
 {% block content %}
 
+<style>
+    .cart-container1 {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+}
 
+.cart-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-empty h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.cart-empty p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.shop-now-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #bf1b26;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.shop-now-button:hover {
+    background-color: #bf1b26;
+    color: white;
+}
+</style>
 
 <header class="page-header">
     <li> <a href="  {% url 'index' %}" href=""><i class="fa-solid fa-less-than"></i> Back</a></li>
@@ -19,6 +64,7 @@
 </div>
 <div class="cart-main-container">
     <div class="item-added-to-cart">
+        {% if cart %}
         {% for item in cart %}
         {% with product=item.product %}
         <div class="cart-item-container">
@@ -39,8 +85,8 @@
             </div>
 
             <div class="carts">
-                <div class="cart-col price">
-                    <p class="itemPrice">{{ product.final_price|mul:item.qty }}</p>
+                <div class="cart-col price pt-2">
+                    <p class="itemPrice">GH¢{{ product.final_price|mul:item.qty }}</p>
 
                 </div>
                 <label for="select">Quantity:</label>
@@ -82,6 +128,17 @@
 
         {% endwith %}
         {% endfor %}
+        {% else %}
+        <div class="cart-container1">
+            <div class="cart-container">
+                <div class="cart-empty">
+                    <h2>Your Cart is Empty</h2>
+                    <p>Looks like you haven't added any items to your cart yet.</p>
+                    <a href="{% url 'shop' %}" class="shop-now-button">Shop Now</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </div>
 
     <div class="order-summary-container">

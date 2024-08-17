@@ -4,6 +4,7 @@ from .models import *
 from django.db.models import Q # New
 from django.conf import settings
 from django.core.mail import send_mail
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -15,6 +16,7 @@ def index(request):
     surviellences = SurveillanceSystems.objects.all()
     heels = HeelsAndSlippers.objects.all()
     shoes = ShoesAndSlippers.objects.all()
+    banners = Banner.objects.all()
     
     if request.method == 'POST':
         email = request.POST['email']
@@ -37,7 +39,8 @@ def index(request):
         'components': components,
         'surviellences': surviellences,
         'heels': heels,
-        'shoes': shoes
+        'shoes': shoes,
+        'banners': banners
     }
     return render(request, 'store/index.html', context)
 
@@ -250,6 +253,28 @@ def shoesandslippers(request, shoe_slug):
 
 
 def contactUs(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        subject = request.POST['subject']
+        message = request.POST['message']
+        
+        contact = Contact(name=name, email=email, phone=phone, subject=subject, message=message)
+        contact.save()
+        
+        messages.success(request, 'Your form has been sent successfully. You will hear from us soon!')
+        
+        send_mail(
+        f"New Subscriber from {name}",
+        f'{email} \n\n {phone} \n\n {subject} \n\n {message}',
+            email,  # From email
+            [settings.EMAIL_HOST_USER],  # To email
+            fail_silently=False,
+        ),
+        
+        return redirect('contactUs')
+        
     return render(request, 'store/contactUs.html')
 
 def faQ(request):

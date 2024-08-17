@@ -166,7 +166,7 @@
           <li>
             <a href="  {% url 'WishList' %}"><i class="fa-regular fa-heart"></i> Wish List</a>
           </li>
-          <li>
+          <!-- <li>
             <a href="  {% url 'terms' %}"><i class="fa-regular fa-heart"></i> Terms and Condition</a>
           </li>
           <li>
@@ -174,7 +174,7 @@
           </li>
           <li>
             <a href="  {% url 'contactUs' %}"><i class="fa-regular fa-heart"></i> Contact us</a>
-          </li>
+          </li> -->
         
         </div>
       </div>
@@ -269,11 +269,15 @@
         <div class="footer-col">
           <div class="head">
             <h5>
-              OnlineMarket
+              GBStoreGH
             </h5>
             <li><a href="">About us</a></li>
-            <li><a href="">Login</a></li>
-            <li><a href="">Help & Support</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'user-logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'my-login' %}">Login</a></li>
+            {% endif %}
+            <li><a href="{% url 'contactUs' %}">Help & Support</a></li>
           </div>
         </div>
         <div class="footer-col">
@@ -281,12 +285,11 @@
             <h5>
              Other Links
             </h5>
-            <li><a href="">Home</a></li>
-            <li><a href="">Shop</a></li>
-            <li><a href="">Checkout</a></li>
-            <li><a href="">Privacy policy</a></li>
-            <li><a href="">Terms & Conditions</a></li>
-            <li><a href="">Warranty & Returns</a></li>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'shop' %}">Shop</a></li>
+            <li><a href="{% url 'checkout' %}">Checkout</a></li>
+            <li><a href="{% url 'faQ' %}">FAQs</a></li>
+            <li><a href="{% url 'terms' %}">Terms & Conditions</a></li>
           </div>
         </div>
         <div class="footer-col">
@@ -294,10 +297,10 @@
             <h5>
               My accounts
             </h5>
-            <li><a href="">My orders</a></li>
+            <li><a href="{% url 'myOrder' %}">My orders</a></li>
             <li><a href="">My account</a></li>
-            <li><a href="">Wishlist</a></li>
-            <li><a href="">Shopping cart</a></li>
+            <li><a href="{% url 'WishList' %}">Wishlist</a></li>
+            <li><a href="{% url 'cart' %}">Shopping cart</a></li>
           </div>
         </div>
         <div class="footer-col">
@@ -320,9 +323,9 @@
              Follow Us
             </h5>
             <li><a href=""><i class="fa-brands fa-facebook"></i> Facebook </a></li>
-            <li><a href=""><i class="fa-brands fa-facebook"></i> Facebook </a></li>
-            <li><a href=""><i class="fa-brands fa-facebook"></i> Facebook </a></li>
-            <li><a href=""><i class="fa-brands fa-facebook"></i> Facebook </a></li>
+            <li><a href=""><i class="fa-brands fa-instagram"></i> Instagram </a></li>
+            <li><a href=""><i class="fa-brands fa-tiktok"></i> Tiktok </a></li>
+            <li><a href=""><i class="fa-brands fa-x"></i> (Twitter) X </a></li>
           </div>
         </div>
 
@@ -332,7 +335,7 @@
       </div>
 
       <div class="copy-right">
-        <p>Copyright © OnlineMarket.com 2016 - 2024 • All Rights Reserved • </p>
+        <p>Copyright © gbstoregh.com 2024 • All Rights Reserved • </p>
 
         <p>Privacy policy • Terms & Conditions </p>
       </div>

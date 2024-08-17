@@ -23,48 +23,44 @@ color: #fff;
     </li>
   
   </header>
-
+<div class="row">
+    <div class="col-md-12">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
   <div class="contact-us-container">
     <div class="contact-us-form">
-        <form action="">
-
-          
-
-
+        <form method="POST">
+            {% csrf_token %}
             <div class="input-container">
                 <div class="input">
-                    <label for="">First Name</label> <br>
-                    <input type="text" name="" id="">
+                    <label for="">Full Name</label> <br>
+                    <input type="text" name="name" id="">
                 </div>
                 <div class="input">
-                    <label for="">Last Name</label> <br>
-                    <input type="text" name="" id="">
+                    <label for="">Email</label> <br>
+                    <input type="email" name="email" id="">
                 </div>
             </div>
             <div class="input-container">
                 <div class="input">
-                    <label for="">First Name</label> <br>
-                    <input type="text" name="" id="">
+                    <label for="">Phone Number</label> <br>
+                    <input type="number" name="phone" id="">
                 </div>
                 <div class="input">
-                    <label for="">Last Name</label> <br>
-                    <input type="text" name="" id="">
+                    <label for="">Subject</label> <br>
+                    <input type="text" name="subject" id="">
                 </div>
             </div>
-
-
-           
             <div class="input">
-                <label for="">Phone Number</label> <br>
-                <textarea name="" id=""></textarea>
+                <label for="">Message</label> <br>
+                <textarea name="message" id=""></textarea>
             </div>
-
-
-
-
-
-
-            <button>Submit</button>
+            <button type="submit">Submit</button>
 
         </form>
     </div>

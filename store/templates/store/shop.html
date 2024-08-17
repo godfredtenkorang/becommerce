@@ -40,8 +40,8 @@
        
           <div class="price-wishlist-btn">
             <div class="price">
-              <p class="price-cancel"> 20</p>
-              <p>{{ shop.final_price }}</p>
+              <p>GH¢{{ shop.final_price }}</p>
+              <p class="price-cancel">GH¢{{ shop.normal_price }}</p>
             </div>
             <div class="add-to-wishlist">
               <a href="{% url 'add-to-wishlist' shop.id %}">

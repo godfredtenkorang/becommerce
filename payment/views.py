@@ -127,8 +127,8 @@ def verify_payment(request: HttpRequest, ref: str) -> HttpResponse:
                 str(cart.get_all_total()), settings.EMAIL_HOST_USER, [payment.email], fail_silently=False,)
 
     send_mail(
-        f"New Order from {payment.full_name}",
-        'Please see order below:' + '\n\n' + str(all_products) + '\n\n' + 'Total paid: $' + 
+        f"New Order from {payment.full_name} - {payment.email}",
+        'Please see order below:' + '\n\n' + str(all_products) + '\n\n' + 'Total paid: $' +
             str(cart.get_all_total()),
             payment.email,  # From email
             [settings.EMAIL_HOST_USER],  # To email

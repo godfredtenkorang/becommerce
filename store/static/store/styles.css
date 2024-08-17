@@ -479,6 +479,9 @@ footer li {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+.copy-right p{
+  color: var(--white);
+}
 
 .news-letter {
   width: 100%;
@@ -1378,7 +1381,7 @@ h1 {
   .third-header,
   .page-header,
   .product-main-container,
-  .cart-main-container,.contact-us-container, .faq-main {
+  .cart-main-container, .copy-right,.contact-us-container, .faq-main {
     padding: 2% 2%;
   }
   

@@ -4,7 +4,7 @@ from django.urls import reverse
 class Category(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=250, unique=True)
-    date_added = models.DateTimeField(auto_now_add=True)
+    date_added = models.DateTimeField('date added')
     
     class Meta:
         verbose_name_plural = 'categories'

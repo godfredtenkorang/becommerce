@@ -49,7 +49,7 @@
       <div class="first-header">
        <!-- logo to show smaller screen -->
         <div class="logo-to-show">
-          <a href="">
+          <a href="  {% url 'index' %}"> 
             <img src="{% static 'store/img/gblogo1.png' %}" alt="Slide 1" />
 
 
@@ -73,8 +73,8 @@
         </div>
         <div class="first-col">
           <div class="contact-number">
-            <a href="https://wa.link/fvzhs7"> <i class="fa-solid fa-phone"></i> 233 554823785 </a>
-            <a href="https://wa.link/fvzhs7"><i class="fa-solid fa-phone"></i>  233 554823785 </a>
+            <a href="https://wa.link/fvzhs7"> <i class="fa-solid fa-phone"></i> +233 55 815 6844 </a>
+            <a href="https://wa.link/v277iy"><i class="fa-solid fa-phone"></i>  +233 55 391 2334</a>
           </div>
 
           <div class="shopping-cart">
@@ -337,7 +337,11 @@
       <div class="copy-right">
         <p>Copyright © gbstoregh.com 2024 • All Rights Reserved • </p>
 
-        <p>Privacy policy • Terms & Conditions </p>
+        <a href="{% url 'terms' %}">
+          <p>Privacy policy • Terms & Conditions </p>
+
+
+        </a>
       </div>
 
      </footer>

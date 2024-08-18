@@ -298,7 +298,8 @@
               My accounts
             </h5>
             <li><a href="{% url 'myOrder' %}">My orders</a></li>
-            <li><a href="">My account</a></li>
+            <li><a href="{% url 'dashboard' %}">My account</a></li>
+            <li><a href="{% url 'manage-shipping' %}">Manage Shipping</a></li>
             <li><a href="{% url 'WishList' %}">Wishlist</a></li>
             <li><a href="{% url 'cart' %}">Shopping cart</a></li>
           </div>
@@ -414,14 +415,17 @@
         });
       }
       handleAnimationScroll();
+    </script>
 
+    <script>
+      var message_timeout = document.getElementById("message-timer");
 
+        setTimeout(function () {
 
+          message_timeout.style.display = "none";
 
-
-
-
-
+        }, 3000);
+      
 
     </script>
   </body>

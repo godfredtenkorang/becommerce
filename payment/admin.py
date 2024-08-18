@@ -21,8 +21,7 @@ class OrderItemInLine(admin.TabularInline):
   
   
 class OrderAdmin(admin.ModelAdmin):
-    fieldsets = [(None, {'fields': ['full_name', 'email', 'shipping_address', 'amount_paid', 'user']}), ('Date Information', {
-        'fields': ['date_ordered'], 'classes': ['collapse']}), ]
+    fieldsets = [(None, {'fields': ['full_name', 'email', 'shipping_address', 'amount_paid', 'user']}) ]
     inlines = [OrderItemInLine]
   
   

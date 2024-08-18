@@ -5,6 +5,7 @@ from django.db.models import Q # New
 from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib import messages
+from wishlist.models import Review
 
 # Create your views here.
 def index(request):
@@ -51,6 +52,13 @@ def categories(request):
 
 def productDetail(request, product_slug):
     product = get_object_or_404(Product, slug=product_slug)
+    try:
+        # product_review = Product.objects.get(slug=product_slug)
+        reviews = Review.objects.filter(product=product)
+        # replies = ReviewComment.objects.filter(reviews=reviews)
+        review_counts = Review.objects.all().filter(product=product).count()
+    except:
+        return redirect('product-info')
     if request.method == 'POST':
         email = request.POST['email']
         
@@ -58,7 +66,9 @@ def productDetail(request, product_slug):
         newletter.save()
         return redirect('index')
     context = {
-        'product': product
+        'product': product,
+        'reviews': reviews,
+        'review_counts': review_counts,
     }
     return render(request, 'store/details/productDetail.html', context)
 

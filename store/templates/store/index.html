@@ -1,5 +1,13 @@
 {% extends 'store/base.html' %} {% load static %} {% block content %}
-
+<div class="row">
+  <div class="col-md-12">
+    {% if messages %}
+    {% for message in messages %}
+    <div id="message-timer" class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
 <div class="categories-banner-promo-container">
   <div class="category">
     <div class="cat-head">
@@ -61,10 +69,11 @@
 
         <a href="{{ laptopshop.get_absolute_url }}">
           <img src="{{ laptopshop.image1.url }}" alt="Slide 2" />
+          <h4>{{ laptopshop.title }}</h4>
         </a>
 
         <div class="product-details">
-          <p>{{ laptopshop.content }}</p>
+          
 
           <div class="price-wishlist-btn">
             <div class="price">
@@ -78,10 +87,6 @@
             </div>
           </div>
         </div>
-        <!-- add to cart
-        <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div> -->
       </div>
       {% endfor %}
     </div>
@@ -92,7 +97,7 @@
     <div class="heading">
       <h2>Gaming Laptops</h2>
       <div class="see-more">
-        <a href="">See more</a>
+        <a href="{% url 'shop' %}">See more</a>
       </div>
     </div>
 
@@ -103,10 +108,10 @@
 
         <a href="{{ gaminglaptop.get_absolute_url }}">
           <img src="{{ gaminglaptop.image1.url }}" alt="Slide 2" />
+          <p>{{ gaminglaptop.title }}</p>
         </a>
 
         <div class="product-details">
-          <p>{{ gaminglaptop.content }}</p>
 
           <div class="price-wishlist-btn">
             <div class="price">
@@ -144,7 +149,7 @@
     <div class="heading">
       <h2>Apple Systems</h2>
       <div class="see-more">
-        <a href="">See more</a>
+        <a href="{% url 'shop' %}">See more</a>
       </div>
     </div>
 
@@ -156,10 +161,10 @@
 
         <a href="{{ applesystem.get_absolute_url }}">
           <img src="{{ applesystem.image1.url }}" alt="Slide 2" />
+          <p>{{ applesystem.title }}</p>
         </a>
 
         <div class="product-details">
-          <p>{{ applesystem.content }}</p>
 
           <div class="price-wishlist-btn">
             <div class="price">
@@ -184,7 +189,7 @@
     <div class="heading">
       <h2>Computer Accessories</h2>
       <div class="see-more">
-        <a href="">See more</a>
+        <a href="{% url 'shop' %}">See more</a>
       </div>
     </div>
 
@@ -195,10 +200,10 @@
 
         <a href="{{ accessory.get_absolute_url }}">
           <img src="{{ accessory.image1.url }}" alt="Slide 2" />
+          <p>{{ accessory.title }}</p>
         </a>
 
         <div class="product-details">
-          <p>{{ accessory.content }}</p>
 
           <div class="price-wishlist-btn">
             <div class="price">
@@ -232,7 +237,7 @@
     <div class="heading">
       <h2>Components & Parts</h2>
       <div class="see-more">
-        <a href="">See more</a>
+        <a href="{% url 'shop' %}">See more</a>
       </div>
     </div>
 
@@ -243,10 +248,10 @@
 
         <a href="{{ component.get_absolute_url }}">
           <img src="{{ component.image1.url }}" alt="Slide 2" />
+          <p>{{ component.title }}</p>
         </a>
 
         <div class="product-details">
-          <p>{{ component.content }}</p>
 
           <div class="price-wishlist-btn">
             <div class="price">
@@ -270,7 +275,7 @@
     <div class="heading">
       <h2>Shoes And Slippers</h2>
       <div class="see-more">
-        <a href="">See more</a>
+        <a href="{% url 'shop' %}">See more</a>
       </div>
     </div>
     <div class="product-dsiplay-grid">
@@ -280,10 +285,10 @@
       
         <a href="{{ shoe.get_absolute_url }}">
           <img src="{{ shoe.image1.url }}" alt="Slide 2" />
+          <p>{{ shoe.title }}</p>
         </a>
       
         <div class="product-details">
-          <p>{{ shoe.content }}</p>
       
           <div class="price-wishlist-btn">
             <div class="price">
@@ -317,7 +322,7 @@
     <div class="heading">
       <h2>Surveillance Systems</h2>
       <div class="see-more">
-        <a href="">See more</a>
+        <a href="{% url 'shop' %}">See more</a>
       </div>
     </div>
 
@@ -329,10 +334,10 @@
 
         <a href="{{ surviellence.get_absolute_url }}">
           <img src="{{ surviellence.image1.url }}" alt="Slide 2" />
+          <p>{{ surviellence.title }}</p>
         </a>
 
         <div class="product-details">
-          <p>{{ surviellence.content }}</p>
 
           <div class="price-wishlist-btn">
             <div class="price">
@@ -356,7 +361,7 @@
     <div class="heading">
       <h2>Heels And Slippers</h2>
       <div class="see-more">
-        <a href="">See more</a>
+        <a href="{% url 'shop' %}">See more</a>
       </div>
     </div>
 
@@ -367,10 +372,10 @@
 
         <a href="{{ heel.get_absolute_url }}">
           <img src="{{ heel.image1.url }}" alt="Slide 2" />
+          <p>{{ heel.title }}</p>
         </a>
 
         <div class="product-details">
-          <p>{{ heel.content }}</p>
 
           <div class="price-wishlist-btn">
             <div class="price">

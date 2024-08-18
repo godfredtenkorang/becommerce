@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from .forms import CreateUserForm, LoginForm
-from payment.models import OrderItem
+from .forms import CreateUserForm, LoginForm, UpdateUserForm
+from payment.models import OrderItem, ShippingAddress
+from payment.forms import ShoppingForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
@@ -15,6 +16,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from store.models import Newsletter
 
+from django.core.mail import send_mail
+
+from django.conf import settings
+
 
 # Create your views here.
 def register(request):
@@ -26,7 +31,8 @@ def register(request):
         
         if form.is_valid():
             form.save()
-            
+
+            messages.success(request, "You have created a new account. Please you can proceed to login")
             # Email verification setup (template)
             
             # current_site = get_current_site(request)
@@ -56,6 +62,72 @@ def register(request):
     
     return render(request, 'users/registration/register.html', context)
 
+
+@login_required(login_url='my-login')
+def dashboard(request):
+    return render(request, 'users/dashboard.html', {'title':'Dashboard'})
+
+
+@login_required(login_url='my-login')
+def profile_management(request):
+    user_form = UpdateUserForm(instance=request.user)
+    if request.method == 'POST':
+        
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        if user_form.is_valid():
+            user_form.save()
+            messages.info(request, "Your account has been updated")
+            return redirect('dashboard')
+        
+    context = {
+        'user_form': user_form,
+        'title': 'Profile Management'
+    }
+    return render(request, 'users/profile-management.html', context=context)
+
+
+@login_required(login_url='my-login')
+def delete_account(request):
+    user = User.objects.get(id=request.user.id)
+    if request.method == 'POST':
+        user.delete()
+        messages.info(request, "Your account has been deleted")
+        return redirect('index')
+    return render(request, 'users/delete-account.html', {'title':"Delete account"})
+
+
+
+
+# Shipping View
+@login_required(login_url='my-login')
+def manage_shipping(request):
+    try:
+        # Account user with shipping information
+        shipping = ShippingAddress.objects.get(user=request.user.id)
+        
+    except ShippingAddress.DoesNotExist:
+        # Account user with no shipping information
+        shipping = None
+        
+    form = ShoppingForm(instance=shipping)
+    
+    if request.method == 'POST':
+        form = ShoppingForm(request.POST, instance=shipping)
+        if form.is_valid():
+            # Assign the user FK on the object
+            
+            shipping_user = form.save(commit=False)
+            shipping_user.user = request.user
+            
+            shipping_user.save()
+            messages.success(request, 'Your shipping address has been updated successfully')
+            return redirect('manage-shipping')
+    
+    context = {
+        'form': form,
+        'title': 'Manage shipping'
+    }
+    return render(request, 'users/manage-shipping.html', context=context)
 
 
 @login_required(login_url='my-login')
@@ -120,6 +192,7 @@ def my_login(request):
             
             if user is not None:
                 auth.login(request, user)
+                messages.success(request, "You have logged in successfully")
                 return redirect("index")
             
     context = {
@@ -144,6 +217,6 @@ def user_logout(request):
     except KeyError:
         pass
     
-    messages.success(request, "Logout success")
+    messages.success(request, "You have logged out successfully")
     
     return redirect('index')

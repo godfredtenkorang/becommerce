@@ -81,6 +81,15 @@
         margin-top: 10px;
     }
 </style>
+<div class="row">
+    <div class="col-md-12">
+        {% if messages %}
+        {% for message in messages %}
+        <div id="message-timer" class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
 <br><br><br><br>
 <div class="container">
     <div class="row d-flex justify-content-center">
@@ -92,7 +101,7 @@
                     {% csrf_token %}
                     {{form.username|as_crispy_field}}
                     {{form.password|as_crispy_field}}
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    <button class="btn btn-lg btn-block" type="submit">
                         Log in</button>
                     <br>
                     {{form.non_field_errors}}

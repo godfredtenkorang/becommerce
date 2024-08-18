@@ -7,6 +7,10 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('register/', views.register, name='register'),
     
+    path('dashboard', views.dashboard, name='dashboard'),
+
+    path('profile-management', views.profile_management, name='profile-management'),
+    path('delete-account', views.delete_account, name='delete-account'),
     
     # Email verification URL's
 
@@ -40,5 +44,7 @@ urlpatterns = [
     # Orders
     
     path('my-orders/', views.track_orders, name='myOrder'),
+    
+    path('manage-shipping', views.manage_shipping, name='manage-shipping'),
     
 ]

@@ -30,7 +30,7 @@ class Order(models.Model):
     email = models.EmailField(max_length=255)
     shipping_address = models.TextField(max_length=10000)
     amount_paid = models.DecimalField(max_digits=8, decimal_places=2)
-    date_ordered = models.DateTimeField('date ordered')
+    date_ordered = models.DateTimeField('date ordered', null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     
     class Meta:

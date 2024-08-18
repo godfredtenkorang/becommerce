@@ -9,6 +9,7 @@
 .row{
   width: 100%;
   min-height: 10vh;
+ 
   z-index: 100;
 }
 
@@ -1487,7 +1488,7 @@ h1 {
     padding-top: 5%;
   }
 
-  .logout, .welcome,.accounts{
+.welcome,.accounts{
     display: none;
   }
 

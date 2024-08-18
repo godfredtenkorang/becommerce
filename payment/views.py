@@ -225,8 +225,8 @@ def payment_success(request):
         if key == 'session_key':
             del request.session[key]
             
-    return render(request, 'payment/payment-success.html')
+    return render(request, 'payment/payment-success.html', {'title':'Payment success'})
 
 
 def payment_failed(request):
-    return render(request, 'payment/payment-failed.html')
+    return render(request, 'payment/payment-failed.html', {'title':'Payment failed'})

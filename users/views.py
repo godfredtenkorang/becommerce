@@ -56,7 +56,7 @@ def register(request):
     
     context = {
         'form': form,
-        
+        'title': 'Register'
     }
     
     

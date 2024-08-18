@@ -69,6 +69,7 @@ def productDetail(request, product_slug):
         'product': product,
         'reviews': reviews,
         'review_counts': review_counts,
+        'title': 'Product Detail'
     }
     return render(request, 'store/details/productDetail.html', context)
 
@@ -90,6 +91,7 @@ def shop(request):
         return redirect('index')
     context = {
         'shops': shops,
+        'title': 'Shop'
     }
     return render(request, 'store/shop.html', context)
 
@@ -107,7 +109,8 @@ def search(request):
         return redirect('index')
     context = {
         'search': search,
-        'search_item': search_item
+        'search_item': search_item,
+        'title': 'Search'
     }
     return render(request, 'store/search.html', context)
 
@@ -146,7 +149,8 @@ def laptopsandtablet(request, laptops_slug):
         return redirect('index')
     
     context = {
-        'laptop': laptop
+        'laptop': laptop,
+        'title': 'Product Detail'
     }
     return render(request, 'store/details/laptopsDetail.html', context)
 
@@ -163,6 +167,7 @@ def applesytem(request, apple_slug):
     
     context = {
         'apple': apple,
+        'title': 'Product Detail'
     }
     return render(request, 'store/details/appleDetails.html', context)
 
@@ -179,6 +184,7 @@ def gaminglaptop(request, gaming_slug):
     
     context = {
         'gaming': gaming,
+        'title': 'Product Detail'
     }
     return render(request, 'store/details/gamingDetails.html', context)
 
@@ -194,6 +200,7 @@ def computer_accessories(request, accessory_slug):
     
     context = {
         'accessory': accessory,
+        'title': 'Product Detail'
     }
     return render(request, 'store/details/AccessoryDetails.html', context)
 
@@ -210,6 +217,7 @@ def component_and_parts(request, component_slug):
     
     context = {
         'component': component,
+        'title': 'Product Detail'
     }
     return render(request, 'store/details/componentsDetails.html', context)
 
@@ -226,6 +234,7 @@ def surviellence_systems(request, surviellence_slug):
     
     context = {
         'surviellence': surviellence,
+        'title': 'Product Detail'
     }
     return render(request, 'store/details/surviellenceDetails.html', context)
 
@@ -242,6 +251,7 @@ def heelsandslippers(request, heels_slug):
     
     context = {
         'heels': heels,
+        'title': 'Product Detail'
     }
     return render(request, 'store/details/heelsDetails.html', context)
 
@@ -258,6 +268,7 @@ def shoesandslippers(request, shoe_slug):
     
     context = {
         'shoe': shoe,
+        'title': 'Product Detail'
     }
     return render(request, 'store/details/shoesDetails.html', context)
 
@@ -284,11 +295,29 @@ def contactUs(request):
         ),
         
         return redirect('contactUs')
+    
+    context = {
+        'title': 'Product Detail'
+    }
         
-    return render(request, 'store/contactUs.html')
+    return render(request, 'store/contactUs.html', context)
 
 def faQ(request):
-    return render(request, 'store/faq.html')
+    context = {
+        'title': 'FAQs'
+    }
+    return render(request, 'store/faq.html', context)
 
 def terms(request):
-    return render(request, 'store/termscondi.html')
+    context = {
+        'title': 'Terms & Conditions'
+    }
+    return render(request, 'store/termscondi.html', context)
+
+
+def custom_404_view(request, exception):
+    context = {
+        'title': '404'
+    }
+    return render(request, 'store/404.html', status=404, context=context)
+

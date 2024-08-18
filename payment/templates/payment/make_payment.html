@@ -110,6 +110,8 @@
         let obj = {
             key: "{{ paystack_public_key }}",
             email: "{{ payment.email }}",
+            fullname: "{{ payment.full_name }}",
+            phone: "{{ payment.phone_number }}",
             amount: '{{ payment.amount_value }}',
             ref: ref,
             callback: function (response) {

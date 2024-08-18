@@ -16,7 +16,7 @@ def cart(request):
         newletter.save()
         return redirect('index')
     
-    return render(request, 'cart/cart.html', {'cart': cart})
+    return render(request, 'cart/cart.html', {'cart': cart, 'title': 'Cart'})
 
 def add_cart(request):
     cart = Cart(request)

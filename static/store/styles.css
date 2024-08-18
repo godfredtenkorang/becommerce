@@ -1487,7 +1487,7 @@ h1 {
     padding-top: 5%;
   }
 
-  .logout, .welcome,.accounts{
+  .welcome,.accounts{
     display: none;
   }
 

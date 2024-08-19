@@ -142,7 +142,7 @@
               <i class="fa-solid fa-user"></i>
             </div> -->
             <div class="login-signup">
-              {% user.is_authenticated %}
+              {% if user.is_authenticated %}
               <a href="{% url 'user-logout' %}">Logout</a>
               <span>||</span>
               <a href="  {% url 'dashboard' %}">My Account</a>

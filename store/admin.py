@@ -18,7 +18,6 @@ from .models import *
 
 class ProductInLine(admin.TabularInline):
     model = Product
-    extra = 3
     prepopulated_fields = {"slug": ("title",)}
   
 class CategoryAdmin(admin.ModelAdmin):

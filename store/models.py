@@ -17,8 +17,8 @@ class Category(models.Model):
         return reverse('list-category', args=[self.slug])
     
 PRODUCT_AVAILABILITY = (
-    ('in store', 'in stock'),
-    ('out of stock', 'out of store')
+    ('in stock', 'in stock'),
+    ('out of stock', 'out of stock')
 )
     
 class Product(models.Model):
@@ -54,8 +54,8 @@ class Product(models.Model):
     
 
 PRODUCT_AVAILABILITY = (
-    ('in store', 'in stock'),
-    ('out of stock', 'out of store')
+    ('in stock', 'in stock'),
+    ('out of stock', 'out of stock')
 )
 
 class AppleSystem(models.Model):
@@ -91,8 +91,8 @@ class AppleSystem(models.Model):
     
     
 PRODUCT_AVAILABILITY = (
-    ('in store', 'in stock'),
-    ('out of stock', 'out of store')
+    ('in stock', 'in stock'),
+    ('out of stock', 'out of stock')
 )
 
 class LaptopsAndTablet(models.Model):
@@ -128,8 +128,8 @@ class LaptopsAndTablet(models.Model):
     
     
 PRODUCT_AVAILABILITY = (
-    ('in store', 'in stock'),
-    ('out of stock', 'out of store')
+    ('in stock', 'in stock'),
+    ('out of stock', 'out of stock')
 )
 
 class GamingLaptops(models.Model):
@@ -165,8 +165,8 @@ class GamingLaptops(models.Model):
     
     
 PRODUCT_AVAILABILITY = (
-    ('in store', 'in stock'),
-    ('out of stock', 'out of store')
+    ('in stock', 'in stock'),
+    ('out of stock', 'out of stock')
 )
 
 class ComputerAccessories(models.Model):
@@ -203,8 +203,8 @@ class ComputerAccessories(models.Model):
 
 
 PRODUCT_AVAILABILITY = (
-    ('in store', 'in stock'),
-    ('out of stock', 'out of store')
+    ('in stock', 'in stock'),
+    ('out of stock', 'out of stock')
 )
 
 class ComponentsAndParts(models.Model):
@@ -240,8 +240,8 @@ class ComponentsAndParts(models.Model):
     
 
 PRODUCT_AVAILABILITY = (
-    ('in store', 'in stock'),
-    ('out of stock', 'out of store')
+    ('in stock', 'in stock'),
+    ('out of stock', 'out of stock')
 )
 
 class SurveillanceSystems(models.Model):
@@ -277,8 +277,8 @@ class SurveillanceSystems(models.Model):
     
 
 PRODUCT_AVAILABILITY = (
-    ('in store', 'in stock'),
-    ('out of stock', 'out of store')
+    ('in stock', 'in stock'),
+    ('out of stock', 'out of stock')
 )
 
 class HeelsAndSlippers(models.Model):
@@ -314,8 +314,8 @@ class HeelsAndSlippers(models.Model):
     
     
 PRODUCT_AVAILABILITY = (
-    ('in store', 'in stock'),
-    ('out of stock', 'out of store')
+    ('in stock', 'in stock'),
+    ('out of stock', 'out of stock')
 )
 
 class ShoesAndSlippers(models.Model):

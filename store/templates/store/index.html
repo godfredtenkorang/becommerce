@@ -32,11 +32,12 @@
   <div class="slide-show">
     <div class="slides-container">
     
-      {% for banner in banners %}
+      <!-- {% for banner in banners %} -->
       <div class="slide">
-        <img src="{{ banner.image.url }}" alt="Slide 2" />
+        <img src="{% static 'store/img/slide2.jpg' %}" alt="Slide 3" />
+
       </div>
-      {% endfor %}
+      <!-- {% endfor %} -->
     </div>
   </div>
 

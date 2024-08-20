@@ -103,28 +103,28 @@
 
       {% for gaminglaptop in gaminglaptops %}
       <!-- product container -->
-        <div class="product">
+      <div class="product">
 
-          <a href="{{ gaminglaptop.get_absolute_url }}">
-            <img src="{{ gaminglaptop.image1.url }}" alt="Slide 2" />
-            <p>{{ gaminglaptop.title }}</p>
-          </a>
+        <a href="{{ gaminglaptop.get_absolute_url }}">
+          <img src="{{ gaminglaptop.image1.url }}" alt="Slide 2" />
+          <p>{{ gaminglaptop.title }}</p>
+        </a>
 
-          <div class="product-details">
+        <div class="product-details">
 
-            <div class="price-wishlist-btn">
-              <div class="price">
-                <p>GH¢{{ gaminglaptop.final_price }}</p>
-                <p class="price-cancel">GH¢{{ gaminglaptop.normal_price }}</p>
-              </div>
-              <div class="add-to-wishlist">
-                <a href="{% url 'add-to-wishlist' gaminglaptop.id %}">
-                  <i class="fa-regular fa-heart"></i>
-                </a>
-              </div>
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>GH¢{{ gaminglaptop.final_price }}</p>
+              <p class="price-cancel">GH¢{{ gaminglaptop.normal_price }}</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="{% url 'add-to-wishlist' gaminglaptop.id %}">
+                <i class="fa-regular fa-heart"></i>
+              </a>
             </div>
           </div>
         </div>
+      </div>
       {% endfor %}
     </div>
   </div>
@@ -383,10 +383,8 @@
             </div>
           </div>
         </div>
-        {% endfor %}
       </div>
-
-
+      {% endfor %}
     </div>
   </div>
 </div>

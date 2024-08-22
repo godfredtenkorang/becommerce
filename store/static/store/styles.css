@@ -1409,9 +1409,9 @@ h1 {
     grid-template-columns: 1fr 1fr;
   }
 
-  .product img {
+  /* .product img {
     height: auto;
-  }
+  } */
 
   .deal-advert {
     flex-direction: column;

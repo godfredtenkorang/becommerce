@@ -1,13 +1,4 @@
 {% extends 'store/base.html' %} {% load static %} {% block content %}
-<div class="row">
-  <div class="col-md-12">
-    {% if messages %}
-    {% for message in messages %}
-    <div id="message-timer" class="alert alert-{{ message.tags }}">{{ message }}</div>
-    {% endfor %}
-    {% endif %}
-  </div>
-</div>
 <header class="page-header">
   <li> <a href="  {% url 'index' %}" href=""><i class="fa-solid fa-less-than"></i> Back</a></li>
   <li>            <a href=><i class="fa-solid fa-shop"></i> Product Detail</a>

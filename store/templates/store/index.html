@@ -6,6 +6,7 @@
 {% endfor %}
 {% endif %}
 
+
 <div class="categories-banner-promo-container">
   <div class="category">
     <div class="cat-head">
@@ -41,8 +42,19 @@
     </div>
   </div>
 
-
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- products main container -->
 <div class="product-main-container">
@@ -55,38 +67,39 @@
         <a href="{% url 'shop' %}">See more</a>
       </div>
     </div>
-
-    <!-- container set the product to diplay grid -->
-    <div class="product-dsiplay-grid">
-
-
-      {% for laptopshop in laptopshops %}
-      <!-- product container -->
-      <div class="product">
-
-        <a href="{{ laptopshop.get_absolute_url }}">
-          <img src="{{ laptopshop.image1.url }}" alt="Slide 2" />
-          <h4>{{ laptopshop.title }}</h4>
-        </a>
-
-        <div class="product-details">
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>GH¢{{ laptopshop.final_price }}</p>
-              <!-- <p class="price-cancel">GH¢{{ laptopshop.normal_price }}</p> -->
-            </div>
-            <div class="add-to-wishlist">
-              <a href="{% url 'add-to-wishlist' laptopshop.id %}">
-                <i class="fa-regular fa-heart"></i>
+    
+    <div class="slider-container">
+      <div class="slider-wrapper">
+        {% for laptopshop in laptopshops %}
+          <div class="slider-slide">
+            <div class="product">
+              <a href="{{ laptopshop.get_absolute_url }}">
+                <img src="{{ laptopshop.image1.url }}" alt="{{ laptopshop.title }}" />
+                <h4>{{ laptopshop.title }}</h4>
               </a>
+              <div class="product-details">
+                <div class="price-wishlist-btn">
+                  <div class="price">
+                    <p>GH¢{{ laptopshop.final_price }}</p>
+                  </div>
+                  <div class="add-to-wishlist">
+                    <a href="{% url 'add-to-wishlist' laptopshop.id %}">
+                      <i class="fa-regular fa-heart"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
+      
+      <!-- Navigation buttons -->
+      <button class="prev"><i class="fa-solid fa-less-than"></i></button>
+      <button class="next"><i class="fa-solid fa-greater-than"></i></button>
     </div>
   </div>
+  
 
 
 
@@ -98,37 +111,37 @@
         <a href="{% url 'shop' %}">See more</a>
       </div>
     </div>
-
+  
     <div class="product-dsiplay-grid">
-
-      {% for gaminglaptop in gaminglaptops %}
-      <!-- product container -->
-      <div class="product">
-
-        <a href="{{ gaminglaptop.get_absolute_url }}">
-          <img src="{{ gaminglaptop.image1.url }}" alt="Slide 2" />
-          <p>{{ gaminglaptop.title }}</p>
-        </a>
-
-        <div class="product-details">
-
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>GH¢{{ gaminglaptop.final_price }}</p>
-              <!-- <p class="price-cancel">GH¢{{ gaminglaptop.normal_price }}</p> -->
-            </div>
-            <div class="add-to-wishlist">
-              <a href="{% url 'add-to-wishlist' gaminglaptop.id %}">
-                <i class="fa-regular fa-heart"></i>
+        {% for gaminglaptop in gaminglaptops %}
+        
+            <div class="product">
+              <a href="{{ gaminglaptop.get_absolute_url }}">
+                <img src="{{ gaminglaptop.image1.url }}" alt="{{ gaminglaptop.title }}" />
+                <h4>{{ gaminglaptop.title }}</h4>
               </a>
+              <div class="product-details">
+                <div class="price-wishlist-btn">
+                  <div class="price">
+                    <p>GH¢{{ gaminglaptop.final_price }}</p>
+                  </div>
+                  <div class="add-to-wishlist">
+                    <a href="{% url 'add-to-wishlist' gaminglaptop.id %}">
+                      <i class="fa-regular fa-heart"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+        
+        {% endfor %}
       </div>
-      {% endfor %}
-    </div>
-  </div>
+  
 
+  </div>
+  
+  
+  
 
   <!-- deal -->
   <div class="deal-advert">
@@ -388,6 +401,16 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+
 <script>
   const slidesContainer = document.querySelector('.slides-container');
   const slides = document.querySelectorAll('.slide');

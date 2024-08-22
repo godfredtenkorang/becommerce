@@ -1593,9 +1593,9 @@ h1 {
     flex: 0 0 100%;
   }
 
-  .product img {
+  /* .product img {
     height: 45vh;
-  }
+  } */
   .slider-container{
     padding: 0;
   }

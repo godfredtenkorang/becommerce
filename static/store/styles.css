@@ -1593,7 +1593,7 @@ h1 {
   }
 
   .product img {
-    height: auto;
+    height: 30px;
   }
   .slider-container{
     padding: 0;

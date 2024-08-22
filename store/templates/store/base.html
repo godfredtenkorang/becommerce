@@ -437,11 +437,173 @@
 
 
 
+<script>
+
+//  document.addEventListener('DOMContentLoaded', function() {
+//   const sliders = document.querySelectorAll('.slider-container');
+
+//   sliders.forEach(slider => {
+//     const slides = slider.querySelectorAll('.slider-slide');
+//     const sliderWrapper = slider.querySelector('.slider-wrapper');
+//     const nextButton = slider.querySelector('.next');
+//     const prevButton = slider.querySelector('.prev');
+//     let currentIndex = 0;
+
+//     // Clone slides for seamless looping
+//     const cloneSlides = Array.from(slides).map(slide => slide.cloneNode(true));
+//     sliderWrapper.append(...cloneSlides);
+
+//     const totalSlides = slides.length;
+//     const allSlides = sliderWrapper.querySelectorAll('.slider-slide');
+//     const totalClonedSlides = cloneSlides.length;
+//     const slideCount = totalSlides + totalClonedSlides;
+
+//     function getSlideWidth() {
+//       return allSlides[0].offsetWidth;
+//     }
+
+//     function getVisibleSlidesCount() {
+//       const containerWidth = sliderWrapper.offsetWidth;
+//       return Math.floor(containerWidth / getSlideWidth());
+//     }
+
+//     function showSlide(index) {
+//       const offset = -index * getSlideWidth();
+//       sliderWrapper.style.transition = 'transform 0.5s ease';
+//       sliderWrapper.style.transform = `translateX(${offset}px)`;
+//     }
+
+//     function updateButtons() {
+//       // No need to disable buttons in a continuous loop
+//     }
+
+//     function handleNext() {
+//       if (currentIndex >= totalSlides - 1) {
+//         currentIndex = 0; // Jump to the start
+//         sliderWrapper.style.transition = 'none'; // Disable transition for instant loop effect
+//         showSlide(currentIndex); // Instant jump to start
+//         setTimeout(() => {
+//           sliderWrapper.style.transition = 'transform 0.5s ease'; // Re-enable transition
+//           showSlide(currentIndex); // Smooth transition to the next slides
+//         }, 20); // Short delay to apply transition
+//       } else {
+//         currentIndex++;
+//         showSlide(currentIndex);
+//       }
+//       updateButtons();
+//     }
+
+//     function handlePrev() {
+//       if (currentIndex <= 0) {
+//         currentIndex = totalSlides - 1; // Jump to the end
+//         sliderWrapper.style.transition = 'none'; // Disable transition for instant loop effect
+//         showSlide(currentIndex); // Instant jump to the end
+//         setTimeout(() => {
+//           sliderWrapper.style.transition = 'transform 0.5s ease'; // Re-enable transition
+//           showSlide(currentIndex); // Smooth transition to the previous slides
+//         }, 20); // Short delay to apply transition
+//       } else {
+//         currentIndex--;
+//         showSlide(currentIndex);
+//       }
+//       updateButtons();
+//     }
+
+//     nextButton.addEventListener('click', handleNext);
+//     prevButton.addEventListener('click', handlePrev);
+
+//     // Initial display
+//     showSlide(currentIndex);
+//     updateButtons();
+
+//     // Adjust on resize
+//     window.addEventListener('resize', function() {
+//       showSlide(currentIndex);
+//     });
+//   });
+// });
 
 
+document.addEventListener('DOMContentLoaded', function() {
+  const sliders = document.querySelectorAll('.slider-container');
+
+  sliders.forEach(slider => {
+    const slides = slider.querySelectorAll('.slider-slide');
+    const sliderWrapper = slider.querySelector('.slider-wrapper');
+    const nextButton = slider.querySelector('.next');
+    const prevButton = slider.querySelector('.prev');
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    function getSlideWidth() {
+      return slides[0].offsetWidth;
+    }
+
+    function getVisibleSlidesCount() {
+      const containerWidth = sliderWrapper.offsetWidth;
+      return Math.floor(containerWidth / getSlideWidth());
+    }
+
+    function showSlide(index) {
+      const offset = -index * getSlideWidth();
+      sliderWrapper.style.transition = 'transform 0.5s ease';
+      sliderWrapper.style.transform = `translateX(${offset}px)`;
+    }
+
+    function updateButtons() {
+      // No need to disable buttons in a continuous loop
+    }
+
+    function handleNext() {
+      if (currentIndex >= totalSlides - getVisibleSlidesCount()) {
+        // Slide back to the start after reaching the end
+        sliderWrapper.style.transition = 'none'; // Disable transition for instant jump
+        currentIndex = 0;
+        showSlide(currentIndex);
+        setTimeout(() => {
+          sliderWrapper.style.transition = 'transform 0.5s ease'; // Re-enable transition
+          showSlide(currentIndex); // Smooth transition to next slides
+        }, 20); // Short delay to apply transition
+      } else {
+        currentIndex++;
+        showSlide(currentIndex);
+      }
+      updateButtons();
+    }
+
+    function handlePrev() {
+      if (currentIndex <= 0) {
+        // Slide to the end after reaching the start
+        sliderWrapper.style.transition = 'none'; // Disable transition for instant jump
+        currentIndex = totalSlides - getVisibleSlidesCount();
+        showSlide(currentIndex);
+        setTimeout(() => {
+          sliderWrapper.style.transition = 'transform 0.5s ease'; // Re-enable transition
+          showSlide(currentIndex); // Smooth transition to previous slides
+        }, 20); // Short delay to apply transition
+      } else {
+        currentIndex--;
+        showSlide(currentIndex);
+      }
+      updateButtons();
+    }
+
+    nextButton.addEventListener('click', handleNext);
+    prevButton.addEventListener('click', handlePrev);
+
+    // Initial display
+    showSlide(currentIndex);
+    updateButtons();
+
+    // Adjust on resize
+    window.addEventListener('resize', function() {
+      showSlide(currentIndex);
+    });
+  });
+});
 
 
-
+</script>
 
 
 

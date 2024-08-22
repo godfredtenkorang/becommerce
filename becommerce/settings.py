@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['.gbstoregh.com','159.65.238.24', '127.0.0.1','localhost','*']
+ALLOWED_HOSTS = ['.gbstoregh.com','159.65.238.24', '127.0.0.1','localhost']
 
 SITE_ID = 2
 # Application definition

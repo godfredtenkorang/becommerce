@@ -243,7 +243,8 @@ body {
 .categories-banner-promo-container {
   display: flex;
   margin: 0 10%;
-height: 65vh;
+  height: 60vh;
+  background-color: var(--white);
   position: relative;
 }
 
@@ -265,7 +266,7 @@ height: 65vh;
   padding: 0 10px;
   width: 100%;
   max-width: 250px;
-  background-color: var(--white);
+  
   height: 65vh;
 }
 .cat-links a {
@@ -394,7 +395,7 @@ height: 65vh;
 .product {
   width: 100%;
   max-width: 300px;
-  min-height: 30vh;
+  min-height: 40vh;
   background-color: var(--white);
   border: solid 1px rgba(0, 0, 0, 0.1);
   margin: 0 auto; /* Center the product */

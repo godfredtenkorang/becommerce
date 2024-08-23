@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'mathfilters',
     'crispy_forms',
     'crispy_bootstrap4',
+    'django.contrib.sites',
     'django.contrib.sitemaps',
 ]
 

@@ -42,6 +42,17 @@
     {% else %}
     <title>GB Store</title>
     {% endif %}
+    <meta name="description" content="E-commerce platform for online shopping">
+    <meta name="keywords" content="cart, image, category, social platform, shoping, captions, ranking e-commerce">
+    <meta name="author" content="Benjamin Ohene Asare">
+
+    <meta property="og:url" content="http://{{ request.META.HTTP_HOST }}{{ request.path }}">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{% block og-caption %}GB Store GH{% endblock %}">
+    <meta property="og:description" content="{% block og-description %}E-commerce platform for online shopping{% endblock %}">
+    <meta property="og:image" content="{% block og-image %}http://{{ request.META.HTTP_HOST }}{% static 'store/img/gblogo1.png' %}{% endblock %}">
+    <meta property="twitter:image" content="{% block tw-image %}http://{{ request.META.HTTP_HOST }}{% static 'store/img/gblogo1.png' %}{% endblock %}">
+
   </head>
 
   <body>

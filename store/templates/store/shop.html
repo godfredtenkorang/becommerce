@@ -1,4 +1,11 @@
-{% extends 'store/base.html' %} {% load static %} {% block content %}
+{% extends 'store/base.html' %}
+{% load static %} 
+{% block og-caption %}{{ shop.content }}{% endblock %}"
+{% block og-description %}shared by {{ shop.user }} @ {{ shop.title }}{% endblock %}
+{% block og-image %}{{ shop.image }}{% endblock %}
+{% block tw-image %}{{ shop.image }}{% endblock %}
+
+{% block content %}
 
 <header class="page-header">
   <li> <a href="  {% url 'shop' %}"><i class="fa-solid fa-shop"></i> Shop</a>

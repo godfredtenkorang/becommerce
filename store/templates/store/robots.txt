@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /gbstore_admin/
+Disallow: /users/

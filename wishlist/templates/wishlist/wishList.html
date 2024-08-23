@@ -42,7 +42,7 @@
                 <td>GH¢{{ item.product.final_price }}</td>
                 <td><a href="{% url 'product-info' item.product.slug %}" class="btn btn-cart">Buy Now</a></td>
                 <td>
-                    <a href="{% url 'remove-from-wishlist' item.product.id %}" type="submit"
+                    <a href="{% url 'remove-from-wishlist' item.product.slug %}" type="submit"
                         class="btn btn-remove">Remove</a>
                 </td>
             </tr>

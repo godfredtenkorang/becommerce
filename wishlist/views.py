@@ -6,8 +6,8 @@ from django.contrib import messages
 from .forms import ReviewForm
 
 @login_required(login_url='my-login')
-def add_to_wishlist(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
+def add_to_wishlist(request, product_slug):
+    product = get_object_or_404(Product, slug=product_slug)
     wishlist, created = WishList.objects.get_or_create(user=request.user, product=product)
     if created:
         messages.success(request, "Your product has been added to wishlist")
@@ -15,8 +15,8 @@ def add_to_wishlist(request, product_id):
     return redirect('WishList')
 
 @login_required(login_url='my-login')
-def remove_from_wishlist(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
+def remove_from_wishlist(request, product_slug):
+    product = get_object_or_404(Product, slug=product_slug)
     
     WishList.objects.filter(user=request.user, product=product).delete()
     

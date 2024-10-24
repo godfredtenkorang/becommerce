@@ -3,20 +3,41 @@ from .cart import Cart
 from store.models import Product, Newsletter
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
+from django.contrib import messages
+from .models import ShippingFee
+from decimal import Decimal
 
+import json
+from decimal import Decimal
+
+class DecimalEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Decimal):
+            return float(obj)
+        return json.JSONEncoder.default(self, obj)
 
 
 # Create your views here.
 def cart(request):
     cart = Cart(request)
-    if request.method == 'POST':
-        email = request.POST['email']
-        
-        newletter = Newsletter(email=email)
-        newletter.save()
-        return redirect('index')
     
-    return render(request, 'cart/cart.html', {'cart': cart, 'title': 'Cart'})
+    
+    if request.method == 'POST':
+        if 'apply_coupon' in request.POST:
+            coupon_code = request.POST.get('coupon_code')
+            if cart.apply_coupon(coupon_code):
+                messages.success(request, f'Coupon "{coupon_code}" applied successfully!')
+            else:
+                messages.warning(request, f'Coupon "{coupon_code}" is not valid.')
+            return redirect('cart')
+            
+    context = {
+        'cart': cart,
+        'title': 'Cart',
+        'shipping_fees': ShippingFee.objects.all(),
+    }
+    
+    return render(request, 'cart/cart.html', context)
 
 def add_cart(request):
     cart = Cart(request)

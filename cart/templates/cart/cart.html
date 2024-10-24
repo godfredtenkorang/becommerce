@@ -1,45 +1,52 @@
-{% extends 'store/base.html' %} 
+{% extends 'store/base.html' %}
 {% load static %}
 {% load mathfilters %}
 {% block content %}
 
 <style>
-   
+    .cart-container {
+        text-align: center;
+        background-color: #fff;
+        padding: 50px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-.cart-container {
-    text-align: center;
-    background-color: #fff;
-    padding: 50px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+    .cart-empty h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #333;
+    }
 
-.cart-empty h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
-}
+    .cart-empty p {
+        color: #666;
+        margin-bottom: 20px;
+    }
 
-.cart-empty p {
-    color: #666;
-    margin-bottom: 20px;
-}
+    .shop-now-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #bf1b26;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
 
-.shop-now-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #bf1b26;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.shop-now-button:hover {
-    background-color: #bf1b26;
-    color: white;
-}
+    .shop-now-button:hover {
+        background-color: #bf1b26;
+        color: white;
+    }
 </style>
+
+<section class="text-center">
+{% if messages %}
+    {% for message in messages %}
+        <div id="message-timer" class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+</section>
+
 
 <header class="page-header">
     <li> <a href="  {% url 'index' %}" href=""><i class="fa-solid fa-less-than"></i> Back</a></li>
@@ -47,6 +54,7 @@
     </li>
 
 </header>
+
 
 
 <div class="banner-container">
@@ -67,8 +75,10 @@
                     <p>{{ product.content }}</p>
 
                     <div class="delete">
-                        <button type="button" data-index="{{product.id}}" class="btn btn-primary btn-sm update-button">Update</button>
-                        <button type="button" data-index="{{product.id}}" class="btn btn-danger btn-sm delete-button" >Delete</button>
+                        <button type="button" data-index="{{product.id}}"
+                            class="btn btn-primary btn-sm update-button">Update</button>
+                        <button type="button" data-index="{{product.id}}"
+                            class="btn btn-danger btn-sm delete-button">Delete</button>
                         <!-- <p><i class="fa-solid fa-trash"></i> Remove</p>
                         <p><i class="fa-solid fa-trash"></i> Update</p> -->
                     </div>
@@ -132,40 +142,60 @@
         {% endif %}
     </div>
 
+
     <div class="order-summary-container">
         <h3>Order Summary</h3>
 
         <div class="sub-total">
             <p>Sub Total:</p>
             <p class="sub-total" id="total">GH¢{{ cart.get_total }}</p>
-
         </div>
 
         <div class="delivery-fee">
             <p>Delivery Fee:</p>
-            <p class="delivery-fee">GH¢20.00</p>
+            <p class="delivery-fee">GH¢25.00</p>
         </div>
-
 
         <div class="total">
             <p>Total:</p>
             <p class="total">GH¢{{ cart.get_all_total }}</p>
         </div>
 
-
         <div class="check-out">
             <a class="my-button" href="{% url 'checkout' %}">
                 <button>Checkout</button>
             </a>
         </div>
+        <br>
+        <form method="post" class="news-letter">
+            {% csrf_token %}
+            <input type="text" name="coupon_code" placeholder="Enter coupon code" required>
+            <button type="submit" id="apply-coupon" name="apply_coupon">Apply Coupon</button>
+
+        </form>
+
 
     </div>
 
 </div>
+<!-- <div class="container">
+    <div class="col-5">
+    <form method="post" class="news-letter">
+        {% csrf_token %}
+            <input type="text" name="coupon_code" placeholder="Enter coupon code" class="" required>
 
+        <button type="submit" id="apply-coupon" name="apply_coupon">Apply Coupon</button>
 
+    </form>
+    </div>
 
+    <form method="post" class="pt-2">
+        {% csrf_token %}
+        <button type="submit" name="remove_coupon" class="btn btn-danger btn-sm">Remove Coupon</button>
+    </form>
+</div> -->
 </div>
+
 
 
 
@@ -241,62 +271,62 @@
     // Delete Button
 
     $(document).on('click', '.delete-button', function (e) {
-            e.preventDefault();
+        e.preventDefault();
 
-            $.ajax({
-                type: 'POST',
-                url: '{% url "delete-cart" %}',
-                data: {
-                    product_id: $(this).data('index'),
-                    csrfmiddlewaretoken: "{{csrf_token}}",
-                    action: 'post'
-                },
-                success: function (json) {
-                    //console.log(json)
+        $.ajax({
+            type: 'POST',
+            url: '{% url "delete-cart" %}',
+            data: {
+                product_id: $(this).data('index'),
+                csrfmiddlewaretoken: "{{csrf_token}}",
+                action: 'post'
+            },
+            success: function (json) {
+                //console.log(json)
 
-                    location.reload(true)
+                location.reload(true)
 
-                    document.getElementById('cart-qty').textContent = json.qty
+                document.getElementById('cart-qty').textContent = json.qty
 
-                    document.getElementById('total').textContent = json.total
-                },
-                error: function (xhr, errmsg, err) {
+                document.getElementById('total').textContent = json.total
+            },
+            error: function (xhr, errmsg, err) {
 
-                }
-            });
-        })
+            }
+        });
+    })
 
 
-        // update button
+    // update button
 
-        $(document).on('click', '.update-button', function (e) {
-                e.preventDefault();
+    $(document).on('click', '.update-button', function (e) {
+        e.preventDefault();
 
-                var thisproductid = $(this).data('index');
+        var thisproductid = $(this).data('index');
 
-                $.ajax({
-                    type: 'POST',
-                    url: '{% url "update-cart" %}',
-                    data: {
-                        product_id: $(this).data('index'),
-                        product_quantity: $('#select' + thisproductid + ' option:selected').text(),
-                        csrfmiddlewaretoken: "{{csrf_token}}",
-                        action: 'post'
-                    },
-                    success: function (json) {
-                        //console.log(json)
+        $.ajax({
+            type: 'POST',
+            url: '{% url "update-cart" %}',
+            data: {
+                product_id: $(this).data('index'),
+                product_quantity: $('#select' + thisproductid + ' option:selected').text(),
+                csrfmiddlewaretoken: "{{csrf_token}}",
+                action: 'post'
+            },
+            success: function (json) {
+                //console.log(json)
 
-                        location.reload(true)
+                location.reload(true)
 
-                        document.getElementById('cart-qty').textContent = json.qty
+                document.getElementById('cart-qty').textContent = json.qty
 
-                        document.getElementById('total').textContent = json.total
-                    },
-                    error: function (xhr, errmsg, err) {
+                document.getElementById('total').textContent = json.total
+            },
+            error: function (xhr, errmsg, err) {
 
-                    }
-                });
-            })
+            }
+        });
+    })
 </script>
 
 

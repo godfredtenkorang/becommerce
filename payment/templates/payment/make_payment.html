@@ -47,7 +47,7 @@
                         <h6 class="my-0">{{ product.title }}</h6>
                         <!-- <small class="text-muted">{{ product.description }}</small> -->
                     </div>
-                    <span class="text-muted">GH¢{{ product.final_price|mul:item.qty }}</span>
+                    <span>GH¢{{ product.final_price|mul:item.qty }}</span>
                 </li>
             </ul>
             {% endwith %}
@@ -57,13 +57,13 @@
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Subtotal</span>
-                    <span class="text-muted">GH¢{{ cart.get_total }}</span>
+                    <span>GH¢{{ cart.get_total }}</span>
                 </li>
             </ul>
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Shipping Fee</span>
-                    <span class="text-muted">GH¢20.00</span>
+                    <span>GH¢{{ cart.get_shipping_fee }}</span>
                 </li>
             </ul>
 

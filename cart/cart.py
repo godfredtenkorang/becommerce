@@ -1,5 +1,6 @@
-from decimal import Decimal
+from decimal import Decimal, ROUND_DOWN
 from store.models import Product
+from .models import Coupon, ShippingFee
 
 class Cart():
     
@@ -16,6 +17,9 @@ class Cart():
             cart = self.session['session_key'] = {}
             
         self.cart = cart
+        
+        self.coupon_code = self.session.get('coupon_code', None)
+        self.discount_percentage = self.session.get('discount_percentage', 0)
         
     
     def add(self, product, product_qty):
@@ -47,6 +51,28 @@ class Cart():
             
         self.session.modified = True
         
+    def apply_coupon(self, coupon_code):
+        try:
+            coupon = Coupon.objects.get(code=coupon_code)
+            self.coupon_code = coupon.code
+            self.discount_percentage = coupon.discount_percentage
+            self.session['coupon_code'] = coupon.code
+            self.session['discount_percentage'] = coupon.discount_percentage
+            self.session.modified = True
+            return True
+        except:
+            self.remove_coupon()
+            return False
+                
+    def remove_coupon(self):
+        self.coupon_code = None
+        self.discount_percentage = 0
+        if 'coupon_code' in self.session:
+            del self.session['coupon_code']
+        if 'discount_percentage' in self.session:
+            del self.session['discount_percentage']
+        self.session.modified = True
+        
     def __len__(self):
         return sum(item['qty'] for item in self.cart.values())
     
@@ -68,7 +94,10 @@ class Cart():
             yield item
             
     def get_total(self):
-        return sum(Decimal(item['final_price']) * item['qty'] for item in self.cart.values())
+        total = sum(Decimal(item['final_price']) * item['qty'] for item in self.cart.values())
+        total -= total * Decimal(self.discount_percentage / 100)
+        return total.quantize(Decimal('0.01'), rounding=ROUND_DOWN)
     
     def get_all_total(self):
-        return sum(Decimal(item['final_price']) * item['qty'] for item in self.cart.values()) + 20
+        total = self.get_total() + Decimal(25)
+        return total.quantize(Decimal('0.01'), rounding=ROUND_DOWN)

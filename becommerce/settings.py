@@ -28,7 +28,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['.gbstoregh.com','159.65.238.24', '127.0.0.1','localhost']
 
-SITE_ID = 2
+SITE_ID = 3
 # Application definition
 
 INSTALLED_APPS = [

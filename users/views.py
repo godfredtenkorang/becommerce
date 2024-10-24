@@ -31,24 +31,26 @@ def register(request):
         
         if form.is_valid():
             user = form.save()
-            user.is_active = False
+            user.is_active = True
             user.save()
+            
+            return redirect('my-login')
 
             
             # Email verification setup (template)
             
-            current_site = get_current_site(request)
-            subject = 'Account verification email'
-            message = render_to_string('users/registration/email-verification.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': user_tokenizer_generate.make_token(user),
-            })
+            # current_site = get_current_site(request)
+            # subject = 'Account verification email'
+            # message = render_to_string('users/registration/email-verification.html', {
+            #     'user': user,
+            #     'domain': current_site.domain,
+            #     'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            #     'token': user_tokenizer_generate.make_token(user),
+            # })
             
-            user.email_user(subject=subject, message=message)
+            # user.email_user(subject=subject, message=message)
             
-            return redirect('email-verification-sent')
+            # return redirect('email-verification-sent')
         
             
     if request.method == 'POST':

@@ -28,7 +28,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['.gbstoregh.com','159.65.238.24', '127.0.0.1','localhost']
 
-SITE_ID = 3
+SITE_ID = 2
 # Application definition
 
 INSTALLED_APPS = [
@@ -98,27 +98,27 @@ WSGI_APPLICATION = 'becommerce.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('DB_TABLE'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
-    }
-}
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'testingdb',
-#         'USER': 'testing',
-#         'PASSWORD': 'Gony@100',
-#         'HOST': 'localhost',
-#         'PORT': 5432,
+#         'NAME': config('DB_TABLE'),
+#         'USER': config('DB_USER'),
+#         'PASSWORD': config('DB_PASSWORD'),
+#         'HOST': config('DB_HOST'),
+#         'PORT': config('DB_PORT'),
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'testingdb',
+        'USER': 'testing',
+        'PASSWORD': 'Gony@100',
+        'HOST': 'localhost',
+        'PORT': 5432,
+    }
+}
 
 
 # Password validation

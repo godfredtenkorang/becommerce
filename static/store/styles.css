@@ -711,7 +711,7 @@ footer li {
 .order-summary-container {
   width: 100%;
   max-width: 30%;
-  height: 35vh;
+  height: 48vh;
   background-color: var(--white);
   padding: 10px;
 }

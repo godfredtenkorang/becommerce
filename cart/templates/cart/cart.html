@@ -143,7 +143,7 @@
     </div>
 
 
-    <div class="order-summary-container">
+    <div class="order-summary-container pb-5">
         <h3>Order Summary</h3>
 
         <div class="sub-total">
@@ -167,6 +167,8 @@
             </a>
         </div>
         <br>
+        <h6>Promo Code</h6>
+        <p>If you have a promo code, please enter it below to receive your credit.</p>
         <form method="post" class="news-letter">
             {% csrf_token %}
             <input type="text" name="coupon_code" placeholder="Enter coupon code" required>

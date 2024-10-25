@@ -711,7 +711,7 @@ footer li {
 .order-summary-container {
   width: 100%;
   max-width: 30%;
-  height: 48vh;
+min-height:40vh;
   background-color: var(--white);
   padding: 10px;
 }
@@ -720,6 +720,26 @@ footer li {
 .delivery-fee {
   display: flex;
   justify-content: space-between;
+}
+
+.coupon{
+  display: flex;
+  width: 100%;
+}
+.coupon input{
+  width: 100%;
+  min-height: 6vh;
+  padding: 5px;
+  outline: none;
+}
+.coupon button{
+ font-size: 0.8rem;
+ color: var(--white);
+ padding: 5px;
+  min-height: 6vh;
+  border: none;
+  background-color: var(--red);
+  cursor: pointer;
 }
 
 .check-out {
@@ -1321,6 +1341,7 @@ h1 {
   }
   .order-summary-container {
     max-width: none;
+    min-height: 50vh;
   }
 
   .inside {

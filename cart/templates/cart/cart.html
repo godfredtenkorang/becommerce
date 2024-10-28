@@ -175,6 +175,10 @@
             <button type="submit" id="apply-coupon" name="apply_coupon">Apply Coupon</button>
 
         </form>
+        <form method="post" class="pt-2">
+            {% csrf_token %}
+            <button type="submit" name="remove_coupon" class="btn btn-danger btn-sm">Remove Coupon</button>
+        </form>
 
 
     </div>

@@ -29,7 +29,10 @@ def cart(request):
                 messages.success(request, f'Coupon "{coupon_code}" applied successfully!')
             else:
                 messages.warning(request, f'Coupon "{coupon_code}" is not valid.')
-            return redirect('cart')
+            
+        elif 'remove_coupon' in request.POST:
+            cart.remove_coupon()
+        return redirect('cart')
             
     context = {
         'cart': cart,

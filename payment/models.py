@@ -37,7 +37,7 @@ class Order(models.Model):
         verbose_name_plural = 'Orders'
     
     def __str__(self):
-        return "Order - #" + str(self.id)
+        return f"Order - #{self.id} from {self.email}"
 
 CHOICES = (
     ('Order Placed', 'Order Placed'),
@@ -62,7 +62,7 @@ class OrderItem(models.Model):
         ordering = ['-date_added']
     
     def __str__(self):
-        return "Order Item - #" + str(self.id)
+        return f"Order Item - #{self.id} - {self.order}"
 
 
 class Payment(models.Model):

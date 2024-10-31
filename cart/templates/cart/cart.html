@@ -151,6 +151,21 @@
             <p class="sub-total" id="total">GH¢{{ cart.get_total }}</p>
         </div>
 
+        <!-- <form method="post">
+            {% csrf_token %}
+            <h2>Shipping Information</h2>
+            <label for="region">Select Country:</label>
+            <select name="region" id="region" onchange="this.form.submit()">
+                <option value="">--Select Country--</option>
+                {% for delivery in delivery_fees %}
+                <option value="{{ delivery.region }}">{{ delivery.region }}</option>
+                {% endfor %}
+            </select>
+        
+            <p>Delivery Fee: {{ cart.get_delivery_fee }}</p>
+
+        </form> -->
+
         <div class="delivery-fee">
             <p>Delivery Fee:</p>
             <p class="delivery-fee">GH¢25.00</p>

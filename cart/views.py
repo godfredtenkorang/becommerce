@@ -32,12 +32,15 @@ def cart(request):
             
         elif 'remove_coupon' in request.POST:
             cart.remove_coupon()
+        elif 'region' in request.POST:
+            region = request.POST.get('region')
+            cart.set_delivery_fee(region)
         return redirect('cart')
             
     context = {
         'cart': cart,
         'title': 'Cart',
-        'shipping_fees': ShippingFee.objects.all(),
+        'delivery_fees': ShippingFee.objects.all(),
     }
     
     return render(request, 'cart/cart.html', context)

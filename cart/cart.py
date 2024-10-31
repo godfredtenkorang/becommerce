@@ -20,6 +20,19 @@ class Cart():
         
         self.coupon_code = self.session.get('coupon_code', None)
         self.discount_percentage = self.session.get('discount_percentage', 0)
+        self.delivery_fee = Decimal(0.00)
+        
+    def set_delivery_fee(self, region):
+        try:
+            delivery_fee = ShippingFee.objects.get(region=region)
+            self.delivery_fee = delivery_fee.fee
+            self.session['delivery_fee'] = str(delivery_fee.fee)
+            self.session.modified = True
+        except ShippingFee.DoesNotExist:
+            self.delivery_fee = Decimal(0.00)
+            
+    def get_delivery_fee(self):
+        return self.delivery_fee.quantize(Decimal('0.01'), rounding=ROUND_DOWN)
         
     
     def add(self, product, product_qty):

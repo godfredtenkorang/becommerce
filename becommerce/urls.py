@@ -22,6 +22,9 @@ from store.sitemaps import *
 from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
 
+from django.views.generic import RedirectView
+import os
+
 
 # Sitemaps
 from django.contrib.sitemaps.views import sitemap
@@ -41,6 +44,7 @@ urlpatterns = [
     path('payment/', include('payment.urls')),
     path('users/', include('users.urls')),
     path('wishlist/', include('wishlist.urls')),
+    path('.well-known', RedirectView.as_view(url=os.path.join(settings.BASE_DIR, '.well-known'), permanent=False)),
     
  
 ]

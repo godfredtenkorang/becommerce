@@ -76,9 +76,21 @@
 
 
 
-
           </a>
         </div>
+
+
+        <div class="search-cat">
+          <button class="cat-btn btns"><i class="fa-solid fa-caret-down"></i></button>
+          <form class="search-bar" action="{% url 'search' %}" role="search">
+            <input type="text" name="search" id="" placeholder="What are you looking for ?"/>
+            <button type="submit">   <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+      </form>
+    
+    
+         </div>  
+        
         <div class="accounts">
           {% if user.is_authenticated %}
           <div class="login logout">
@@ -94,13 +106,13 @@
           {% endif %}
         </div>
         <div class="first-col">
-          <div class="contact-number">
+          <!-- <div class="contact-number">
             <a href="https://wa.link/fvzhs7"> <i class="fa-solid fa-phone"></i> +233 55 815 6844 </a>
             <a href="https://wa.link/v277iy"><i class="fa-solid fa-phone"></i>  +233 55 391 2334</a>
-          </div>
+          </div> -->
 
-          <div class="shopping-cart">
-            <!-- this cart shows on big screen-->
+          <!-- <div class="shopping-cart">
+           
 
             <a href="{% url 'cart' %}">
               <span> Shopping Cart</span>
@@ -118,7 +130,7 @@
 
              
             </a>
-          </div>
+          </div> -->
           {% if request.user.is_authenticated %}
           {% if request.user.first_name %}
           <p class="welcome"> {{ request.user.first_name|slice:":1" }}</p>
@@ -134,7 +146,7 @@
         </div>
       </div>
 
-      <div class="second-header">
+      <!-- <div class="second-header">
         <div class="logo">
           <a href="  {% url 'index' %}"> 
 
@@ -144,18 +156,8 @@
           
         </div>
    
-     <div class="search-cat">
-      <button class="cat-btn btns"><i class="fa-solid fa-caret-down"></i></button>
-      <form class="search-bar" action="{% url 'search' %}" role="search">
-        <input type="text" name="search" id="" placeholder="What are you looking for ?"/>
-        <button type="submit">   <i class="fa fa-search" aria-hidden="true"></i>
-        </button>
-  </form>
-
-
-     </div>  
        
-      </div>
+      </div> -->
 
       <div class="third-header">
         <div class="nav-links">
@@ -206,7 +208,26 @@
           <li>
             <a href="  {% url 'contactUs' %}"><i class="fa-regular fa-heart"></i> Contact us</a>
           </li> -->
-        
+      <div class="shopping-cart">
+           
+
+            <a href="{% url 'cart' %}">
+              <span> Shopping Cart</span>
+              <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+              <div id="cart-qty" class="d-inline-flex">
+                {% with qty_amount=cart|length %}
+                  {% if qty_amount > 0 %}
+                    {{qty_amount}}
+                  {% else %}
+                    0
+                  {% endif %}
+                {% endwith %}
+              </div>
+              <br />
+
+             
+            </a>
+          </div> 
         </div>
       </div>
     </header>

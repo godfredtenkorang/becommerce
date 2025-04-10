@@ -20,23 +20,53 @@ class DecimalEncoder(json.JSONEncoder):
 # Create your views here.
 def cart(request):
     cart = Cart(request)
-    
-    
-    if request.method == 'POST':
-        if 'apply_coupon' in request.POST:
-            coupon_code = request.POST.get('coupon_code')
-            if cart.apply_coupon(coupon_code):
-                messages.success(request, f'Coupon "{coupon_code}" applied successfully!')
-            else:
-                messages.warning(request, f'Coupon "{coupon_code}" is not valid.')
+    if request.user.is_authenticated:
+        try:
+            if request.method == 'POST':
+                if 'apply_coupon' in request.POST:
+                    coupon_code = request.POST.get('coupon_code')
+                    if cart.apply_coupon(coupon_code):
+                        messages.success(request, f'Coupon "{coupon_code}" applied successfully!')
+                    else:
+                        messages.warning(request, f'Coupon "{coupon_code}" is not valid.')
+                    
+                elif 'remove_coupon' in request.POST:
+                    cart.remove_coupon()
+                    
+                elif 'region' in request.POST:
+                    region = request.POST.get('region')
+                    print(f"Received region for delivery fee: {region}")
+                    cart.set_delivery_fee(region)
+                    
+            context = {
+                'cart': cart,
+                'title': 'Cart',
+                'delivery_fees': ShippingFee.objects.all(),
+            }
+            return render(request, 'cart/cart.html', context)
             
-        elif 'remove_coupon' in request.POST:
-            cart.remove_coupon()
-        elif 'region' in request.POST:
-            region = request.POST.get('region')
-            cart.set_delivery_fee(region)
-        return redirect('cart')
+        except:
+            if request.method == 'POST':
+                if 'region' in request.POST:
+                    region = request.POST.get('region')
+                    print(f"Received region for delivery fee: {region}")
+                    cart.set_delivery_fee(region)
+                    
+            context = {
+                'cart': cart,
+                'title': 'Cart',
+                'delivery_fees': ShippingFee.objects.all(),
+            }
+            return render(request, 'cart/cart.html', context)
             
+            
+    else:
+        if request.method == 'POST':
+            if 'region' in request.POST:
+                region = request.POST.get('region')
+                print(f"Received region for delivery fee: {region}")
+                cart.set_delivery_fee(region)
+                    
     context = {
         'cart': cart,
         'title': 'Cart',

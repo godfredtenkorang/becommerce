@@ -22,18 +22,6 @@ class Cart():
         self.discount_percentage = self.session.get('discount_percentage', 0)
         self.delivery_fee = Decimal(0.00)
         
-    def set_delivery_fee(self, region):
-        try:
-            delivery_fee = ShippingFee.objects.get(region=region)
-            self.delivery_fee = delivery_fee.fee
-            self.session['delivery_fee'] = str(delivery_fee.fee)
-            self.session.modified = True
-        except ShippingFee.DoesNotExist:
-            self.delivery_fee = Decimal(0.00)
-            
-    def get_delivery_fee(self):
-        return self.delivery_fee.quantize(Decimal('0.01'), rounding=ROUND_DOWN)
-        
     
     def add(self, product, product_qty):
         product_id = str(product.id)
@@ -86,6 +74,21 @@ class Cart():
             del self.session['discount_percentage']
         self.session.modified = True
         
+    def set_delivery_fee(self, region):
+        print(f"Setting delivery fee for region: {region}")
+        try:
+            delivery_fee = ShippingFee.objects.get(region=region)
+            self.delivery_fee = delivery_fee.fee
+            self.session['delivery_fee'] = str(delivery_fee.fee)
+            self.session.modified = True
+        except ShippingFee.DoesNotExist:
+            print(f"No shipping fee found for region: {region}")
+            self.delivery_fee = Decimal(0.00)
+            
+            
+    def get_delivery_fee(self):
+        return self.delivery_fee.quantize(Decimal('0.01'), rounding=ROUND_DOWN)
+        
     def __len__(self):
         return sum(item['qty'] for item in self.cart.values())
     
@@ -112,5 +115,5 @@ class Cart():
         return total.quantize(Decimal('0.01'), rounding=ROUND_DOWN)
     
     def get_all_total(self):
-        total = self.get_total() + Decimal(25)
+        total = self.get_total() + self.get_delivery_fee()
         return total.quantize(Decimal('0.01'), rounding=ROUND_DOWN)

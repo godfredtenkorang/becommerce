@@ -1,0 +1,307 @@
+{% extends 'Dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<div class="main">
+  <div class="banner-containers">
+    <img src="{% static 'store/img/banner.jpg' %}" alt="Slide 2" />
+    <div class="banners-text">
+     
+    </div>
+
+  </div>
+
+
+  <div class="filter-bar">
+   
+
+    <input type="text" id="monthFilter" placeholder="Enter Month (e.g., April)">
+    <input type="number" id="yearFilter" placeholder="Enter Year (e.g., 2025)">
+    <button onclick="applyFilter()" class="filter-btn">Filter</button>
+    <button onclick="resetTable()" class="reset-btn">Reset</button>
+  </div>
+
+  <div id="noResultsMessage" class="no-results-message"></div>
+
+
+  <table id="salesTable">
+    <h2>Monthly Sales Overview</h2> <br>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Month</th>
+        <th>Total Orders</th>
+        <th>Total Sales</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- JS will populate rows -->
+    </tbody>
+  </table>
+  
+<!-- Canvas element for the chart -->
+<canvas id="salesChart" style="height: 100px;"></canvas>
+
+
+
+
+
+<div class="best-sellers">
+  <h3>🛒 Best-Selling Products</h3>
+  <table class="bestsellers-table">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Quantity Sold</th>
+        <th>Total Revenue</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Wireless Headphones</td>
+        <td>120</td>
+        <td>$2,400</td>
+        <td>⭐ 4.6</td>
+      </tr>
+      <tr>
+        <td>Smart Watch</td>
+        <td>95</td>
+        <td>$1,900</td>
+        <td>⭐ 4.4</td>
+      </tr>
+      <tr>
+        <td>Laptop Sleeve</td>
+        <td>80</td>
+        <td>$1,200</td>
+        <td>⭐ 4.8</td>
+      </tr>
+      <!-- More rows can be dynamically populated -->
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="user-engagement">
+  <h2>Users Feedback</h2>
+  
+  <!-- Table for Average Customer Rating -->
+  <!-- <table class="metrics-table">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Average Customer Rating</td>
+        <td>
+          <div class="rating-bar">
+            <div class="stars">
+              <span class="star-rating" style="width: 80%"></span> 
+            </div>
+            <span class="rating-value">4.0 / 5</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+  
+  <!-- Table for Customer Feedback -->
+  <table class="feedback-table">
+    <thead>
+      <tr>
+        <th>Customer Name</th>
+        <th>Rating</th>
+        <th>Feedback</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John Doe</td>
+        <td>⭐⭐⭐⭐</td>
+        <td>Great product! I'm very happy with the quality and delivery speed.</td>
+      </tr>
+      <tr>
+        <td>Jane Smith</td>
+        <td>⭐⭐⭐⭐⭐</td>
+        <td>Exceeded my expectations! Highly recommend this product.</td>
+      </tr>
+      <!-- More reviews can be added here -->
+    </tbody>
+  </table>
+</div>
+
+
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+<script>
+  const tableBodys = document.querySelector("#salesTable tbody");
+
+  function generateChart() {
+    const months = [];
+    const sales = [];
+    
+    // Get data from the table
+    const tableRows = document.querySelectorAll("#salesTable tbody tr");
+    tableRows.forEach((row) => {
+      const month = row.cells[1].textContent; // Month name
+      const salesValue = row.cells[3].textContent.replace('$', '').replace(',', ''); // Total sales value
+      months.push(month);
+      sales.push(parseFloat(salesValue));
+    });
+
+    const ctx = document.getElementById('salesChart').getContext('2d');
+    
+    // Create the bar chart
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: months,
+        datasets: [{
+          label: 'Total Sales ($)',
+          data: sales,
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+
+  // Run the generateChart function when the page loads
+  generateChart();
+</script>
+
+
+
+
+
+
+
+<script>
+  function applyFilter() {
+    const monthFilter = document.getElementById("monthFilter").value.trim().toLowerCase();
+    const yearFilter = document.getElementById("yearFilter").value.trim();
+    const tableRows = document.querySelectorAll("#salesTable tbody tr");
+    let noResultsFound = true;
+
+    tableRows.forEach((row) => {
+      const monthCell = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
+      const yearCell = row.querySelector("td:nth-child(2)").textContent.split(" ")[1]; // Extract the year
+
+      // Check if the row matches the filter
+      const matchesMonth = monthCell.includes(monthFilter);
+      const matchesYear = yearCell.includes(yearFilter);
+
+      // Hide or show the row based on matching filters
+      if ((monthFilter && matchesMonth || !monthFilter) && (yearFilter && matchesYear || !yearFilter)) {
+        row.style.display = "";  // Show row
+        noResultsFound = false;  // There was a match
+      } else {
+        row.style.display = "none";  // Hide row
+      }
+    });
+
+    // Show message if no results found
+    const noResultsMessage = document.getElementById("noResultsMessage");
+    if (noResultsFound) {
+      noResultsMessage.textContent = `No results found for "${monthFilter} ${yearFilter}".`;
+      noResultsMessage.style.display = "block";  // Show the message
+    } else {
+      noResultsMessage.style.display = "none";  // Hide the message
+    }
+  }
+
+  function resetTable() {
+    // Reset the table to show all rows
+    const tableRows = document.querySelectorAll("#salesTable tbody tr");
+    tableRows.forEach((row) => {
+      row.style.display = "";
+    });
+
+    // Clear the filter inputs
+    document.getElementById("monthFilter").value = "";
+    document.getElementById("yearFilter").value = "";
+
+    // Hide the no results message
+    document.getElementById("noResultsMessage").style.display = "none";
+  }
+
+</script>
+
+<script>
+  const tableBody = document.querySelector("#salesTable tbody");
+
+  const startYear = 2025;
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonthIndex = currentDate.getMonth(); // 0-indexed (0 = Jan)
+
+  let rowNumber = 1;
+  const monthNames = [
+    "January", "February", "March", "April",
+    "May", "June", "July", "August",
+    "September", "October", "November", "December"
+  ];
+
+  for (let year = startYear; year <= currentYear; year++) {
+    const endMonth = (year === currentYear) ? currentMonthIndex : 11;
+
+    for (let month = 0; month <= endMonth; month++) {
+      const isCurrent = (year === currentYear && month === currentMonthIndex);
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+          <td>${rowNumber++}</td>
+          <td>${monthNames[month]} ${year}</td>
+          <td>0</td>
+          <td>$0</td>
+          <td class="status-cell">
+            <span class="status ${isCurrent ? 'ongoing' : 'complete'}">
+              ${isCurrent ? 'Ongoing' : 'Complete'}
+            </span>
+          </td>
+        `;
+      tableBody.appendChild(row);
+    }
+  }
+</script>
+
+
+
+{% endblock %}

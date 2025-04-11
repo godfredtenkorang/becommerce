@@ -1,10 +1,10 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'banking/dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'store/dash.css' %}" />
     <!-- Boxicons CDN Link -->
     <link
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
@@ -29,7 +29,7 @@
           <button id="cancelLogout">Cancel</button>
 
          
-          <a href="{% url 'logout' %}">
+          <a href="">
          
             <button>Yes, logout</button>
             </div>
@@ -73,82 +73,63 @@
 
 
     <div class="main-container">
-        <div class="navcontainer sidebar">
-            <nav class="nav">
-              <div class="nav-upper-options">
-                
-                <!-- HOME -->
-                <a href="/index.html">
-                  <div class="nav-option option1 button">
-                    <h3><i class="fa-solid fa-home"></i> Home</h3>
-                  </div>
-                </a>
-                <!-- Dashboard -->
-                <a href="">
-                  <div class="nav-option option1 button">
-                    <h3><i class="fa-solid fa-chart-line"></i> Dashboard</h3>
-                  </div>
-                </a>
-          
-                <!-- My Courses -->
-                <a href="">
-                  <div class="nav-option option1 button">
-                    <h3><i class="fa-solid fa-book"></i> My Courses</h3>
-                  </div>
-                </a>
-          
-                <!-- Assignments -->
-                <a href="">
-                  <div class="nav-option option1 button">
-                    <h3><i class="fa-solid fa-file"></i> Assignments</h3>
-                  </div>
-                </a>
-          
-                <!-- Quizzes & Exams -->
-                <a href="">
-                  <div class="nav-option option1 button">
-                    <h3><i class="fa-solid fa-pencil"></i> Quizzes & Exams</h3>
-                  </div>
-                </a>
-          
-                <!-- Study Materials -->
-                <a href="">
-                  <div class="nav-option option1 button">
-                    <h3><i class="fa-solid fa-folder"></i> Study Materials</h3>
-                  </div>
-                </a>
-          
-                <!-- Discussion Forum -->
-                <a href="">
-                  <div class="nav-option option1 button">
-                    <h3><i class="fa-solid fa-comments"></i> Discussion Forum</h3>
-                  </div>
-                </a>
-          
-                <!-- Profile -->
-                <a href="">
-                  <div class="nav-option option1 button">
-                    <h3><i class="fa-solid fa-user"></i> Profile</h3>
-                  </div>
-                </a>
-          
-                <!-- Support -->
-                <a href="">
-                  <div class="nav-option option1 button">
-                    <h3><i class="fa-solid fa-headset"></i> Support</h3>
-                  </div>
-                </a>
-          
-                <!-- Logout -->
-                <div class="nav-option logout button">
-                  <h3><i class="fa-solid fa-sign-out-alt"></i> Logout</h3>
-                </div>
-          
+      <div class="navcontainer sidebar">
+        <nav class="nav">
+          <div class="nav-upper-options">
+            
+            <!-- Dashboard -->
+            <a href="">
+              <div class="nav-option option1 button">
+                <h3><i class="fa-solid fa-chart-line"></i> Dashboard</h3>
               </div>
-            </nav>
+            </a>
+      
+            <!-- Users Management -->
+            <a href="">
+              <div class="nav-option option1 button">
+                <h3><i class="fa-solid fa-users"></i> Users</h3>
+              </div>
+            </a>
+      
+            <!-- Orders -->
+            <a href="{% url 'orders' %}">
+              <div class="nav-option option1 button">
+                <h3><i class="fa-solid fa-box"></i> Orders</h3>
+              </div>
+            </a>
+      
+            <!-- Products -->
+            <a href="">
+              <div class="nav-option option1 button">
+                <h3><i class="fa-solid fa-cogs"></i> Products</h3>
+              </div>
+            </a>
+      
+            <!-- Sales -->
+            <a href="">
+              <div class="nav-option option1 button">
+                <h3><i class="fa-solid fa-chart-pie"></i> Sales</h3>
+              </div>
+            </a>
+      
+            <!-- Customer Support -->
+            <a href="">
+              <div class="nav-option option1 button">
+                <h3><i class="fa-solid fa-headset"></i> Customer Support</h3>
+              </div>
+            </a>
+      
+            <!-- Logout -->
+            <div class="nav-option logout button">
+              <h3><i class="fa-solid fa-sign-out-alt"></i> Logout</h3>
+            </div>
+      
           </div>
+        </nav>
+      </div>
+      
           
-
+    {% block content %}{% endblock %}
 
           <div class="main">
  
@@ -172,7 +153,7 @@
       </div>
 
      
-    </div>
+
 
     <script>
       window.onload = function () {

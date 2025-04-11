@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    'Dashboard',
+    'dashboard',
 ]
 
 

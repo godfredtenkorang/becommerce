@@ -45,7 +45,7 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('wishlist/', include('wishlist.urls')),
     path('.well-known/', RedirectView.as_view(url=os.path.join(settings.BASE_DIR, '.well-known/apple-developer-merchantid-domain-association'), permanent=False)),
-    path('dashboard/', include('Dashboard.urls')),
+    path('dashboard/', include('dashboard.urls')),
 
  
 ]

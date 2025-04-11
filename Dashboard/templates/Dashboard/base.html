@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'banking/dashboard.css' %}" />
+    <!-- Boxicons CDN Link -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="dash.css">
+   <title>Dashboard</title>
+  </head>
+
+  <body>
+
+    <div class="logout-pop">
+      <div class="logo-p">
+        <P>Are you sure you want to logout ??</P>
+        <div class="log-btns">
+          <button id="cancelLogout">Cancel</button>
+
+         
+          <a href="{% url 'logout' %}">
+         
+            <button>Yes, logout</button>
+            </div>
+          </a>
+        </div>
+      </div>
+    <!-- for header part -->
+    <header>
+      <div class="logosec">
+        <div class="logo">
+
+        </div>
+        <img
+          src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182541/Untitled-design-(30).png"
+          class="icn menuicn"
+          id="menuicn"
+          alt="menu-icon"
+        />
+      </div>
+
+
+ <div class="header-ul">
+    
+
+<div class="user-role">
+  
+ <div class="user-name">
+  <p><i class="fa-solid fa-user"></i> {{user.username}}</p>
+</div>
+
+<div class="role">
+  <p><i class="fa-solid fa-id-badge"></i> {{user.role}}</p>
+</div>
+</div>
+
+   
+
+ </div>
+    
+    </header>
+
+
+    <div class="main-container">
+        <div class="navcontainer sidebar">
+            <nav class="nav">
+              <div class="nav-upper-options">
+                
+                <!-- HOME -->
+                <a href="/index.html">
+                  <div class="nav-option option1 button">
+                    <h3><i class="fa-solid fa-home"></i> Home</h3>
+                  </div>
+                </a>
+                <!-- Dashboard -->
+                <a href="">
+                  <div class="nav-option option1 button">
+                    <h3><i class="fa-solid fa-chart-line"></i> Dashboard</h3>
+                  </div>
+                </a>
+          
+                <!-- My Courses -->
+                <a href="">
+                  <div class="nav-option option1 button">
+                    <h3><i class="fa-solid fa-book"></i> My Courses</h3>
+                  </div>
+                </a>
+          
+                <!-- Assignments -->
+                <a href="">
+                  <div class="nav-option option1 button">
+                    <h3><i class="fa-solid fa-file"></i> Assignments</h3>
+                  </div>
+                </a>
+          
+                <!-- Quizzes & Exams -->
+                <a href="">
+                  <div class="nav-option option1 button">
+                    <h3><i class="fa-solid fa-pencil"></i> Quizzes & Exams</h3>
+                  </div>
+                </a>
+          
+                <!-- Study Materials -->
+                <a href="">
+                  <div class="nav-option option1 button">
+                    <h3><i class="fa-solid fa-folder"></i> Study Materials</h3>
+                  </div>
+                </a>
+          
+                <!-- Discussion Forum -->
+                <a href="">
+                  <div class="nav-option option1 button">
+                    <h3><i class="fa-solid fa-comments"></i> Discussion Forum</h3>
+                  </div>
+                </a>
+          
+                <!-- Profile -->
+                <a href="">
+                  <div class="nav-option option1 button">
+                    <h3><i class="fa-solid fa-user"></i> Profile</h3>
+                  </div>
+                </a>
+          
+                <!-- Support -->
+                <a href="">
+                  <div class="nav-option option1 button">
+                    <h3><i class="fa-solid fa-headset"></i> Support</h3>
+                  </div>
+                </a>
+          
+                <!-- Logout -->
+                <div class="nav-option logout button">
+                  <h3><i class="fa-solid fa-sign-out-alt"></i> Logout</h3>
+                </div>
+          
+              </div>
+            </nav>
+          </div>
+          
+
+
+          <div class="main">
+ 
+          
+          </div>
+
+<script>
+    function printReport() {
+    window.print();
+}
+
+</script>
+
+
+
+
+
+      <div id="loader">
+        <div class="spinner"></div> <br>
+        <p>Processing</p>
+      </div>
+
+     
+    </div>
+
+    <script>
+      window.onload = function () {
+        setTimeout(() => {
+          document.getElementById("loader").style.display = "none"; // Hide Loader
+          document.querySelector(".main").style.display = "block"; // Show Main Content
+        }, 1000);
+      };
+    </script>
+
+    <script>
+      // Menu toggle
+      let menuIcons = document.querySelectorAll(".menuicn");
+      let nav = document.querySelector(".navcontainer");
+
+      menuIcons.forEach((menuicn) => {
+        menuicn.addEventListener("click", () => {
+          nav.classList.toggle("navclose");
+        });
+      });
+    </script>
+
+
+<script>
+  const logoutBtn = document.querySelector(".logout");
+  const logOutModal = document.querySelector(".logout-pop");
+  const confirmLogout = document.getElementById("confirmLogout");
+  const cancelLogout = document.getElementById("cancelLogout");
+
+  logoutBtn.addEventListener("click", () => {
+    logOutModal.style.display = "flex";
+    setTimeout(() => {
+      logOutModal.classList.add("active");
+    }, 50);
+  });
+
+  cancelLogout.addEventListener("click", () => {
+    logOutModal.classList.remove("active");
+    setTimeout(() => {
+      logOutModal.style.display = "none";
+    }, 300);
+  });
+
+  // If you want to log the user out when they confirm
+  confirmLogout.addEventListener("click", () => {
+    alert("Logging out..."); // Replace this with actual logout logic
+    logOutModal.classList.remove("active");
+    setTimeout(() => {
+      logOutModal.style.display = "none";
+    }, 300);
+  });
+
+  // Click outside to close
+  logOutModal.addEventListener("click", (e) => {
+    if (e.target === logOutModal) {
+      logOutModal.classList.remove("active");
+      setTimeout(() => {
+        logOutModal.style.display = "none";
+      }, 300);
+    }
+  });
+</script>
+
+
+
+
+
+  </body>
+</html>

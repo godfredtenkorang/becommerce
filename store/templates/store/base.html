@@ -67,29 +67,19 @@
   </head>
 
   <body>
-    <header>
+    <header class="headers">
       <div class="first-header">
        <!-- logo to show smaller screen -->
-        <div class="logo-to-show">
+      <div class="logo-to-show">
           <a href="  {% url 'index' %}"> 
             <img src="{% static 'store/img/gblogo1.png' %}" alt="Slide 1" />
 
 
 
           </a>
-        </div>
+        </div> 
 
 
-        <div class="search-cat">
-          <button class="cat-btn btns"><i class="fa-solid fa-caret-down"></i></button>
-          <form class="search-bar" action="{% url 'search' %}" role="search">
-            <input type="text" name="search" id="" placeholder="What are you looking for ?"/>
-            <button type="submit">   <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-      </form>
-    
-    
-         </div>  
         
         <div class="accounts">
           {% if user.is_authenticated %}
@@ -106,10 +96,10 @@
           {% endif %}
         </div>
         <div class="first-col">
-          <!-- <div class="contact-number">
+         <div class="contact-number">
             <a href="https://wa.link/fvzhs7"> <i class="fa-solid fa-phone"></i> +233 55 815 6844 </a>
             <a href="https://wa.link/v277iy"><i class="fa-solid fa-phone"></i>  +233 55 391 2334</a>
-          </div> -->
+          </div> 
 
           <!-- <div class="shopping-cart">
            
@@ -146,7 +136,7 @@
         </div>
       </div>
 
-      <!-- <div class="second-header">
+    <div class="second-header">
         <div class="logo">
           <a href="  {% url 'index' %}"> 
 
@@ -157,7 +147,38 @@
         </div>
    
        
-      </div> -->
+        <div class="search-cat">
+          <button class="cat-btn btns"><i class="fa-solid fa-caret-down"></i></button>
+          <form class="search-bar" action="{% url 'search' %}" role="search">
+            <input type="text" name="search" id="" placeholder="What are you looking for ?"/>
+            <button type="submit">   <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+      </form>
+    
+    
+         </div>  
+
+         <div class="shopping-cart">
+             
+  
+          <a href="{% url 'cart' %}">
+            <span> Shopping Cart</span>
+            <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+            <div id="cart-qty" class="d-inline-flex">
+              {% with qty_amount=cart|length %}
+                {% if qty_amount > 0 %}
+                  {{qty_amount}}
+                {% else %}
+                  0
+                {% endif %}
+              {% endwith %}
+            </div>
+            <br />
+
+           
+          </a>
+        </div> 
+      </div> 
 
       <div class="third-header">
         <div class="nav-links">
@@ -183,56 +204,65 @@
           <p>  <i class="fa-solid fa-xmark"></i> </p>
             <p>Close</p>
           </div>
-          <li>
-            <a href="  {% url 'index' %}" href=""><i class="fa-solid fa-house"></i> Home</a>
-          </li>
-          <li>
-            <a href="  {% url 'shop' %}"><i class="fa-solid fa-shop"></i> Shop</a>
-          
-          </li>
-          <li>
-            <a href="  {% url 'myOrder' %}"><i class="fa-solid fa-handshake"></i> My orders</a>
-          </li>
-          <li>
-            <a href="  {% url 'dashboard' %}"><i class="fa-solid fa-handshake"></i> My account</a>
-          </li>
-          <li>
-            <a href="  {% url 'WishList' %}"><i class="fa-regular fa-heart"></i> Wishlist</a>
-          </li>
-          <!-- <li>
-            <a href="  {% url 'terms' %}"><i class="fa-regular fa-heart"></i> Terms and Condition</a>
-          </li>
-          <li>
-            <a href="  {% url 'faQ' %}"><i class="fa-regular fa-heart"></i> FAQ</a>
-          </li>
-          <li>
-            <a href="  {% url 'contactUs' %}"><i class="fa-regular fa-heart"></i> Contact us</a>
-          </li> -->
-      <div class="shopping-cart">
-           
+        
 
-            <a href="{% url 'cart' %}">
-              <span> Shopping Cart</span>
-              <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
-              <div id="cart-qty" class="d-inline-flex">
-                {% with qty_amount=cart|length %}
-                  {% if qty_amount > 0 %}
-                    {{qty_amount}}
-                  {% else %}
-                    0
-                  {% endif %}
-                {% endwith %}
+          <div class="inner-links">
+            <div class="categorys">
+              <div class="cat-btns">
+                <button class="all_cat">  All Categories 
+                  <i class="fa-solid fa-bars"></i>
+  
+                </button>
+                
               </div>
-              <br />
+              <div class="cat-links cat-inex">
+                {% for category in all_categories %}
+                <li>
+                  <a href="{% url 'list-category' category.slug %}">
+                    <i class="fa-solid fa-circle"></i> {{category.name}} </a>
+                 
+                </li>
+                {% endfor %}
+              </div>
+            </div>
+            
+          <ul>
 
-             
-            </a>
-          </div> 
+            <li>
+              <a href="  {% url 'index' %}" href=""><i class="fa-solid fa-house"></i> Home</a>
+            </li>
+            <li>
+              <a href="  {% url 'shop' %}"><i class="fa-solid fa-shop"></i> Shop</a>
+            
+            </li>
+            <li>
+              <a href="  {% url 'myOrder' %}"><i class="fa-solid fa-handshake"></i> My orders</a>
+            </li>
+            <li>
+              <a href="  {% url 'dashboard' %}"><i class="fa-solid fa-handshake"></i> My account</a>
+            </li>
+            <li>
+              <a href="  {% url 'WishList' %}"><i class="fa-regular fa-heart"></i> Wishlist</a>
+            </li>
+            <!-- <li>
+              <a href="  {% url 'terms' %}"><i class="fa-regular fa-heart"></i> Terms and Condition</a>
+            </li>
+            <li>
+              <a href="  {% url 'faQ' %}"><i class="fa-regular fa-heart"></i> FAQ</a>
+            </li>
+            <li>
+              <a href="  {% url 'contactUs' %}"><i class="fa-regular fa-heart"></i> Contact us</a>
+            </li> -->
+          </ul>
+        
+          </div>
+
+
         </div>
       </div>
     </header>
 
-    <div class="basecategories-banner-promo-container">
+    <!-- <div class="basecategories-banner-promo-container">
       <div class="category base-cat">
         <div class="cat-head">
          <p><i class="fa-solid fa-bars"></i> CATEGORIES</p>
@@ -241,7 +271,6 @@
        </div>
         </div>
      
-         <!-- category links -->
          <div class="cat-links">
            {% for category in all_categories %}
            <li>
@@ -250,67 +279,10 @@
              <i class="fa-solid fa-greater-than"></i>
            </li>
            {% endfor %}
-           <!-- <li>
-             <a href="">
-               <i class="fa-brands fa-apple"></i> Apple Systems</a
-             >
-             <i class="fa-solid fa-greater-than"></i>
-           </li>
-           <li>
-             <a href="">
-               <i class="fa-solid fa-laptop"></i> Laptop & Tablets</a
-             >
-             <i class="fa-solid fa-greater-than"></i>
-           </li>
-           <li>
-             <a href="">
-               <i class="fa-solid fa-gamepad"></i> Gaming Laptops</a
-             >
-             <i class="fa-solid fa-greater-than"></i>
-           </li>
-           <li>
-             <a href="">
-               <i class="fa-solid fa-computer"></i> Components Part</a
-             >
-             <i class="fa-solid fa-greater-than"></i>
-           </li>
-           <li>
-             <a href="">
-               <i class="fa-solid fa-plane"></i> Drones& wearables</a
-             >
-             <i class="fa-solid fa-greater-than"></i>
-           </li>
-           <li>
-             <a href="">
-               <i class="fa-solid fa-wand-magic-sparkles"></i> Access Time &
-               Control</a
-             >
-             <i class="fa-solid fa-greater-than"></i>
-           </li>
-           <li>
-             <a href=""
-               ><i class="fa-solid fa-wand-magic-sparkles"></i> Surveillance
-               Systems</a
-             >
-     
-             <i class="fa-solid fa-greater-than"></i>
-           </li>
-           <li>
-             <a href="">
-               <i class="fa-solid fa-computer"></i> Computer Accessories</a
-             >
-             <i class="fa-solid fa-greater-than"></i>
-           </li>
-     
-           <li>
-             <a href="">
-               <i class="fa-solid fa-bars"></i> Others</a
-             >
-             <i class="fa-solid fa-greater-than"></i>
-           </li> -->
+           
          </div>
        </div>
-    </div>
+    </div> -->
    
     {% block content %}{% endblock %}
 
@@ -421,21 +393,21 @@
 
 
 
-      document.addEventListener('DOMContentLoaded', function(){
-        const header = document.querySelector(".second-header")
-        const sticky = header.offsetTop;
+    //   document.addEventListener('DOMContentLoaded', function(){
+    //     const header = document.querySelector(".headers")
+    //     const sticky = header.offsetTop;
     
     
-    window.addEventListener('scroll', ()=>{
-      if(window.pageYOffset > sticky){
-        header.classList.add('fixed-header')
-      } else {
-        header.classList.remove('fixed-header')
-      }
-    })
+    // window.addEventListener('scroll', ()=>{
+    //   if(window.pageYOffset > sticky){
+    //     header.classList.add('fixed-header')
+    //   } else {
+    //     header.classList.remove('fixed-header')
+    //   }
+    // })
     
     
-      })
+    //   })
 
 
       const catbtn = document.querySelectorAll(".btns")
@@ -652,6 +624,33 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 
+<script>
+  const catLinks= document.querySelector(".cat-links")
+  const catBtn= document.querySelector(".all_cat")
+
+
+let isOpen = false;
+
+catBtn.addEventListener('click', () => {
+  if (!isOpen) {
+    catLinks.classList.add('opening');
+    catLinks.style.display = 'block';
+  } else {
+    catLinks.classList.remove('opening');
+    catLinks.classList.add('closing');
+    setTimeout(() => {
+      catLinks.style.display = 'none';
+      catLinks.classList.remove('closing');
+    }, 500); // Match the transition duration
+  }
+  isOpen = !isOpen;
+});
+
+
+  all_cat.addEventListener("click", ()=>{
+    catlinks.classList.toggle("show-cat")
+  })
+</script>
 
   </body>
 </html><!--Start of Tawk.to Script-->

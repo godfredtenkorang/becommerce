@@ -5,7 +5,17 @@
   </li>
 
 </header>
+<div class="spin">
+  <div class="spinner">
+   
+  </div>
+  
+</div>
 
+
+
+<div class="product-content">
+  
 <div class="product-detail-container">
   <div class="product-img">
     <div class="small-product-img">
@@ -230,10 +240,40 @@
 </section>
 
 <div class="item-addedsucess">
-  <i class="fa-solid fa-cart-shopping"></i>
-  <p>Item added to cart sucessfully</p>
+  <div class="items-added">
+    <p>Item added to cart successfully</p>
+  <div class="item-img">
+    <img src="{{ product.image1.url }}" alt="Slide 2" />
+  </div>
+
+  <h4>{{ product.content }}</h4>
+  <p>GH¢{{ product.final_price }}</p>
+      <p>Brand: {{ product.brand }}</p>
+      <p>{{ product.description1 }}</p>
+
+      <p>{{ product.description2 }}</p>
+
+      <p>{{ product.description3 }}</p>
+
+      <p>{{ product.description4 }}</p>
+
+      <p id="stock-status">{{ product.product_availability }}</p>
+
+  </div>
 
 </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
 
 <script>
 
@@ -315,6 +355,24 @@
   //     }
   //   });
   // });
+
+
+  
+
+</script>
+
+<script>
+  window.onload = function () {
+  setTimeout(function () {
+    // Hide spinner
+    document.querySelector('.spin').style.display = 'none';
+    
+    // Show product detail container
+    const productDetail = document.querySelector('.product-content');
+    productDetail.style.display = 'block';
+    productDetail.style.opacity = '1';  // Fade in effect
+  }, 2000); // 2 seconds delay
+};
 
 </script>
 

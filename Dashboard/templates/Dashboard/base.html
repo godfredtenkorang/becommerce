@@ -1,0 +1,225 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'store/dash.css' %}" />
+    <!-- Boxicons CDN Link -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="dash.css">
+   <title>Dashboard</title>
+  </head>
+
+  <body>
+
+    <div class="logout-pop">
+      <div class="logo-p">
+        <P>Are you sure you want to logout ??</P>
+        <div class="log-btns">
+          <button id="cancelLogout">Cancel</button>
+
+         
+          <a href="">
+         
+            <button>Yes, logout</button>
+            </div>
+          </a>
+        </div>
+      </div>
+    <!-- for header part -->
+    <header>
+      <div class="logosec">
+        <div class="logo">
+
+        </div>
+        <img
+          src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182541/Untitled-design-(30).png"
+          class="icn menuicn"
+          id="menuicn"
+          alt="menu-icon"
+        />
+      </div>
+
+
+ <div class="header-ul">
+    
+
+<div class="user-role">
+  
+ <div class="user-name">
+  <p><i class="fa-solid fa-user"></i> {{user.username}}</p>
+</div>
+
+<div class="role">
+  <p><i class="fa-solid fa-id-badge"></i> {{user.role}}</p>
+</div>
+</div>
+
+   
+
+ </div>
+    
+    </header>
+
+
+    <div class="main-container">
+      <div class="navcontainer sidebar">
+        <nav class="nav">
+          <div class="nav-upper-options">
+            
+            <!-- Dashboard -->
+            <a href="">
+              <div class="nav-option option1 button">
+                <h3><i class="fa-solid fa-chart-line"></i> Dashboard</h3>
+              </div>
+            </a>
+      
+            <!-- Users Management -->
+            <a href="">
+              <div class="nav-option option1 button">
+                <h3><i class="fa-solid fa-users"></i> Users</h3>
+              </div>
+            </a>
+      
+            <!-- Orders -->
+            <a href="{% url 'orders' %}">
+              <div class="nav-option option1 button">
+                <h3><i class="fa-solid fa-box"></i> Orders</h3>
+              </div>
+            </a>
+      
+            <!-- Products -->
+            <a href="">
+              <div class="nav-option option1 button">
+                <h3><i class="fa-solid fa-cogs"></i> Products</h3>
+              </div>
+            </a>
+      
+            <!-- Sales -->
+            <a href="">
+              <div class="nav-option option1 button">
+                <h3><i class="fa-solid fa-chart-pie"></i> Sales</h3>
+              </div>
+            </a>
+      
+            <!-- Customer Support -->
+            <a href="">
+              <div class="nav-option option1 button">
+                <h3><i class="fa-solid fa-headset"></i> Customer Support</h3>
+              </div>
+            </a>
+      
+            <!-- Logout -->
+            <div class="nav-option logout button">
+              <h3><i class="fa-solid fa-sign-out-alt"></i> Logout</h3>
+            </div>
+      
+          </div>
+        </nav>
+      </div>
+      
+          
+    {% block content %}{% endblock %}
+
+          <div class="main">
+ 
+          
+          </div>
+
+<script>
+    function printReport() {
+    window.print();
+}
+
+</script>
+
+
+
+
+
+      <div id="loader">
+        <div class="spinner"></div> <br>
+        <p>Processing</p>
+      </div>
+
+     
+
+
+    <script>
+      window.onload = function () {
+        setTimeout(() => {
+          document.getElementById("loader").style.display = "none"; // Hide Loader
+          document.querySelector(".main").style.display = "block"; // Show Main Content
+        }, 1000);
+      };
+    </script>
+
+    <script>
+      // Menu toggle
+      let menuIcons = document.querySelectorAll(".menuicn");
+      let nav = document.querySelector(".navcontainer");
+
+      menuIcons.forEach((menuicn) => {
+        menuicn.addEventListener("click", () => {
+          nav.classList.toggle("navclose");
+        });
+      });
+    </script>
+
+
+<script>
+  const logoutBtn = document.querySelector(".logout");
+  const logOutModal = document.querySelector(".logout-pop");
+  const confirmLogout = document.getElementById("confirmLogout");
+  const cancelLogout = document.getElementById("cancelLogout");
+
+  logoutBtn.addEventListener("click", () => {
+    logOutModal.style.display = "flex";
+    setTimeout(() => {
+      logOutModal.classList.add("active");
+    }, 50);
+  });
+
+  cancelLogout.addEventListener("click", () => {
+    logOutModal.classList.remove("active");
+    setTimeout(() => {
+      logOutModal.style.display = "none";
+    }, 300);
+  });
+
+  // If you want to log the user out when they confirm
+  confirmLogout.addEventListener("click", () => {
+    alert("Logging out..."); // Replace this with actual logout logic
+    logOutModal.classList.remove("active");
+    setTimeout(() => {
+      logOutModal.style.display = "none";
+    }, 300);
+  });
+
+  // Click outside to close
+  logOutModal.addEventListener("click", (e) => {
+    if (e.target === logOutModal) {
+      logOutModal.classList.remove("active");
+      setTimeout(() => {
+        logOutModal.style.display = "none";
+      }, 300);
+    }
+  });
+</script>
+
+
+
+
+
+  </body>
+</html>

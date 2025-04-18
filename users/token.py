@@ -5,8 +5,6 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 import six
 
 
-
-
 # - Password reset token generator method
 
 class UserVerificationTokenGenerator(PasswordResetTokenGenerator):

@@ -5,28 +5,17 @@
 <div id="message-timer" class="alert alert-{{ message.tags }}">{{ message }}</div>
 {% endfor %}
 {% endif %}
+<div id="loader">
+  <div class="loader-text">
+    We are fetching... Ready to shop ?
+  </div>
+  <a href=""><img src="{% static 'store/img/cat.png' %}" alt="Slide 1" /></a>
+
+</div>
 
 
-<div class="categories-banner-promo-container">
- <!-- <div class="category">
-    <div class="cat-head">
-      <p><i class="fa-solid fa-bars"></i> CATEGORIES</p>
-      <div class="remove-cats btns">
-        <i class="fa-solid fa-xmark"></i>
-      </div>
-    </div>
 
-    <div class="cat-links">
-      {% for category in all_categories %}
-      <li>
-        <a href="{% url 'list-category' category.slug %}">
-          <i class="fa-solid fa-circle"></i> {{category.name}} </a>
-        <i class="fa-solid fa-greater-than"></i>
-      </li>
-      {% endfor %}
-    </div>
-  </div> -->
-
+<div id="main-contents" style="display: none;">
 
   <!-- slide show -->
   <div class="slide-show">
@@ -40,8 +29,50 @@
       {% endfor %}
     </div>
   </div>
-
 </div>
+
+<section class="features-container">
+  <div class="feature">
+    <i class="fas fa-truck"></i>
+    <div class="feature-content">
+      <h3>Free Delivery</h3>
+      <p>Enjoy fast and free delivery on all your orders with no hidden fees.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <i class="fas fa-lock"></i>
+    <div class="feature-content">
+      <h3>100% Secure Payment</h3>
+      <p>All transactions are protected with advanced encryption technology.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <i class="fas fa-certificate"></i>
+    <div class="feature-content">
+      <h3>Quality Guarantee</h3>
+      <p>We stand behind the quality of every product we sell.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <i class="fas fa-piggy-bank"></i>
+    <div class="feature-content">
+      <h3>Guaranteed Savings</h3>
+      <p>Shop smarter with exclusive deals and unbeatable prices.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <i class="fas fa-tags"></i>
+    <div class="feature-content">
+      <h3>Daily Offers</h3>
+      <p>Don’t miss out! Check back daily for fresh new deals.</p>
+    </div>
+  </div>
+</section>
+
 
 
 
@@ -57,112 +88,447 @@
 
 <!-- products main container -->
 <div class="product-main-container">
-
   <!-- container for set of product -->
   <div class="product-container">
     <div class="heading">
-      <h2>Laptops</h2>
-      <div class="see-more">
-        <a href="{% url 'shop' %}">See more</a>
-      </div>
+      <h2>New Arival</h2>
+
     </div>
-    
-    <div class="slider-container">
-      <div class="slider-wrapper">
-        {% for laptopshop in laptopshops %}
-          <div class="slider-slide">
-            <div class="product">
-              <a href="{{ laptopshop.get_absolute_url }}">
-                <img src="{{ laptopshop.image1.url }}" alt="{{ laptopshop.title }}" />
-                <h4>{{ laptopshop.title }}</h4>
+
+    <div class="product-dsiplay-grid">
+
+
+
+      <div class="product">
+        <a href="">
+          <img src="{% static 'store/img/images.jpg' %}" alt="{{ gaminglaptop.title }}" />
+          <h4>Lorem ipsum dolor sit amet.</h4>
+        </a>
+        <div class="product-details">
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>Gh 200</p>
+              <p class="canceled">Gh 200</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <button> <i class="fa-regular fa-heart"></i> </button>
               </a>
-              <div class="product-details">
-                <div class="price-wishlist-btn">
-                  <div class="price">
-                    <p>GH¢{{ laptopshop.final_price }}</p>
-                  </div>
-                  <div class="add-to-wishlist">
-                    <a href="{% url 'add-to-wishlist' laptopshop.slug %}">
-                      <i class="fa-regular fa-heart"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <a href="">
+                <button> <i class="fa-solid fa-eye"></i> </button>
+              </a>
             </div>
           </div>
-        {% endfor %}
+        </div>
+
       </div>
-      
-      <!-- Navigation buttons -->
-      <button class="prev"><i class="fa-solid fa-less-than"></i></button>
-      <button class="next"><i class="fa-solid fa-greater-than"></i></button>
-    </div>
-  </div>
-  
-
-
-
-  <!-- container for set of product -->
-  <div class="product-container">
-    <div class="heading">
-      <h2>Gaming Laptops</h2>
-      <div class="see-more">
-        <a href="{% url 'shop' %}">See more</a>
-      </div>
-    </div>
-  
-    <div class="product-dsiplay-grid">
-        {% for gaminglaptop in gaminglaptops %}
-        
-            <div class="product">
-              <a href="{{ gaminglaptop.get_absolute_url }}">
-                <img src="{{ gaminglaptop.image1.url }}" alt="{{ gaminglaptop.title }}" />
-                <h4>{{ gaminglaptop.title }}</h4>
-              </a>
-              <div class="product-details">
-                <div class="price-wishlist-btn">
-                  <div class="price">
-                    <p>GH¢{{ gaminglaptop.final_price }}</p>
-                  </div>
-                  <div class="add-to-wishlist">
-                    <a href="{% url 'add-to-wishlist' gaminglaptop.slug %}">
-                      <i class="fa-regular fa-heart"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
+      <div class="product">
+        <a href="">
+          <img src="{% static 'store/img/imagess.jpg' %}" alt="{{ gaminglaptop.title }}" />
+          <h4>Lorem ipsum dolor sit amet.</h4>
+        </a>
+        <div class="product-details">
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>Gh 200</p>
+              <p class="canceled">Gh 200</p>
             </div>
-        
-        {% endfor %}
+            <div class="add-to-wishlist">
+              <a href="">
+                <button> <i class="fa-regular fa-heart"></i> </button>
+              </a>
+              <a href="">
+                <button> <i class="fa-solid fa-eye"></i> </button>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-  
+
+
+      <div class="product">
+        <a href="">
+          <img src="{% static 'store/img/images.jpg' %}" alt="{{ gaminglaptop.title }}" />
+          <h4>Lorem ipsum dolor sit amet.</h4>
+        </a>
+        <div class="product-details">
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>Gh 200</p>
+              <p class="canceled">Gh 200</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <button> <i class="fa-regular fa-heart"></i> </button>
+              </a>
+              <a href="">
+                <button> <i class="fa-solid fa-eye"></i> </button>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="product">
+        <a href="">
+          <img src="{% static 'store/img/imagess.jpg' %}" alt="{{ gaminglaptop.title }}" />
+          <h4>Lorem ipsum dolor sit amet.</h4>
+        </a>
+        <div class="product-details">
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>Gh 200</p>
+              <p class="canceled">Gh 200</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <button> <i class="fa-regular fa-heart"></i> </button>
+              </a>
+              <a href="">
+                <button> <i class="fa-solid fa-eye"></i> </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <a href="">
+          <img src="{% static 'store/img/images.jpg' %}" alt="{{ gaminglaptop.title }}" />
+          <h4>Lorem ipsum dolor sit amet.</h4>
+        </a>
+        <div class="product-details">
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>Gh 200</p>
+              <p class="canceled">Gh 200</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <button> <i class="fa-regular fa-heart"></i> </button>
+              </a>
+              <a href="">
+                <button> <i class="fa-solid fa-eye"></i> </button>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="product">
+        <a href="">
+          <img src="{% static 'store/img/fanta.png' %}" alt="{{ gaminglaptop.title }}" />
+          <h4>Lorem ipsum dolor sit amet.</h4>
+        </a>
+        <div class="product-details">
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>Gh 200</p>
+              <p class="canceled">Gh 200</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="">
+                <button> <i class="fa-regular fa-heart"></i> </button>
+              </a>
+              <a href="">
+                <button> <i class="fa-solid fa-eye"></i> </button>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
 
   </div>
-  
-  
-  
 
-  <!-- deal -->
+
   <div class="deal-advert">
+    <div class="deal">
+      <img src="{% static 'store/img/banner1.png' %}" alt="Slide 3" />
+    </div>
+    <div class="deal">
+      <img src="{% static 'store/img/banner2.png' %}" alt="Slide 3" />
+    </div>
+    <div class="deal">
+      <img src="{% static 'store/img/banner3.png' %}" alt="Slide 3" />
+    </div>
+
+  </div>
+
+
+ <!-- container for set of product -->
+ <div class="product-container">
+  <div class="heading">
+    <h2>New Arival</h2>
+
+  </div>
+
+  <div class="product-dsiplay-grid">
+
+
+
+    <div class="product">
+      <a href="">
+        <img src="{% static 'store/img/images.jpg' %}" alt="{{ gaminglaptop.title }}" />
+        <h4>Lorem ipsum dolor sit amet.</h4>
+      </a>
+      <div class="product-details">
+        <div class="price-wishlist-btn">
+          <div class="price">
+            <p>Gh 200</p>
+            <p class="canceled">Gh 200</p>
+          </div>
+          <div class="add-to-wishlist">
+            <a href="">
+              <button> <i class="fa-regular fa-heart"></i> </button>
+            </a>
+            <a href="">
+              <button> <i class="fa-solid fa-eye"></i> </button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="product">
+      <a href="">
+        <img src="{% static 'store/img/imagess.jpg' %}" alt="{{ gaminglaptop.title }}" />
+        <h4>Lorem ipsum dolor sit amet.</h4>
+      </a>
+      <div class="product-details">
+        <div class="price-wishlist-btn">
+          <div class="price">
+            <p>Gh 200</p>
+            <p class="canceled">Gh 200</p>
+          </div>
+          <div class="add-to-wishlist">
+            <a href="">
+              <button> <i class="fa-regular fa-heart"></i> </button>
+            </a>
+            <a href="">
+              <button> <i class="fa-solid fa-eye"></i> </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="product">
+      <a href="">
+        <img src="{% static 'store/img/images.jpg' %}" alt="{{ gaminglaptop.title }}" />
+        <h4>Lorem ipsum dolor sit amet.</h4>
+      </a>
+      <div class="product-details">
+        <div class="price-wishlist-btn">
+          <div class="price">
+            <p>Gh 200</p>
+            <p class="canceled">Gh 200</p>
+          </div>
+          <div class="add-to-wishlist">
+            <a href="">
+              <button> <i class="fa-regular fa-heart"></i> </button>
+            </a>
+            <a href="">
+              <button> <i class="fa-solid fa-eye"></i> </button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="product">
+      <a href="">
+        <img src="{% static 'store/img/imagess.jpg' %}" alt="{{ gaminglaptop.title }}" />
+        <h4>Lorem ipsum dolor sit amet.</h4>
+      </a>
+      <div class="product-details">
+        <div class="price-wishlist-btn">
+          <div class="price">
+            <p>Gh 200</p>
+            <p class="canceled">Gh 200</p>
+          </div>
+          <div class="add-to-wishlist">
+            <a href="">
+              <button> <i class="fa-regular fa-heart"></i> </button>
+            </a>
+            <a href="">
+              <button> <i class="fa-solid fa-eye"></i> </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <a href="">
+        <img src="{% static 'store/img/images.jpg' %}" alt="{{ gaminglaptop.title }}" />
+        <h4>Lorem ipsum dolor sit amet.</h4>
+      </a>
+      <div class="product-details">
+        <div class="price-wishlist-btn">
+          <div class="price">
+            <p>Gh 200</p>
+            <p class="canceled">Gh 200</p>
+          </div>
+          <div class="add-to-wishlist">
+            <a href="">
+              <button> <i class="fa-regular fa-heart"></i> </button>
+            </a>
+            <a href="">
+              <button> <i class="fa-solid fa-eye"></i> </button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="product">
+      <a href="">
+        <img src="{% static 'store/img/fanta.png' %}" alt="{{ gaminglaptop.title }}" />
+        <h4>Lorem ipsum dolor sit amet.</h4>
+      </a>
+      <div class="product-details">
+        <div class="price-wishlist-btn">
+          <div class="price">
+            <p>Gh 200</p>
+            <p class="canceled">Gh 200</p>
+          </div>
+          <div class="add-to-wishlist">
+            <a href="">
+              <button> <i class="fa-regular fa-heart"></i> </button>
+            </a>
+            <a href="">
+              <button> <i class="fa-solid fa-eye"></i> </button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<div class="shipping">
+  <div class="shipping-text">
+    <div class="ship">
+      <div class="ship-tex">
+        <i class="fa-solid fa-truck-fast"></i>
+        <h4>Fast Delivery Within Kumasi</h4>
+      </div>
+      <div class="ship-tex">
+        <i class="fa-solid fa-gem"></i>
+        <h4>Top Quality Guaranteed</h4>
+      </div>
+    </div>
+  
+    <div class="ship">
+      <div class="ship-tex">
+        <i class="fa-solid fa-shield-halved"></i>
+        <h4>100% Secured Platform</h4>
+      </div>
+      <div class="ship-tex">
+        <i class="fa-solid fa-ban"></i>
+        <h4>No Scam Assurance</h4>
+      </div>
+    </div>
+  </div>
+  
+   
+
+
+
+  <div class="shipping-img">
+    <img src="{% static 'store/img/banner-shipping.png' %}" alt="{{ gaminglaptop.title }}" />
+  </div>
+</div>
+
+
+
+
+
+
+  <!-- <div class="deal-advert">
     <div class="deal">
       <img src="{% static 'store/img/banner.png' %}" alt="Slide 2" />
     </div>
 
-  </div>
+  </div>  -->
+
+
+  <!-- <div class="product-container">
+    <div class="heading">
+      <h2>New Arrival</h2>
+
+    </div>
+
+    <div class="product-dsiplay-grid">
+      {% for laptopshop in laptopshops %}
+
+      <div class="product">
+        <a href="{{ laptopshop.get_absolute_url }}">
+          <img src="{{ laptopshop.image1.url }}" alt="{{ laptopshop.title }}" />
+          <h4>{{ laptopshop.title }}</h4>
+        </a>
+        <div class="product-details">
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>GH¢{{ laptopshop.final_price }}</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="{% url 'add-to-wishlist' laptopshop.slug %}">
+                <i class="fa-regular fa-heart"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+
+
+
+  </div> -->
+
+
+
+
+
+
+
+
+
+  <!-- deal -->
+
 
   <!-- container for set of product -->
-  <div class="product-container">
-    <div class="heading">
+  <!-- <div class="product-container">
+   <div class="heading">
       <h2>Apple Systems</h2>
       <div class="see-more">
         <a href="{% url 'shop' %}">See more</a>
       </div>
-    </div>
+    </div> 
 
     <div class="product-dsiplay-grid">
 
       {% for applesystem in applesytems %}
-      <!-- product container -->
+   
       <div class="product">
 
         <a href="{{ applesystem.get_absolute_url }}">
@@ -175,7 +541,7 @@
           <div class="price-wishlist-btn">
             <div class="price">
               <p>GH¢{{ applesystem.final_price }}</p>
-              <!-- <p class="price-cancel">GH¢{{ applesystem.normal_price }}</p> -->
+            <p class="price-cancel">GH¢{{ applesystem.normal_price }}</p> 
             </div>
             <div class="add-to-wishlist">
               <a href="{% url 'add-to-wishlist' applesystem.slug %}">
@@ -188,20 +554,20 @@
       {% endfor %}
     </div>
 
-  </div>
+  </div> -->
 
   <!-- container for set of product -->
-  <div class="product-container">
-    <div class="heading">
+  <!-- <div class="product-container">
+ <div class="heading">
       <h2>Computer Accessories</h2>
       <div class="see-more">
         <a href="{% url 'shop' %}">See more</a>
       </div>
-    </div>
+    </div> 
 
     <div class="product-dsiplay-grid">
       {% for accessory in accessories %}
-      <!-- product container -->
+   
       <div class="product">
 
         <a href="{{ accessory.get_absolute_url }}">
@@ -214,7 +580,7 @@
           <div class="price-wishlist-btn">
             <div class="price">
               <p>GH¢{{ accessory.final_price }}</p>
-              <!-- <p class="price-cancel">GH¢{{ accessory.normal_price }}</p> -->
+           <p class="price-cancel">GH¢{{ accessory.normal_price }}</p> 
             </div>
             <div class="add-to-wishlist">
               <a href="{% url 'add-to-wishlist' accessory.slug %}">
@@ -226,30 +592,30 @@
       </div>
       {% endfor %}
     </div>
-  </div>
+  </div> -->
 
   <!-- deal -->
-  <div class="deal-advert">
+  <!-- <div class="deal-advert">
     <div class="deal">
-      <img src="{% static 'store/img/slide2.jpg' %}" alt="Slide 3" />
+      <img src="{% static 'store/img/b.jpg' %}" alt="Slide 3" />
     </div>
     <div class="deal">
-      <img src="{% static 'store/img/slide3.jpg' %}" alt="Slide 3" />
+      <img src="{% static 'store/img/bb.jpg' %}" alt="Slide 3" />
     </div>
-  </div>
+  </div>  -->
 
   <!-- container for set of product -->
-  <div class="product-container">
-    <div class="heading">
+  <!-- <div class="product-container">
+<div class="heading">
       <h2>Components & Parts</h2>
       <div class="see-more">
         <a href="{% url 'shop' %}">See more</a>
       </div>
-    </div>
+    </div> 
 
     <div class="product-dsiplay-grid">
       {% for component in components %}
-      <!-- product container -->
+  
       <div class="product">
 
         <a href="{{ component.get_absolute_url }}">
@@ -262,7 +628,7 @@
           <div class="price-wishlist-btn">
             <div class="price">
               <p>GH¢{{ component.final_price }}</p>
-              <!-- <p class="price-cancel">GH¢{{ component.normal_price }}</p> -->
+             <p class="price-cancel">GH¢{{ component.normal_price }}</p> 
             </div>
             <div class="add-to-wishlist">
               <a href="{% url 'add-to-wishlist' component.slug %}">
@@ -274,19 +640,14 @@
       </div>
       {% endfor %}
     </div>
-  </div>
+  </div> -->
 
   <!-- container for set of product -->
-  <div class="product-container">
-    <div class="heading">
-      <h2>Shoes And Slippers</h2>
-      <div class="see-more">
-        <a href="{% url 'shop' %}">See more</a>
-      </div>
-    </div>
+  <!-- <div class="product-container">
+   
     <div class="product-dsiplay-grid">
       {% for shoe in shoes %}
-      <!-- product container -->
+   product container
       <div class="product">
 
         <a href="{{ shoe.get_absolute_url }}">
@@ -299,7 +660,7 @@
           <div class="price-wishlist-btn">
             <div class="price">
               <p>GH¢{{ shoe.final_price }}</p>
-              <!-- <p class="price-cancel">GH¢{{ shoe.normal_price }}</p> -->
+          <p class="price-cancel">GH¢{{ shoe.normal_price }}</p> 
             </div>
             <div class="add-to-wishlist">
               <a href="{% url 'add-to-wishlist' shoe.slug %}">
@@ -311,31 +672,26 @@
       </div>
       {% endfor %}
     </div>
-  </div>
+  </div> -->
 
   <!-- deal -->
-  <div class="deal-advert">
+  <!-- <div class="deal-advert">
     <div class="deal">
       <img src="{% static 'store/img/slide2.jpg' %}" alt="Slide 3" />
     </div>
     <div class="deal">
       <img src="{% static 'store/img/slide3.jpg' %}" alt="Slide 3" />
     </div>
-  </div>
+  </div> -->
 
   <!-- container for set of product -->
-  <div class="product-container">
-    <div class="heading">
-      <h2>Surveillance Systems</h2>
-      <div class="see-more">
-        <a href="{% url 'shop' %}">See more</a>
-      </div>
-    </div>
+  <!-- <div class="product-container">
+   
 
     <div class="product-dsiplay-grid">
 
       {% for surviellence in surviellences %}
-      <!-- product container -->
+   
       <div class="product">
 
         <a href="{{ surviellence.get_absolute_url }}">
@@ -348,7 +704,7 @@
           <div class="price-wishlist-btn">
             <div class="price">
               <p>GH¢{{ surviellence.final_price }}</p>
-              <!-- <p class="price-cancel">GH¢{{ surviellence.normal_price }}</p> -->
+           <p class="price-cancel">GH¢{{ surviellence.normal_price }}</p> 
             </div>
             <div class="add-to-wishlist">
               <a href="{% url 'add-to-wishlist' surviellence.slug %}">
@@ -360,20 +716,14 @@
       </div>
       {% endfor %}
     </div>
-  </div>
+  </div> -->
 
-  <!-- container for set of product -->
-  <div class="product-container">
-    <div class="heading">
-      <h2>Heels And Slippers</h2>
-      <div class="see-more">
-        <a href="{% url 'shop' %}">See more</a>
-      </div>
-    </div>
 
+  <!-- <div class="product-container">
+   
     <div class="product-dsiplay-grid">
       {% for heel in heels %}
-      <!-- product container -->
+     
       <div class="product">
 
         <a href="{{ heel.get_absolute_url }}">
@@ -386,7 +736,7 @@
           <div class="price-wishlist-btn">
             <div class="price">
               <p>GH¢{{ heel.final_price }}</p>
-              <!-- <p class="price-cancel">GH¢{{ heel.normal_price }}</p> -->
+            <p class="price-cancel">GH¢{{ heel.normal_price }}</p> 
             </div>
             <div class="add-to-wishlist">
               <a href="{% url 'add-to-wishlist' heel.slug %}">
@@ -398,12 +748,33 @@
       </div>
       {% endfor %}
     </div>
-  </div>
+  </div> -->
 </div>
 
 
 
 
+
+
+</div>
+<!-- <div class="category">
+    <div class="cat-head">
+      <p><i class="fa-solid fa-bars"></i> CATEGORIES</p>
+      <div class="remove-cats btns">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+    </div>
+
+    <div class="cat-links">
+      {% for category in all_categories %}
+      <li>
+        <a href="{% url 'list-category' category.slug %}">
+          <i class="fa-solid fa-circle"></i> {{category.name}} </a>
+        <i class="fa-solid fa-greater-than"></i>
+      </li>
+      {% endfor %}
+    </div> -->
+</div>
 
 
 
@@ -431,4 +802,62 @@
 
 
 </script>
+<!-- <script>
+  document.querySelectorAll('.product-slider-wrapper').forEach(wrapper => {
+    const track = wrapper.querySelector('.product-slide-track');
+    const prevBtn = wrapper.querySelector('.slider-btn.prev');
+    const nextBtn = wrapper.querySelector('.slider-btn.next');
+
+    let isSliding = false;
+
+    function getProductWidth() {
+      const product = wrapper.querySelector('.product');
+      if (!product) return 0;
+      const style = window.getComputedStyle(product);
+      const margin = parseFloat(style.marginRight);
+      return product.offsetWidth + margin;
+    }
+
+    function slideNext() {
+      if (isSliding) return;
+      isSliding = true;
+
+      const slideWidth = getProductWidth();
+      track.style.transition = 'transform 0.3s ease';
+      track.style.transform = `translateX(-${slideWidth}px)`;
+
+      setTimeout(() => {
+        track.appendChild(track.firstElementChild);
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(0)';
+        isSliding = false;
+      }, 300);
+    }
+
+    function slidePrev() {
+      if (isSliding) return;
+      isSliding = true;
+
+      const slideWidth = getProductWidth();
+      track.insertBefore(track.lastElementChild, track.firstElementChild);
+      track.style.transition = 'none';
+      track.style.transform = `translateX(-${slideWidth}px)`;
+
+      setTimeout(() => {
+        track.style.transition = 'transform 0.3s ease';
+        track.style.transform = 'translateX(0)';
+      }, 10);
+
+      setTimeout(() => {
+        isSliding = false;
+      }, 310);
+    }
+
+    nextBtn.addEventListener('click', slideNext);
+    prevBtn.addEventListener('click', slidePrev);
+  });
+</script> -->
+
+
+
 {% endblock %}

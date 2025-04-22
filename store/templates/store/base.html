@@ -31,6 +31,7 @@
     <!-- Bootstrap Max CDN -->
     
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
     <!-- Bootstrap CSS -->
     <link
@@ -67,9 +68,12 @@
   </head>
 
   <body>
+   
+    
+
     <header class="headers">
-      <div class="first-header">
-       <!-- logo to show smaller screen -->
+      <!-- <div class="first-header">
+      
       <div class="logo-to-show">
           <a href="  {% url 'index' %}"> 
             <img src="{% static 'store/img/gblogo1.png' %}" alt="Slide 1" />
@@ -81,27 +85,14 @@
 
 
         
-        <div class="accounts">
-          {% if user.is_authenticated %}
-          <div class="login logout">
-            <a href="{% url 'user-logout' %}">Logout</a>
-          </div>
-          {% else %}
-          <div class="login">
-            <a href="{% url 'my-login' %}">Login</a>
-          </div>
-          <div class="sign-up">
-            <a href="{% url 'register' %}">Sign Up</a>
-          </div>
-          {% endif %}
-        </div>
+       
         <div class="first-col">
          <div class="contact-number">
             <a href="https://wa.link/fvzhs7"> <i class="fa-solid fa-phone"></i> +233 55 815 6844 </a>
             <a href="https://wa.link/v277iy"><i class="fa-solid fa-phone"></i>  +233 55 391 2334</a>
           </div> 
 
-          <!-- <div class="shopping-cart">
+        <div class="shopping-cart">
            
 
             <a href="{% url 'cart' %}">
@@ -120,21 +111,13 @@
 
              
             </a>
-          </div> -->
-          {% if request.user.is_authenticated %}
-          {% if request.user.first_name %}
-          <p class="welcome"> {{ request.user.first_name|slice:":1" }}</p>
-          {% else %}
-          <p class="welcome"> {{ request.user.username|slice:":1" }}</p>
-          {% endif %}
-          {% else %}
-        
-          {% endif %}
+          </div> 
+         
           <div class="menu-icon">
             <i class="fa-solid fa-bars"></i>
           </div>
         </div>
-      </div>
+      </div> -->
 
     <div class="second-header">
         <div class="logo">
@@ -148,21 +131,23 @@
    
        
         <div class="search-cat">
-          <button class="cat-btn btns"><i class="fa-solid fa-caret-down"></i></button>
+       
           <form class="search-bar" action="{% url 'search' %}" role="search">
             <input type="text" name="search" id="" placeholder="What are you looking for ?"/>
             <button type="submit">   <i class="fa fa-search" aria-hidden="true"></i>
             </button>
       </form>
-    
+      <button class="removeSearch">remove search</button>
     
          </div>  
 
-         <div class="shopping-cart">
+      <div class="elements">
+        <button type="submit" class="show-search">   <i class="fa fa-search" aria-hidden="true"></i></button>
+        <div class="shopping-cart">
              
   
           <a href="{% url 'cart' %}">
-            <span> Shopping Cart</span>
+            <!-- <span> Shopping Cart</span> -->
             <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
             <div id="cart-qty" class="d-inline-flex">
               {% with qty_amount=cart|length %}
@@ -178,6 +163,58 @@
            
           </a>
         </div> 
+        <div class="wish">
+          <a href="  {% url 'WishList' %}"><i class="fa-regular fa-heart"></i> 
+           
+          
+          </a>
+        </div>
+
+        <div class="accounts">
+          {% if user.is_authenticated %}
+          <div class="login logout">
+            <a href="{% url 'user-logout' %}">Logout</a>
+          </div>
+          {% else %}
+          <div class="login">
+            <a href="{% url 'my-login' %}">Login</a>
+          </div>
+          <div class="sign-up">
+            <a href="{% url 'register' %}">Sign Up</a>
+          </div>
+          {% endif %}
+     
+        {% if request.user.is_authenticated %}
+        {% if request.user.first_name %}
+        <p class="welcome"> {{ request.user.first_name|slice:":1" }}</p>
+        {% else %}
+        <p class="welcome"> {{ request.user.username|slice:":1" }}</p>
+        {% endif %}
+        {% else %}
+      
+        {% endif %}
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+       
+      <div class="menu-icon">
+        <i class="fa-solid fa-bars"></i>
+      </div>
       </div> 
 
       <div class="third-header">
@@ -241,9 +278,9 @@
             <li>
               <a href="  {% url 'dashboard' %}"><i class="fa-solid fa-handshake"></i> My account</a>
             </li>
-            <li>
+            <!-- <li>
               <a href="  {% url 'WishList' %}"><i class="fa-regular fa-heart"></i> Wishlist</a>
-            </li>
+            </li> -->
             <!-- <li>
               <a href="  {% url 'terms' %}"><i class="fa-regular fa-heart"></i> Terms and Condition</a>
             </li>
@@ -283,10 +320,37 @@
          </div>
        </div>
     </div> -->
+
+  
    
     {% block content %}{% endblock %}
 
 
+
+    <div class="side-bnts" id="sideButtons">
+      <a href="" class="btnn">
+        <button><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+      </a>
+      <a href="" class="btnn">
+        <button><i class="fa fa-heart" aria-hidden="true"></i></button>
+      </a>
+      <a href="" class="btnn">
+        <button><i class="fa fa-user" aria-hidden="true"></i></button>
+      </a>
+      <a href="" class="btnn">
+        <button><i class="fa fa-phone" aria-hidden="true"></i></button>
+      </a>
+      <a href="" class="btnn">
+        <button><i class="fa fa-box" aria-hidden="true"></i></button>
+      </a>
+      <div class="btnn">
+        <button id="scrollToTop"><i class="fa fa-arrow-up"></i></button>
+      </div>
+    </div>
+    
+
+    
+ 
     <!-- footer -->
      <footer>
       <div class="footer">
@@ -371,9 +435,143 @@
 
      </footer>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   
+
+<script>
+  const sideButtons = document.getElementById("sideButtons");
+  const scrollToTopBtn = document.getElementById("scrollToTop");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+      sideButtons.style.display = "flex";
+    } else {
+      sideButtons.style.display = "none";
+    }
+  });
+
+  scrollToTopBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggleBtn = document.querySelector(".show-search");
+        const searchCat = document.querySelector(".search-cat");
+        const removeBtn = document.querySelector(".removeSearch");
     
+        // Toggle search visibility
+        toggleBtn.addEventListener("click", function (e) {
+          e.stopPropagation(); // Prevent closing instantly
+          searchCat.classList.toggle("active");
+        });
+    
+        // Prevent closing when clicking inside search area
+        searchCat.addEventListener("click", function (e) {
+          e.stopPropagation();
+        });
+    
+        // Clicking anywhere else on the page closes the search
+        document.addEventListener("click", function () {
+          searchCat.classList.remove("active");
+        });
+    
+        // Clicking the remove button closes the search
+        removeBtn.addEventListener("click", function () {
+          searchCat.classList.remove("active");
+        });
+      });
+    </script>
+    
+    
+
+
+
+
+
+
+
+    
+    <script>
+      window.addEventListener('load', function () {
+        setTimeout(() => {
+          document.getElementById('loader').style.display = 'none';
+          document.getElementById('main-contents').style.display = 'block';
+        }, 1000);
+      });
+    </script>
+    
+
+
+
+    <script>
+      const grid = document.querySelector(".product-dsiplay-grid");
+      const slides = document.querySelectorAll(".product");
+      let currentIndex = 0;
+    
+      // Calculate items per view based on screen width
+      function itemsPerView() {
+        return window.innerWidth < 768 ? 2 : 6;
+      }
+    
+      function slideTo(index) {
+        const slideWidth = slides[0].offsetWidth + 10; // 10 = margin
+        const container = document.querySelector(".product-dsiplay-grid");
+        container.style.transform = `translateX(-${index * slideWidth}px)`;
+      }
+    
+      // Optional: Next/Prev buttons
+      document.getElementById("prev-btn").addEventListener("click", () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          slideTo(currentIndex);
+        }
+      });
+    
+      document.getElementById("next-btn").addEventListener("click", () => {
+        if (currentIndex < slides.length - itemsPerView()) {
+          currentIndex++;
+          slideTo(currentIndex);
+        }
+      });
+    
+      // Reset on resize
+      window.addEventListener("resize", () => {
+        slideTo(currentIndex);
+      });
+    </script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     <script>
 
@@ -623,6 +821,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </script>
 
+<!-- <script>
+  window.addEventListener('load', function () {
+    setTimeout(() => {
+      document.getElementById('loader').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+    }, 1000);
+  });
+</script> -->
 
 <script>
   const catLinks= document.querySelector(".cat-links")
@@ -654,7 +860,7 @@ catBtn.addEventListener('click', () => {
 
   </body>
 </html><!--Start of Tawk.to Script-->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -664,5 +870,5 @@ s1.charset='UTF-8';
 s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
-</script>
+</script> -->
 <!--End of Tawk.to Script-->

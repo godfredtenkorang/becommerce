@@ -1,5 +1,5 @@
 {% extends 'store/base.html' %}
-{% load static %} 
+{% load static %}
 {% block og-caption %}{{ shop.content }}{% endblock %}"
 {% block og-description %}shared by {{ shop.user }} @ {{ shop.title }}{% endblock %}
 {% block og-image %}{{ shop.image }}{% endblock %}
@@ -7,68 +7,247 @@
 
 {% block content %}
 
-<header class="page-header">
+<div id="loader">
+  <div class="loader-text">
+    We are fetching... Ready to shop ?
+  </div>
+  <a href=""><img src="{% static 'store/img/cat.png' %}" alt="Slide 1" /> </a>
+
+</div>
+
+
+
+
+<!-- <header class="page-header">
   <li> <a href="  {% url 'shop' %}"><i class="fa-solid fa-shop"></i> Shop</a>
   </li>
 
-</header>
+</header> -->
 
 
 
+<div id="main-contents" style="display: none;">
+  <div class="banner-container">
+    <img src="{% static 'store/img/banner.jpg' %}" alt="Slide 2" />
 
-<!-- products main container -->
+</div>
+  <!-- products main container -->
 
-<!-- products main container -->
-<div class="product-main-container">
+  <!-- products main container -->
+  <div class="product-main-container">
 
-
-
-  <!-- container for set of product -->
-  <div class="product-container">
-    <div class="heading">
-      <h2>Shop Now</h2>
-
-    </div>
-
-    <!-- container set the product to diplay grid -->
-    <div class="product-dsiplay-grid">
-
-      {% for shop in shops %}
-      <!-- product container -->
-      <div class="product">
-
-        <a href="{{ shop.get_absolute_url }}">
-          <img src="{{ shop.image1.url }}" alt="Slide 2" />
-          <h4>{{ shop.title }}</h4>
-
-        </a>
-
-        <div class="product-details">
-       
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>GH¢{{ shop.final_price }}</p>
-              <!-- <p class="price-cancel">GH¢{{ shop.normal_price }}</p> -->
+    <div class="product-container">
+      <div class="heading">
+        <h2>New Arival</h2>
+  
+      </div>
+  
+      <div class="product-dsiplay-grid">
+  
+  
+  
+        <div class="product">
+          <a href="">
+            <img src="{% static 'store/img/images.jpg' %}" alt="{{ gaminglaptop.title }}" />
+            <h4>Lorem ipsum dolor sit amet.</h4>
+          </a>
+          <div class="product-details">
+            <div class="price-wishlist-btn">
+              <div class="price">
+                <p>Gh 200</p>
+                <p class="canceled">Gh 200</p>
+              </div>
+              <div class="add-to-wishlist">
+                <a href="">
+                  <button> <i class="fa-regular fa-heart"></i> </button>
+                </a>
+                <a href="">
+                  <button> <i class="fa-solid fa-eye"></i> </button>
+                </a>
+              </div>
             </div>
-            <div class="add-to-wishlist">
-              <a href="{% url 'add-to-wishlist' shop.slug %}">
-                <i class="fa-regular fa-heart"></i>
-              </a>
+          </div>
+  
+        </div>
+        <div class="product">
+          <a href="">
+            <img src="{% static 'store/img/imagess.jpg' %}" alt="{{ gaminglaptop.title }}" />
+            <h4>Lorem ipsum dolor sit amet.</h4>
+          </a>
+          <div class="product-details">
+            <div class="price-wishlist-btn">
+              <div class="price">
+                <p>Gh 200</p>
+                <p class="canceled">Gh 200</p>
+              </div>
+              <div class="add-to-wishlist">
+                <a href="">
+                  <button> <i class="fa-regular fa-heart"></i> </button>
+                </a>
+                <a href="">
+                  <button> <i class="fa-solid fa-eye"></i> </button>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-        <!-- add to cart -->
-        <!-- <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div> -->
+  
+  
+        <div class="product">
+          <a href="">
+            <img src="{% static 'store/img/images.jpg' %}" alt="{{ gaminglaptop.title }}" />
+            <h4>Lorem ipsum dolor sit amet.</h4>
+          </a>
+          <div class="product-details">
+            <div class="price-wishlist-btn">
+              <div class="price">
+                <p>Gh 200</p>
+                <p class="canceled">Gh 200</p>
+              </div>
+              <div class="add-to-wishlist">
+                <a href="">
+                  <button> <i class="fa-regular fa-heart"></i> </button>
+                </a>
+                <a href="">
+                  <button> <i class="fa-solid fa-eye"></i> </button>
+                </a>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+  
+  
+        <div class="product">
+          <a href="">
+            <img src="{% static 'store/img/imagess.jpg' %}" alt="{{ gaminglaptop.title }}" />
+            <h4>Lorem ipsum dolor sit amet.</h4>
+          </a>
+          <div class="product-details">
+            <div class="price-wishlist-btn">
+              <div class="price">
+                <p>Gh 200</p>
+                <p class="canceled">Gh 200</p>
+              </div>
+              <div class="add-to-wishlist">
+                <a href="">
+                  <button> <i class="fa-regular fa-heart"></i> </button>
+                </a>
+                <a href="">
+                  <button> <i class="fa-solid fa-eye"></i> </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="product">
+          <a href="">
+            <img src="{% static 'store/img/images.jpg' %}" alt="{{ gaminglaptop.title }}" />
+            <h4>Lorem ipsum dolor sit amet.</h4>
+          </a>
+          <div class="product-details">
+            <div class="price-wishlist-btn">
+              <div class="price">
+                <p>Gh 200</p>
+                <p class="canceled">Gh 200</p>
+              </div>
+              <div class="add-to-wishlist">
+                <a href="">
+                  <button> <i class="fa-regular fa-heart"></i> </button>
+                </a>
+                <a href="">
+                  <button> <i class="fa-solid fa-eye"></i> </button>
+                </a>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+  
+        <div class="product">
+          <a href="">
+            <img src="{% static 'store/img/fanta.png' %}" alt="{{ gaminglaptop.title }}" />
+            <h4>Lorem ipsum dolor sit amet.</h4>
+          </a>
+          <div class="product-details">
+            <div class="price-wishlist-btn">
+              <div class="price">
+                <p>Gh 200</p>
+                <p class="canceled">Gh 200</p>
+              </div>
+              <div class="add-to-wishlist">
+                <a href="">
+                  <button> <i class="fa-regular fa-heart"></i> </button>
+                </a>
+                <a href="">
+                  <button> <i class="fa-solid fa-eye"></i> </button>
+                </a>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+  
       </div>
-      {% endfor %}
-
-
+  
+  
     </div>
+  
+
+    <!-- container for set of product -->
+    <!-- <div class="product-container">
+      <div class="heading">
+        <h2>Shop Now</h2>
+
+      </div>
+
+    
+      <div class="product-dsiplay-grid">
+
+        {% for shop in shops %}
+      
+        <div class="product">
+
+          <a href="{{ shop.get_absolute_url }}">
+            <img src="{{ shop.image1.url }}" alt="Slide 2" />
+            <h4>{{ shop.title }}</h4>
+
+          </a>
+
+          <div class="product-details">
+
+            <div class="price-wishlist-btn">
+              <div class="price">
+                <p>GH¢{{ shop.final_price }}</p>
+             <p class="price-cancel">GH¢{{ shop.normal_price }}</p> 
+              </div>
+              <div class="add-to-wishlist">
+                <a href="{% url 'add-to-wishlist' shop.slug %}">
+                  <i class="fa-regular fa-heart"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+         
+          <div class="add-to-cart-button">
+          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+        </div> 
+        </div>
+        {% endfor %}
 
 
+      </div>
+
+
+    </div> -->
   </div>
+
 </div>
 
-{% endblock %}
+
+
+
+
+
+  {% endblock %}

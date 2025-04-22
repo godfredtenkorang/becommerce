@@ -1,5 +1,5 @@
 {% extends 'store/base.html' %}
-{% load static %} 
+{% load static %}
 {% block og-caption %}{{ shop.content }}{% endblock %}"
 {% block og-description %}shared by {{ shop.user }} @ {{ shop.title }}{% endblock %}
 {% block og-image %}{{ shop.image }}{% endblock %}
@@ -7,68 +7,87 @@
 
 {% block content %}
 
-<header class="page-header">
+<div id="loader">
+  <div class="loader-text">
+    We are fetching... Ready to shop ?
+  </div>
+  <a href=""><img src="{% static 'store/img/cat.png' %}" alt="Slide 1" /> </a>
+
+</div>
+
+
+
+
+<!-- <header class="page-header">
   <li> <a href="  {% url 'shop' %}"><i class="fa-solid fa-shop"></i> Shop</a>
   </li>
 
-</header>
+</header> -->
 
 
 
+<div id="main-contents" style="display: none;">
 
-<!-- products main container -->
+  <!-- products main container -->
 
-<!-- products main container -->
-<div class="product-main-container">
+  <!-- products main container -->
+  <div class="product-main-container">
 
 
 
-  <!-- container for set of product -->
-  <div class="product-container">
-    <div class="heading">
-      <h2>Shop Now</h2>
+    <!-- container for set of product -->
+    <div class="product-container">
+      <div class="heading">
+        <h2>Shop Now</h2>
 
-    </div>
+      </div>
 
-    <!-- container set the product to diplay grid -->
-    <div class="product-dsiplay-grid">
+      <!-- container set the product to diplay grid -->
+      <div class="product-dsiplay-grid">
 
-      {% for shop in shops %}
-      <!-- product container -->
-      <div class="product">
+        {% for shop in shops %}
+        <!-- product container -->
+        <div class="product">
 
-        <a href="{{ shop.get_absolute_url }}">
-          <img src="{{ shop.image1.url }}" alt="Slide 2" />
-          <h4>{{ shop.title }}</h4>
+          <a href="{{ shop.get_absolute_url }}">
+            <img src="{{ shop.image1.url }}" alt="Slide 2" />
+            <h4>{{ shop.title }}</h4>
 
-        </a>
+          </a>
 
-        <div class="product-details">
-       
-          <div class="price-wishlist-btn">
-            <div class="price">
-              <p>GH¢{{ shop.final_price }}</p>
-              <!-- <p class="price-cancel">GH¢{{ shop.normal_price }}</p> -->
-            </div>
-            <div class="add-to-wishlist">
-              <a href="{% url 'add-to-wishlist' shop.slug %}">
-                <i class="fa-regular fa-heart"></i>
-              </a>
+          <div class="product-details">
+
+            <div class="price-wishlist-btn">
+              <div class="price">
+                <p>GH¢{{ shop.final_price }}</p>
+                <!-- <p class="price-cancel">GH¢{{ shop.normal_price }}</p> -->
+              </div>
+              <div class="add-to-wishlist">
+                <a href="{% url 'add-to-wishlist' shop.slug %}">
+                  <i class="fa-regular fa-heart"></i>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- add to cart -->
-        <!-- <div class="add-to-cart-button">
+          <!-- add to cart -->
+          <!-- <div class="add-to-cart-button">
           <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
         </div> -->
+        </div>
+        {% endfor %}
+
+
       </div>
-      {% endfor %}
 
 
     </div>
-
-
   </div>
+
 </div>
 
-{% endblock %}
+
+
+
+
+
+  {% endblock %}

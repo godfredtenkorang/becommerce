@@ -96,7 +96,7 @@ body {
   font-size: 12px;
 }
 .shopping-cart i {
-  color: var(--white);
+  color:var(--white);
 }
 
 .second-header {

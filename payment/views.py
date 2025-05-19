@@ -5,6 +5,7 @@ from django.http import JsonResponse, HttpRequest
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
+from django.db.models import F
 
 
 def checkout(request: HttpRequest) -> HttpResponse:
@@ -54,19 +55,19 @@ def checkout(request: HttpRequest) -> HttpResponse:
             return render(request, 'payment/checkout.html')
     else:
         if request.method == 'POST':
-                full_name = request.POST['full_name']
-                email = request.POST['email']
-                address = request.POST['address']
-                phone_number = request.POST['phone_number']
-                country = request.POST['country']
-                city = request.POST['city']
-                state = request.POST['state']
-                zipcode = request.POST['zipcode']
+            full_name = request.POST['full_name']
+            email = request.POST['email']
+            address = request.POST['address']
+            phone_number = request.POST['phone_number']
+            country = request.POST['country']
+            city = request.POST['city']
+            state = request.POST['state']
+            zipcode = request.POST['zipcode']
+        
+            payment = Payment(full_name=full_name, email=email, address=address, phone_number=phone_number, country=country, city=city, state=state, zipcode=zipcode, amount=total_price)
+            payment.save()
             
-                payment = Payment(full_name=full_name, email=email, address=address, phone_number=phone_number, country=country, city=city, state=state, zipcode=zipcode, amount=total_price)
-                payment.save()
-                
-                return render(request, 'payment/make_payment.html', {'cart': cart, 'title': 'Cart', 'payment': payment, 'paystack_public_key': settings.PAYSTACK_PUBLIC_KEY})
+            return render(request, 'payment/make_payment.html', {'cart': cart, 'title': 'Cart', 'payment': payment, 'paystack_public_key': settings.PAYSTACK_PUBLIC_KEY})
             
         context = {
             'title': 'Checkout',
@@ -75,67 +76,21 @@ def checkout(request: HttpRequest) -> HttpResponse:
 
         return render(request, 'payment/checkout.html', context)
     
+    
 def verify_payment(request: HttpRequest, ref: str) -> HttpResponse:
     payment = get_object_or_404(Payment, ref=ref)
     verified = payment.verify_payment()
     
-    cart = Cart(request)
-        
-        # Get the total price of items
-        
-    total_cost = cart.get_all_total()
-        
-    '''
-        Order variations
-        
-        1) Create order -> Account users WITH + WITHOUT shipping information
-        
-        2) Create order -> Guest users without an account
-        
-    '''
-    # 1) Create order -> Account users WITH + WITHOUT shipping information
-    
-    order = Order.objects.create(
-    amount_paid=total_cost, user=request.user
-    )
-    
-    order_id = order.pk
-    
-    for item in cart:
-        OrderItem.objects.create(order_id=order_id, product=item['product'], quantity=item['qty'], 
-                                    price=item['final_price'], user=request.user)
-
-
-# 2) Create order -> Guest users without an account
-
-    order = Order.objects.create(
-    amount_paid=total_cost)
-            
-    order_id = order.pk
-            
-    product_list = []
-    for item in cart:
-        OrderItem.objects.create(order_id=order_id, product=item['product'], quantity=item['qty'], price=item['final_price'])
-        product_list.append(item['product'])
-        
-    all_products = product_list
-        
-    # Email order
-    
-    send_mail('Order received', 'Hi! ' + '\n\n' + 'Thank you for picking your order' + '\n\n' +
-                'Please see your order below:' + '\n\n' + str(all_products) + '\n\n' + 'Total paid: $' + 
-                str(cart.get_all_total()), settings.EMAIL_HOST_USER, [payment.email], fail_silently=False,)
-
-    send_mail(
-        f"New Order from {payment.full_name} - {payment.email}",
-        'Please see order below:' + '\n\n' + str(all_products) + '\n\n' + 'Total paid: $' +
-            str(cart.get_all_total()),
-            payment.email,  # From email
-            [settings.EMAIL_HOST_USER],  # To email
-            fail_silently=False,
-    ),
-    
     if verified:
+        payment.verified = True
+        payment.save()
+        
+        for item in payment.items.all():
+            product = item.product
+            product.available_products = F('available_products') - item.quantity
+            product.total_products = F('total_products') - item.quantity
+            product.save()
+        
         return redirect('payment-success')
     else:
         return redirect('payment-failed')

@@ -98,6 +98,64 @@
     <div class="product-dsiplay-grid">
 
 
+      {% for product in products %}
+      <div class="product">
+        <a href="{{ product.get_absolute_url }}">
+          <img src="{{ product.image1.url }}" alt="{{ product.title }}" />
+          
+          <h4 style="font-size: 25px;">{{ product.title }}</h4>
+        </a>
+        <div class="product-details">
+          <div class="price-wishlist-btn">
+            <div class="price">
+              <p>Gh¢{{ product.final_price }}</p>
+              <p class="canceled">GH¢{{ product.normal_price }}</p>
+            </div>
+            <div class="add-to-wishlist">
+              <a href="{% url 'add-to-wishlist' product.slug %}">
+                <button> <i class="fa-regular fa-heart"></i> </button>
+              </a>
+              <!-- <a href="">
+                <button> <i class="fa-solid fa-eye"></i> </button>
+              </a> -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+      {% endfor %}
+      
+
+    </div>
+
+
+  </div>
+
+
+  <div class="deal-advert">
+    <div class="deal">
+      <img src="{% static 'store/img/banner1.png' %}" alt="Slide 3" />
+    </div>
+    <div class="deal">
+      <img src="{% static 'store/img/banner2.png' %}" alt="Slide 3" />
+    </div>
+    <div class="deal">
+      <img src="{% static 'store/img/banner3.png' %}" alt="Slide 3" />
+    </div>
+
+  </div>
+
+
+  <!-- container for set of product -->
+  <!-- <div class="product-container">
+    <div class="heading">
+      <h2>New Arival</h2>
+
+    </div>
+
+    <div class="product-dsiplay-grid">
+
+
 
       <div class="product">
         <a href="">
@@ -245,217 +303,43 @@
     </div>
 
 
-  </div>
-
-
-  <div class="deal-advert">
-    <div class="deal">
-      <img src="{% static 'store/img/banner1.png' %}" alt="Slide 3" />
-    </div>
-    <div class="deal">
-      <img src="{% static 'store/img/banner2.png' %}" alt="Slide 3" />
-    </div>
-    <div class="deal">
-      <img src="{% static 'store/img/banner3.png' %}" alt="Slide 3" />
-    </div>
-
-  </div>
-
-
- <!-- container for set of product -->
- <div class="product-container">
-  <div class="heading">
-    <h2>New Arival</h2>
-
-  </div>
-
-  <div class="product-dsiplay-grid">
+  </div> -->
 
 
 
-    <div class="product">
-      <a href="">
-        <img src="{% static 'store/img/images.jpg' %}" alt="{{ gaminglaptop.title }}" />
-        <h4>Lorem ipsum dolor sit amet.</h4>
-      </a>
-      <div class="product-details">
-        <div class="price-wishlist-btn">
-          <div class="price">
-            <p>Gh 200</p>
-            <p class="canceled">Gh 200</p>
-          </div>
-          <div class="add-to-wishlist">
-            <a href="">
-              <button> <i class="fa-regular fa-heart"></i> </button>
-            </a>
-            <a href="">
-              <button> <i class="fa-solid fa-eye"></i> </button>
-            </a>
-          </div>
+  <div class="shipping">
+    <div class="shipping-text">
+      <div class="ship">
+        <div class="ship-tex">
+          <i class="fa-solid fa-truck-fast"></i>
+          <h4>Fast Delivery Within Kumasi</h4>
+        </div>
+        <div class="ship-tex">
+          <i class="fa-solid fa-gem"></i>
+          <h4>Top Quality Guaranteed</h4>
         </div>
       </div>
 
-    </div>
-    <div class="product">
-      <a href="">
-        <img src="{% static 'store/img/imagess.jpg' %}" alt="{{ gaminglaptop.title }}" />
-        <h4>Lorem ipsum dolor sit amet.</h4>
-      </a>
-      <div class="product-details">
-        <div class="price-wishlist-btn">
-          <div class="price">
-            <p>Gh 200</p>
-            <p class="canceled">Gh 200</p>
-          </div>
-          <div class="add-to-wishlist">
-            <a href="">
-              <button> <i class="fa-regular fa-heart"></i> </button>
-            </a>
-            <a href="">
-              <button> <i class="fa-solid fa-eye"></i> </button>
-            </a>
-          </div>
+      <div class="ship">
+        <div class="ship-tex">
+          <i class="fa-solid fa-shield-halved"></i>
+          <h4>100% Secured Platform</h4>
+        </div>
+        <div class="ship-tex">
+          <i class="fa-solid fa-ban"></i>
+          <h4>No Scam Assurance</h4>
         </div>
       </div>
     </div>
 
 
-    <div class="product">
-      <a href="">
-        <img src="{% static 'store/img/images.jpg' %}" alt="{{ gaminglaptop.title }}" />
-        <h4>Lorem ipsum dolor sit amet.</h4>
-      </a>
-      <div class="product-details">
-        <div class="price-wishlist-btn">
-          <div class="price">
-            <p>Gh 200</p>
-            <p class="canceled">Gh 200</p>
-          </div>
-          <div class="add-to-wishlist">
-            <a href="">
-              <button> <i class="fa-regular fa-heart"></i> </button>
-            </a>
-            <a href="">
-              <button> <i class="fa-solid fa-eye"></i> </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-
-    <div class="product">
-      <a href="">
-        <img src="{% static 'store/img/imagess.jpg' %}" alt="{{ gaminglaptop.title }}" />
-        <h4>Lorem ipsum dolor sit amet.</h4>
-      </a>
-      <div class="product-details">
-        <div class="price-wishlist-btn">
-          <div class="price">
-            <p>Gh 200</p>
-            <p class="canceled">Gh 200</p>
-          </div>
-          <div class="add-to-wishlist">
-            <a href="">
-              <button> <i class="fa-regular fa-heart"></i> </button>
-            </a>
-            <a href="">
-              <button> <i class="fa-solid fa-eye"></i> </button>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="product">
-      <a href="">
-        <img src="{% static 'store/img/images.jpg' %}" alt="{{ gaminglaptop.title }}" />
-        <h4>Lorem ipsum dolor sit amet.</h4>
-      </a>
-      <div class="product-details">
-        <div class="price-wishlist-btn">
-          <div class="price">
-            <p>Gh 200</p>
-            <p class="canceled">Gh 200</p>
-          </div>
-          <div class="add-to-wishlist">
-            <a href="">
-              <button> <i class="fa-regular fa-heart"></i> </button>
-            </a>
-            <a href="">
-              <button> <i class="fa-solid fa-eye"></i> </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="product">
-      <a href="">
-        <img src="{% static 'store/img/fanta.png' %}" alt="{{ gaminglaptop.title }}" />
-        <h4>Lorem ipsum dolor sit amet.</h4>
-      </a>
-      <div class="product-details">
-        <div class="price-wishlist-btn">
-          <div class="price">
-            <p>Gh 200</p>
-            <p class="canceled">Gh 200</p>
-          </div>
-          <div class="add-to-wishlist">
-            <a href="">
-              <button> <i class="fa-regular fa-heart"></i> </button>
-            </a>
-            <a href="">
-              <button> <i class="fa-solid fa-eye"></i> </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-
-</div>
 
 
 
-<div class="shipping">
-  <div class="shipping-text">
-    <div class="ship">
-      <div class="ship-tex">
-        <i class="fa-solid fa-truck-fast"></i>
-        <h4>Fast Delivery Within Kumasi</h4>
-      </div>
-      <div class="ship-tex">
-        <i class="fa-solid fa-gem"></i>
-        <h4>Top Quality Guaranteed</h4>
-      </div>
-    </div>
-  
-    <div class="ship">
-      <div class="ship-tex">
-        <i class="fa-solid fa-shield-halved"></i>
-        <h4>100% Secured Platform</h4>
-      </div>
-      <div class="ship-tex">
-        <i class="fa-solid fa-ban"></i>
-        <h4>No Scam Assurance</h4>
-      </div>
+    <div class="shipping-img">
+      <img src="{% static 'store/img/banner-shipping.png' %}" alt="{{ gaminglaptop.title }}" />
     </div>
   </div>
-  
-   
-
-
-
-  <div class="shipping-img">
-    <img src="{% static 'store/img/banner-shipping.png' %}" alt="{{ gaminglaptop.title }}" />
-  </div>
-</div>
 
 
 

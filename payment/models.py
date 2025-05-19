@@ -25,44 +25,7 @@ class ShippingAddress(models.Model):
         return 'Shipping Address - ' + str(self.id)
 
 
-class Order(models.Model):
-    full_name = models.CharField(max_length=300)
-    email = models.EmailField(max_length=255)
-    shipping_address = models.TextField(max_length=10000)
-    amount_paid = models.DecimalField(max_digits=8, decimal_places=2)
-    date_ordered = models.DateTimeField('date ordered', null=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    
-    class Meta:
-        verbose_name_plural = 'Orders'
-    
-    def __str__(self):
-        return f"Order - #{self.id} from {self.email}"
 
-CHOICES = (
-    ('Order Placed', 'Order Placed'),
-    ('Waiting to be Shipped', 'Waiting to be Shipped'),
-    ('Shipped', 'Shipped'),
-    ('Delivered', 'Delivered'),
-    ('Canceled', 'Canceled'),
-    
-)
- 
-class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.PositiveBigIntegerField(default=1)
-    price = models.DecimalField(max_digits=8, decimal_places=2)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    date_added = models.DateTimeField(default=timezone.now)
-    status = models.CharField(max_length=50, choices=CHOICES, default="Order Placed")
-    
-    class Meta:
-        verbose_name_plural = 'Order Items'
-        ordering = ['-date_added']
-    
-    def __str__(self):
-        return f"Order Item - #{self.id} - {self.order}"
 
 
 class Payment(models.Model):
@@ -107,3 +70,44 @@ class Payment(models.Model):
         if self.verified:
             return True
         return False
+    
+    
+class Order(models.Model):
+    full_name = models.CharField(max_length=300)
+    email = models.EmailField(max_length=255)
+    shipping_address = models.TextField(max_length=10000)
+    amount_paid = models.DecimalField(max_digits=8, decimal_places=2)
+    date_ordered = models.DateTimeField('date ordered', null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    
+    class Meta:
+        verbose_name_plural = 'Orders'
+    
+    def __str__(self):
+        return f"Order - #{self.id} from {self.email}"
+
+CHOICES = (
+    ('Order Placed', 'Order Placed'),
+    ('Waiting to be Shipped', 'Waiting to be Shipped'),
+    ('Shipped', 'Shipped'),
+    ('Delivered', 'Delivered'),
+    ('Canceled', 'Canceled'),
+    
+)
+ 
+class OrderItem(models.Model):
+    payment = models.ForeignKey(Payment, related_name='items', on_delete=models.CASCADE, null=True, blank=True)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveBigIntegerField(default=1)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    date_added = models.DateTimeField(default=timezone.now)
+    status = models.CharField(max_length=50, choices=CHOICES, default="Order Placed")
+    
+    class Meta:
+        verbose_name_plural = 'Order Items'
+        ordering = ['-date_added']
+    
+    def __str__(self):
+        return f"Order Item - #{self.id} - {self.order}"

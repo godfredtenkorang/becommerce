@@ -18,28 +18,27 @@
       {% for product in products %}
       <div class="product">
         <a href="{{ product.get_absolute_url }}">
-          <img src="{{ product.image1.url }}" alt="Slide 2" />
-          <p>{{ product.title }}</p>
-          <!-- <p class="price-cancel">GH¢{{ shop.normal_price }}</p> -->
+          <img src="{{ product.image1.url }}" alt="{{ product.title }}" />
+      
+          <h4 style="font-size: 25px;">{{ product.title }}</h4>
         </a>
         <div class="product-details">
-         
-
           <div class="price-wishlist-btn">
             <div class="price">
-              <p>GH¢{{ product.final_price }}</p>
+              <p>Gh¢{{ product.final_price }}</p>
+              <p class="canceled">GH¢{{ product.normal_price }}</p>
             </div>
             <div class="add-to-wishlist">
               <a href="{% url 'add-to-wishlist' product.slug %}">
-                <i class="fa-regular fa-heart"></i>
+                <button> <i class="fa-regular fa-heart"></i> </button>
               </a>
+              <!-- <a href="">
+                      <button> <i class="fa-solid fa-eye"></i> </button>
+                    </a> -->
             </div>
           </div>
         </div>
-        <!-- add to cart -->
-        <!-- <div class="add-to-cart-button">
-          <button><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-        </div> -->
+      
       </div>
       {% endfor %}
 

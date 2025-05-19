@@ -38,7 +38,7 @@ sitemaps = {
 urlpatterns = [
     path('sitemap.xml/', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt/', TemplateView.as_view(template_name="store/robots.txt", content_type="text/plain")),
-    path('gbstore_admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('', include('store.urls')),
     path('cart/', include('cart.urls')),
     path('payment/', include('payment.urls')),

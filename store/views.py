@@ -19,6 +19,8 @@ def index(request):
     shoes = ShoesAndSlippers.objects.all()
     banners = Banner.objects.all()
     
+    products = Product.objects.all()[:5]
+    
     if request.method == 'POST':
         email = request.POST['email']
         
@@ -41,6 +43,7 @@ def index(request):
         'surviellences': surviellences,
         'heels': heels,
         'shoes': shoes,
+        'products': products,
         'banners': banners
     }
     return render(request, 'store/index.html', context)

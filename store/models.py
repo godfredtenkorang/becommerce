@@ -34,6 +34,8 @@ class Product(models.Model):
     description7 = models.CharField(max_length=250, blank=True, default="")
     brand = models.CharField(max_length=100, default='un-branded')
     product_availability = models.CharField(max_length=20, choices=PRODUCT_AVAILABILITY, default='in stock')
+    total_products = models.PositiveIntegerField(default=0)
+    available_products = models.PositiveIntegerField(default=0)
     image1 = models.ImageField(upload_to='product1/img', default='default.jpg')
     image2 = models.ImageField(upload_to='product2/img', default='default.jpg')
     image3 = models.ImageField(upload_to='product3/img', default='default.jpg')
